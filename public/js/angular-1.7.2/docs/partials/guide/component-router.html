@@ -64,7 +64,7 @@ We are investigating backporting the new Angular Router to AngularJS, but altern
 is an isolated part of the application, which is responsible for its own user interface and has
 a well defined programmatic interface to the Component that contains it. Take a look at the
 <a href="guide/component">component guide</a> for more information.</p>
-<p><img src="img/guide/component-based-architecture.svg" alt="Component Based Architecture"></p>
+<p><img src="/assets/img/guide/component-based-architecture.svg" alt="Component Based Architecture"></p>
 <h2 id="urls-and-navigation">URLs and Navigation</h2>
 <p>In most applications, users navigate from one view to the next as they perform application tasks.
 The browser provides a familiar model of application navigation. We enter a URL in the address bar
@@ -112,13 +112,13 @@ this <strong>Routing Component</strong>.</p>
 <p>The <a href="api/ngComponentRouter/type/ChildRouter"><code>ChildRouter</code></a> for the new <strong>Routing Component</strong> then attempts to match its <strong>Route Config</strong> against
 the parts of the URL that have not already been matched by the previous <strong>Router</strong>.</p>
 <p>This process continues until we run out of <strong>Routing Components</strong> or consume the entire URL.</p>
-<p><img src="img/guide/component-routes.svg" alt="Routed Components"></p>
+<p><img src="/assets/img/guide/component-routes.svg" alt="Routed Components"></p>
 <p>In the previous diagram, we can see that the URL <code>/heros/4</code> has been matched against the <code>App</code>, <code>Heroes</code> and
 <code>HeroDetail</code> <strong>Routing Components</strong>. The <strong>Routers</strong> for each of the <strong>Routing Components</strong> consumed a part
 of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.</p>
 <p>The result is that we end up with a hierarchy of <strong>Routing Components</strong> rendered in <strong>Outlets</strong>, via the
 <a href="api/ngComponentRouter/directive/ngOutlet"><code>ngOutlet</code></a> directive, in each <strong>Routing Component&#39;s</strong> template, as you can see in the following diagram.</p>
-<p><img src="img/guide/component-hierarchy.svg" alt="Component Hierarchy"></p>
+<p><img src="/assets/img/guide/component-hierarchy.svg" alt="Component Hierarchy"></p>
 <h2 id="example-heroes-app">Example Heroes App</h2>
 <p>You can see the complete application running below.</p>
 <p>
@@ -261,11 +261,11 @@ will display one of two views.</p>
 <ul>
 <li>A list of Heroes that are available:</li>
 </ul>
-<p><img src="img/guide/heroes-list.png" alt="Heroes List View"></p>
+<p><img src="/assets/img/guide/heroes-list.png" alt="Heroes List View"></p>
 <ul>
 <li>A detailed view of a single Hero:</li>
 </ul>
-<p><img src="img/guide/hero-detail.png" alt="Heroes List View"></p>
+<p><img src="/assets/img/guide/hero-detail.png" alt="Heroes List View"></p>
 <p>We are going to have a <code>Heroes</code> Component for the Heroes feature of our application, and then <code>HeroList</code>
 and <code>HeroDetail</code> <strong>Components</strong> that will actually display the two different views.</p>
 <h4 id="app-component">App Component</h4>
@@ -535,11 +535,11 @@ changes to the crisis being edited.</p>
 <ul>
 <li>A list of Crises that are happening:</li>
 </ul>
-<p><img src="img/guide/crisis-list.png" alt="Crisis List View"></p>
+<p><img src="/assets/img/guide/crisis-list.png" alt="Crisis List View"></p>
 <ul>
 <li>A detailed view of a single Crisis:</li>
 </ul>
-<p><img src="img/guide/crisis-detail.png" alt="Crisis Detail View"></p>
+<p><img src="/assets/img/guide/crisis-detail.png" alt="Crisis Detail View"></p>
 <h3 id="crisis-feature">Crisis Feature</h3>
 <p>This feature is very similar to the Heroes feature. It contains the following <strong>Components</strong>:</p>
 <ul>

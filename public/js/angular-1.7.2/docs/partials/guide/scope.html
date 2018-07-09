@@ -154,7 +154,7 @@ a diagram depicting the scope boundaries.</p>
 
 
 </p>
-<p><img class="center" src="img/guide/concepts-scope.png"></p>
+<p><img class="center" src="/assets/img/guide/concepts-scope.png"></p>
 <p>Notice that AngularJS automatically places <code>ng-scope</code> class on elements where scopes are
 attached. The <code>&lt;style&gt;</code> definition in this example highlights in red the new scope locations. The
 child scopes are necessary because the repeater evaluates <code>{{name}}</code> expression, but
@@ -306,7 +306,7 @@ the dirty checking function must be efficient. Care should be taken that the dir
 function does not do any DOM access, as DOM access is orders of magnitude slower than property
 access on JavaScript object.</p>
 <h3 id="scope-watch-depths">Scope <code>$watch</code> Depths</h3>
-<p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-scope-watch-strategies.png"></p>
+<p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="/assets/img/guide/concepts-scope-watch-strategies.png"></p>
 <p>Dirty checking can be done with three strategies: By reference, by collection contents, and by value. The strategies differ in the kinds of changes they detect, and in their performance characteristics.</p>
 <ul>
 <li>Watching <em>by reference</em> (<a href="api/ng/type/$rootScope.Scope#$watch">scope.$watch</a> <code>(watchExpression, listener)</code>) detects a change when the whole value returned by the watch expression switches to a new value. If the value is an array or an object, changes inside it are not detected. This is the most efficient strategy.</li>
@@ -314,7 +314,7 @@ access on JavaScript object.</p>
 <li>Watching <em>by value</em> (<a href="api/ng/type/$rootScope.Scope#$watch">scope.$watch</a> <code>(watchExpression, listener, true)</code>) detects any change in an arbitrarily nested data structure. It is the most powerful change detection strategy, but also the most expensive. A full traversal of the nested data structure is needed on each digest, and a full copy of it needs to be held in memory.</li>
 </ul>
 <h2 id="integration-with-the-browser-event-loop">Integration with the browser event loop</h2>
-<p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-runtime.png"></p>
+<p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="/assets/img/guide/concepts-runtime.png"></p>
 <p>The diagram and the example below describe how AngularJS interacts with the browser&#39;s event loop.</p>
 <ol>
 <li>The browser&#39;s event-loop waits for an event to arrive. An event is a user interaction, timer event,

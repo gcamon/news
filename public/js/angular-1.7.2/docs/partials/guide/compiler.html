@@ -95,7 +95,7 @@ We extended the vocabulary of the browser in a way which is natural to anyone wh
 <p>Most other templating systems consume a static string template and
 combine it with data, resulting in a new string. The resulting text is then <code>innerHTML</code>ed into
 an element.</p>
-<p><img src="img/One_Way_Data_Binding.png"></p>
+<p><img src="/assets/img/One_Way_Data_Binding.png"></p>
 <p>This means that any changes to the data need to be re-merged with the template and then
 <code>innerHTML</code>ed into the DOM. Some of the issues with this approach are:</p>
 <ol>
@@ -110,7 +110,7 @@ view and scope model bindings are transparent. The developer does not need to ma
 the view. And because <code>innerHTML</code> is not used, you won&#39;t accidentally clobber user input.
 Furthermore, AngularJS directives can contain not just text bindings, but behavioral constructs as
 well.</p>
-<p><img src="img/Two_Way_Data_Binding.png"></p>
+<p><img src="/assets/img/Two_Way_Data_Binding.png"></p>
 <p>The AngularJS approach produces a stable DOM. The DOM element instance bound to a model
 item instance does not change for the lifetime of the binding. This means that the code can get
 hold of the elements and register event handlers and know that the reference will not be destroyed

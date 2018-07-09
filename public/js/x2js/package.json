@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      "x2js",
+      "C:\\Users\\Dr. Chimaroke\\Desktop\\newsapp"
+    ]
+  ],
+  "_from": "x2js@latest",
+  "_id": "x2js@3.2.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/x2js",
+  "_nodeVersion": "8.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/x2js_3.2.1_1521209623103_0.8349533037468608"
+  },
+  "_npmUser": {
+    "email": "gmer@hcuge.ch",
+    "name": "deja-js"
+  },
+  "_npmVersion": "5.7.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "x2js",
+    "raw": "x2js",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/x2js/-/x2js-3.2.1.tgz",
+  "_shasum": "d7d9eb3ab14a31a98068b9eba1bb1b9397c96714",
+  "_shrinkwrap": null,
+  "_spec": "x2js",
+  "_where": "C:\\Users\\Dr. Chimaroke\\Desktop\\newsapp",
+  "author": {
+    "name": "Axinom"
+  },
+  "bugs": {
+    "url": "https://github.com/Axinom/x2js/issues"
+  },
+  "dependencies": {
+    "xmldom": "^0.1.19"
+  },
+  "description": "Transforms between XML string and JavaScript object trees.",
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-axinom": "^1.0.3",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-qunit": "^1.2.0",
+    "qunit-cli": "^0.2.0",
+    "qunitjs": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 16,
+    "integrity": "sha512-+6gQGmMKbAHmapedjI/r+cPQNdFqQ0OE1VJvv3A6GPVlEJAsFq9JyNVgfwgnceMiUtpt38VOUEtEF7S3SxZkMQ==",
+    "shasum": "d7d9eb3ab14a31a98068b9eba1bb1b9397c96714",
+    "tarball": "https://registry.npmjs.org/x2js/-/x2js-3.2.1.tgz",
+    "unpackedSize": 62834
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "qunit": true
+    },
+    "extends": "axinom",
+    "rules": {
+      "indent": [
+        2,
+        {
+          "SwitchCase": 1
+        },
+        "tab"
+      ]
+    }
+  },
+  "gitHead": "63adc548ecd51201b35f534fca6bd35d9a8b7ed1",
+  "homepage": "https://github.com/Axinom/x2js#readme",
+  "keywords": [
+    "convert",
+    "map",
+    "mapping",
+    "transform",
+    "xml"
+  ],
+  "license": "Apache-2.0",
+  "main": "x2js.js",
+  "maintainers": [
+    {
+      "name": "axinom",
+      "email": "saares@axinom.com"
+    },
+    {
+      "name": "deja-js",
+      "email": "gmer@hcuge.ch"
+    }
+  ],
+  "name": "x2js",
+  "optionalDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axinom/x2js.git"
+  },
+  "scripts": {
+    "test": "karma start --single-run && .\\node_modules\\.bin\\qunit-cli all_tests.js && node ./node_modules/eslint/bin/eslint.js --env qunit,node --no-eslintrc --config ./node_modules/eslint-config-axinom/index.js *.js",
+    "travistest": "./node_modules/karma/bin/karma start --single-run --browsers Firefox && ./node_modules/.bin/qunit-cli all_tests.js && node ./node_modules/eslint/bin/eslint.js --env qunit,node --no-eslintrc --config ./node_modules/eslint-config-axinom/index.js *.js"
+  },
+  "types": "x2js.d.ts",
+  "version": "3.2.1"
+}

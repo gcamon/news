@@ -139,7 +139,7 @@ override this behavior using the <a href="api/ng/directive/ngModelOptions">ngMod
 bind only to specified list of events. I.e. <code>ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;</code> will update
 and validate only after the control loses focus. You can set several events using a space delimited
 list. I.e. <code>ng-model-options=&quot;{ updateOn: &#39;mousedown blur&#39; }&quot;</code></p>
-<p><img alt="animation showing debounced input" src="img/guide/forms-update-on-blur.gif"></p>
+<p><img alt="animation showing debounced input" src="/assets/img/guide/forms-update-on-blur.gif"></p>
 <p>If you want to keep the default behavior and just add new events that may trigger the model update
 and validation, add &quot;default&quot; as one of the specified events.</p>
 <p>I.e. <code>ng-model-options=&quot;{ updateOn: &#39;default blur&#39; }&quot;</code></p>
@@ -181,7 +181,7 @@ will update the model only when the control loses focus (blur event).</p>
 <p>You can delay the model update/validation by using the <code>debounce</code> key with the
 <a href="api/ng/directive/ngModelOptions">ngModelOptions</a> directive. This delay will also apply to
 parsers, validators and model flags like <code>$dirty</code> or <code>$pristine</code>.</p>
-<p><img alt="animation showing debounced input" src="img/guide/forms-debounce.gif"></p>
+<p><img alt="animation showing debounced input" src="/assets/img/guide/forms-debounce.gif"></p>
 <p>I.e. <code>ng-model-options=&quot;{ debounce: 500 }&quot;</code> will wait for half a second since
 the last content change before triggering the model update and form validation.</p>
 <p>If custom triggers are used, custom debouncing timeouts can be set for each event using an object
