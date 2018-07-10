@@ -9,6 +9,9 @@ module.exports = function(app) {
 	app.route("/")
 	.get(news.read);
 
+	app.route("/feeds")
+	.get(news.feeds);
+
 
 
 	//var compras = require('../controllers/compras.server.controller');

@@ -5,10 +5,13 @@
 		$httpProvider.defaults.headers.get = { "Access-Control-Allow-Origin" : '*' }
 	}])
 	.factory('DataSource', ['$http',function($http){
+		var resource;
+		var url2 =  window.location.href + "feeds";
 	  return {
 	    get: function(url,type,callback){
+	    	resource = url2 + '?url=' + url  ;
 	      $http.get(
-	          url,
+	          resource,
 	          {transformResponse:function(data) {
 	            // convert the data to JSON and provide
 	            // it to the success function below            	
@@ -32,6 +35,15 @@
 	      }
 	    }
 	  }
+
+	   function genHash() {
+	    var text = "";
+	    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567899966600555777222";
+
+	      for( var i=0; i < 12; i++ )
+	          text += possible.charAt(Math.floor(Math.random() * possible.length));
+	      return text;
+	  }
 	}])
 	.factory('feedsFactory',[function(){
 		var feeds = {}
@@ -39,8 +51,7 @@
 			{
 			 url : "http://saharareporters.com/feeds/news/feed",
 			 type: "news"
-			},
-			
+			},			
 			{
 			 url : "http://saharareporters.com/feeds/politics/feed",
 			 type: "politics"
@@ -64,7 +75,8 @@
 			{
 			 url : "http://saharareporters.com/feeds/technology/feed",
 			 type: "technology"
-			},
+			}
+			/*
 			{
 			 url : "http://saharareporters.com/feeds/reports/feed",
 			 type: "reports"
@@ -72,7 +84,7 @@
 			{
 			 url : "http://saharareporters.com/feeds/opinion/feed",
 			 type: "opinion"
-			}
+			}*/
 			/*"http://saharareporters.com/feeds/news/feed",
 			"http://saharareporters.com/feeds/opinion/feed",
 			"http://saharareporters.com/feeds/politics/feed",
