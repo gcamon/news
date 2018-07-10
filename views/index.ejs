@@ -376,9 +376,9 @@
         Newspipe</span>
         <div class="newsticker">
           <ul class="newsticker__list">
-            <li class="newsticker__item"><a href="single-post.html" class="newsticker__item-url">A-HA theme is multi-purpose solution for any kind of business</a></li>
-            <li class="newsticker__item"><a href="single-post-1.html" class="newsticker__item-url">Satelite cost tens of millions or even hundreds of millions of dollars to build</a></li>
-            <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">8 Hidden Costs of Starting and Running a Business</a></li>          
+            <li class="newsticker__item" ng-repeat="i in dataSet['news'].data.rss.channel.item"><a href="{{i.link}}" class="newsticker__item-url" ><b>{{i.title}}</b></a></li>
+            <!--<li class="newsticker__item"><a href="single-post-1.html" class="newsticker__item-url">Satelite cost tens of millions or even hundreds of millions of dollars to build</a></li>
+            <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">8 Hidden Costs of Starting and Running a Business</a></li> -->        
           </ul>
         </div>
         <div class="newsticker-buttons">
@@ -398,7 +398,7 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/hero/hero_post_1.jpg)">
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_1.jpg)">
                   <a href="single-post.html" class="thumb-url"></a>
                   <img src="/assets/img/content/hero/hero_post_1.jpg" alt="" class="entry__img d-none">
                   <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">World</a>
@@ -424,10 +424,10 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/hero/hero_post_2.jpg)">
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_3.jpg)">
                   <a href="single-post.html" class="thumb-url"></a>
                   <img src="/assets/img/content/hero/hero_post_2.jpg" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">Fashion</a>
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">Business</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
@@ -450,10 +450,10 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/hero/hero_post_3.jpg)">
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_2.jpg)">
                   <a href="single-post.html" class="thumb-url"></a>
                   <img src="/assets/img/content/hero/hero_post_3.jpg" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">Business</a>
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">Lifestyle</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
@@ -482,9 +482,9 @@
               <article class="entry card featured-posts-grid__entry">
                 <div class="entry__img-holder card__img-holder">
                   <a href="single-post.html">
-                    <img src="/assets/img/content/hero/hero_post_4.jpg" alt="" class="entry__img">
+                    <img src="/assets/img/content/list/list_post_4.jpg" alt="" class="entry__img">
                   </a>
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">Lifestyle</a>
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">Business</a>
                 </div>
 
                 <div class="entry__body card__body">   
