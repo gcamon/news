@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
-//var passport = require('passport');
-//var flash = require('connect-flash');
+var passport = require('passport');
+var flash = require('connect-flash');
 //var cookieParser = require("cookie-parser");
 
 //var ExpressPeerServer = require('peer').ExpressPeerServer;
@@ -18,7 +18,7 @@ var MongoDBStore = require('connect-mongodb-session')(session);
 var configuration = function (app,model) {
   //config
   
-  var storeDB = process.env.MONGODB_ADDON_URI || "mongodb://127.0.0.1:27017/newsDB";
+  var storeDB = process.env.MONGODB_ADDON_URI || "mongodb://127.0.0.1:27017/wobinews";
   var store = new MongoDBStore(
     {
       uri: storeDB,
@@ -44,9 +44,9 @@ var configuration = function (app,model) {
 	  } //secure: true will be set on the cookie when i this site is on https
 	}));
 	
-	//app.use(passport.initialize());
-	//app.use(passport.session());
-	//app.use(flash());		
+	app.use(passport.initialize());
+	app.use(passport.session());
+	app.use(flash());		
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json());
 	app.use(multer({dest: './uploads'}).any());
@@ -60,6 +60,16 @@ var configuration = function (app,model) {
     return next();
   });
 
+	passport.serializeUser(function(user, done) {   
+    	done(null, user._id);
+	});
+
+	passport.deserializeUser(function(id, done) {
+		model.admin.findById(id, function(err, user) {		
+		  done(err, user);	
+		});
+	})
+
 	//app.use('/',router);
 
 }
@@ -67,5 +77,5 @@ var configuration = function (app,model) {
 module.exports = {
   configuration: configuration,
   router: router,
- //passport: passport	
+  passport: passport	
 }

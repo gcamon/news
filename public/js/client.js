@@ -1,9 +1,6 @@
 (function() {
 
 	angular.module('myApp',[])
-	.config(["$httpProvider",function($httpProvider){
-		$httpProvider.defaults.headers.get = { "Access-Control-Allow-Origin" : '*' }
-	}])
 	.factory('DataSource', ['$http',function($http){
 		var resource;
 		var url2 =  window.location.href + "feeds";

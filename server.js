@@ -3,7 +3,7 @@ var express = require('express'),
   db = require('./app/server/model'),
   config = require('./config'),    
   route = require('./app/server/routes'),
-  //signupRoute = require('./signup'),
+  basicAuth = require("./app/server/controllers/basicAuth.server.controller"),
   //loginRoute = require('./login'),  
   app = express(),
   http = require('http').Server(app),
@@ -12,7 +12,11 @@ var express = require('express'),
   port = process.env.PORT || 3002;
 
 config.configuration(app,model);
+basicAuth(model,app);
 route(app);
+
+
+//adminRoute(config)
 
 
 http.listen(port,function(){

@@ -7,7 +7,49 @@ var url;
 
 
 exports.read = function(req,res){
-	res.render('index');
+
+	switch (req.params.type) {
+		case "politics":
+			res.render('categories');
+		break;
+
+		case "business":
+			res.render('categories');
+		break;
+
+		case "sports":
+			res.render('categories');
+		break;
+
+		case "lifestyle":
+			res.render('categories');
+		break;
+
+		case "entertainment":
+			res.render('categories');
+		break;
+
+		case "technology":
+			res.render('categories');
+		break;
+
+		case "world":
+			res.render('categories');
+		break;
+
+		case "career":
+			res.render('categories');
+		break;
+
+		default:
+		  res.render('index');
+		break
+	}
+	
+}
+
+exports.readSingle = function(req,res){
+	res.render("single-post")
 }
 
 exports.feeds = function(req,resp){
@@ -22,9 +64,6 @@ exports.feeds = function(req,resp){
 			}
 		}
 	}
-
-	console.log(url[2])
-	console.log(feedPath)
 
 	var options = {
 	  host: url[2] || "",

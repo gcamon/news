@@ -3,29 +3,30 @@
 module.exports = function(app) {
 
 	var news = require("./controllers/news.server.controller");
-	//var signup = require("../controllers/signup.server.controller");
-	//var login = require("../controllers/login.server.controller");
+	var admin = require("./controllers/admin.server.controller.js");
 
 	app.route("/")
+	.get(news.read)
+
+	app.route("/category/:type")
 	.get(news.read);
 
+	app.route("/post/:id/:title")
+	.get(news.readSingle)
+
 	app.route("/feeds")
-	.get(news.feeds);
+	.get(news.feeds)
 
+	app.route("/auth/summernote")
+	.get(admin.summernote)
 
+	app.route("/auth/bootstrapnote")
+	.get(admin.bootstrapnote)
 
-	//var compras = require('../controllers/compras.server.controller');
-	//var comprasPolicy = require('../policies/compras.server.policy');
+	app.route("/auth/post")
+	.get(admin.getPost)
+	.post(admin.newPost)
+	.put(admin.updatePost)
+	.delete(admin.deletePost)
 
-
-	// Compras Routes
-	/*pp.route('/api/compras').all(comprasPolicy.isAllowed)
-		.get(compras.list)
-		.put(compras.comprasResumen)
-		.post(compras.create);
-
-    app.route('/api/compras/select').all(comprasPolicy.isAllowed)
-        .get(compras.select);*/
-
-	
 };
