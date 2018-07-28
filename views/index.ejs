@@ -456,7 +456,7 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
                 <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[0].main_image_link}})">
-                  <a href="single-post.html" class="thumb-url"></a>
+                  <a href="{{part1[0].path}}" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
                   <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[0].category}}</a>
                 </div>
@@ -466,10 +466,10 @@
                     <a href="{{part1[0].path}}">{{part1[0].title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="#">{{part1[0].reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{part1[0].date | date: 'mediumDate'}}
                     </li>              
@@ -485,7 +485,7 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
                 <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[1].main_image_link}})">
-                  <a href="" class="thumb-url"></a>
+                  <a href="{{part1[1].path}}" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
                   <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[1].category}}</a>
                 </div>
@@ -495,10 +495,10 @@
                     <a href="{{part1[1].path}}">{{part1[1].title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="">{{part1[1].reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{part1[1].date | date: 'mediumDate'}}
                     </li>              
@@ -513,9 +513,9 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
                 <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[2].main_image_link}})">
-                  <a href="" class="thumb-url"></a>
+                  <a href="{{part1[2].path}}" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[2].category}}</a>
+                  <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[2].category}}</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
@@ -523,10 +523,10 @@
                     <a href="{{part1[2].path}}">{{part1[2].title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="">{{part1[2].reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{part1[2].date | date: 'mediumDate'}}
                     </li>              
@@ -547,7 +547,7 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--lg">
               <article class="entry card featured-posts-grid__entry">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="">
+                  <a href="{{part1[3].path}}">
                     <img src="{{part1[3].main_image_link}}" alt="" class="entry__img">
                   </a>
                   <a href="{{part1[3].path}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">{{part1[3].category}}</a>
@@ -555,13 +555,13 @@
 
                 <div class="entry__body card__body">   
                   <h2 class="entry__title">
-                    <a href="">{{part1[3].title}}</a>
+                    <a href="{{part1[3].path}}">{{part1[3].title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="">{{part1[3].reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{part1[3].date | date: 'mediumDate'}}
                     </li>              
@@ -643,10 +643,10 @@
                     <a href="{{item.path}}">{{item.title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="#">{{item.reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{item.date | date: 'mediumDate'}}
                     </li>
