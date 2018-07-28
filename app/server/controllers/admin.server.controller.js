@@ -4,7 +4,7 @@ var uuid = require("uuid");
 
 exports.summernote = function(req,res){
 	if(req.user){
-		res.render("summernote")
+		res.render("summernote",{user: req.user})
 	} else {
 		res.redirect("/admin/login")
 	}

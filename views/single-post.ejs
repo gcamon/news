@@ -460,10 +460,10 @@
 
                 <div class="entry__meta-holder">
                   <ul class="entry__meta">
-                    <li class="entry__meta-author">
+                    <!--<li class="entry__meta-author">
                       <span>by</span>
                       <a href="#">{{news.reporter_name}}</a>
-                    </li>
+                    </li>-->
                     <li class="entry__meta-date">
                       {{news.date | date : 'mediumDate'}}
                     </li>
@@ -475,7 +475,7 @@
                       <span>{{news.views}}</span>
                     </li>
                     <li class="entry__meta-comments">
-                      <a href="#">
+                      <a href="">
                         <i class="ui-chat-empty"></i>{{news.comments.length}}
                       </a>
                     </li>
@@ -487,7 +487,7 @@
                 <img src="{{news.main_image_link}}" alt="" class="entry__img">
               </div>
 
-              <div class="entry__article-wrap">
+              <div class="entry__article-wra">
 
                 <!-- Share -->
                 <!--<div class="entry__share">
@@ -509,8 +509,8 @@
                   </div>                  
                 </div>--> <!-- share -->
                
-                <div class="entry__article">
-                  <article data-ng-bind-html="trustAsHtml(news.article)"></article>
+                <div>
+                  <div data-ng-bind-html="trustAsHtml(news.article)"></div>
                 </div>
 
                 <!--<div class="entry__article">
