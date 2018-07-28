@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="bg-light style-default style-rounded" ng-controller="feedsCtlr">
+<body class="bg-light style-default style-rounded" ng-controller="homeCtlr">
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -58,36 +58,78 @@
     <!-- Nav -->
     <nav class="sidenav__menu-container">
       <ul class="sidenav__menu" role="menubar">
+        <!--<li>
+          <a href="#" class="sidenav__menu-url">Home</a>
+          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+          <ul class="sidenav__menu-dropdown">
+            <li><a href="index-2.html" class="sidenav__menu-url">Home Default</a></li>
+            <li><a href="index-politics.html" class="sidenav__menu-url">Home Politics</a></li>
+            <li><a href="index-fashion.html" class="sidenav__menu-url">Home Fashion</a></li>
+            <li><a href="index-games.html" class="sidenav__menu-url">Home Games</a></li>
+            <li><a href="index-videos.html" class="sidenav__menu-url">Home Videos</a></li>
+            <li><a href="index-music.html" class="sidenav__menu-url">Home Music</a></li>
+          </ul>
+        </li>-->
         <li>
-          <a href="/" class="sidenav__menu-url">Home</a>
-          </li>
-        <li>
-          <a href="/category/entertainment" class="sidenav__menu-url">Entertainment</a>
+          <a href="#" class="sidenav__menu-url">Get in touch</a>
+          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+          <ul class="sidenav__menu-dropdown">
+            <li><a href="about.html" class="sidenav__menu-url">About</a></li>
+            <li><a href="contact.html" class="sidenav__menu-url">Contact</a></li>
+            <!--<li><a href="search-results.html" class="sidenav__menu-url">Search Results</a></li>
+            <li><a href="categories.html" class="sidenav__menu-url">Categories</a></li>
+           <li><a href="404.html" class="sidenav__menu-url">404</a></li>-->
+          </ul>
         </li>
-       
+       <!-- <li>
+          <a href="#" class="sidenav__menu-url">Features</a>
+          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+          <ul class="sidenav__menu-dropdown">
+            <li>
+              <a href="#" class="sidenav__menu-url">Single Post</a>
+              <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+              <ul class="sidenav__menu-dropdown">
+                <li><a href="single-post.html" class="sidenav__menu-url">Style 1</a></li>
+                <li><a href="single-post-politics.html" class="sidenav__menu-url">Style 2</a></li>
+                <li><a href="single-post-fashion.html" class="sidenav__menu-url">Style 3</a></li>
+                <li><a href="single-post-games.html" class="sidenav__menu-url">Style 4</a></li>
+                <li><a href="single-post-videos.html" class="sidenav__menu-url">Style 5</a></li>
+                <li><a href="single-post-music.html" class="sidenav__menu-url">Style 6</a></li>
+              </ul>
+            </li>
+            <li><a href="shortcodes.html" class="sidenav__menu-url">Shortcodes</a></li>
+          </ul>
+        </li>  -->      
+
         <!-- Categories -->
         <li>
-          <a href="/category/technology" class="sidenav__menu-url">Technology</a>
-        </li>
-         <li>
-          <a href="/category/sports" class="sidenav__menu-url">Sports</a>
-        </li>    
-
-        <li>
-          <a href="/category/business" class="sidenav__menu-url">Business</a>
+          <a href="/" class="sidenav__menu-url">Home</a>
         </li>
         <li>
           <a href="/category/politics" class="sidenav__menu-url">Politics</a>
         </li>
-        <li>
+         <li>
+          <a href="/category/business" class="sidenav__menu-url">Business</a>
+        </li>
+         <li>
+          <a href="/category/sports" class="sidenav__menu-url">Sports</a>
+        </li>
+         <li>
           <a href="/category/lifestyle" class="sidenav__menu-url">Lifestyle</a>
         </li>
+         <li>
+          <a href="/category/entertainment" class="sidenav__menu-url">Entertainment</a>
+        </li>
         <li>
+          <a href="/category/technology" class="sidenav__menu-url">Technology</a>
+        </li>
+         <li>
           <a href="/category/world" class="sidenav__menu-url">World</a>
         </li>
-        <li>
-          <a href="/category/career" class="sidenav__menu-url">Career</a>
-        </li>
+        <!--<li>
+          <a href="/career" class="sidenav__menu-url">Lifestyle</a>
+        </li>-->
+       
       </ul>
     </nav>
 
@@ -391,7 +433,7 @@
         Newspipe</span>
         <div class="newsticker">
           <ul class="newsticker__list">
-            <li class="newsticker__item" ng-repeat="i in dataSet['news'].data.rss.channel.item"><a href="{{i.link}}" class="newsticker__item-url" ><b>{{i.title}}</b></a></li>
+            <li class="newsticker__item" ng-repeat="i in all"><a href="{{i.path}}" class="newsticker__item-url" ><b>{{i.title}}</b></a></li>
             <!--<li class="newsticker__item"><a href="single-post-1.html" class="newsticker__item-url">Satelite cost tens of millions or even hundreds of millions of dollars to build</a></li>
             <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">8 Hidden Costs of Starting and Running a Business</a></li> -->        
           </ul>
@@ -413,25 +455,28 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_1.jpg)">
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[0].main_image_link}})">
                   <a href="single-post.html" class="thumb-url"></a>
-                  <img src="/assets/img/content/hero/hero_post_1.jpg" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">World</a>
+                  <img src="" alt="" class="entry__img d-none">
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[0].category}}</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="single-post.html">3 Founders With Booming Businesses Share Stories About Their Difficult Early</a>
+                    <a href="{{part1[0].path}}">{{part1[0].title}}</a>
                   </h2>
                   <ul class="entry__meta">
                     <li class="entry__meta-author">
                       <span>by</span>
-                      <a href="#">junniepat</a>
+                      <a href="#">{{part1[0].reporter_name}}</a>
                     </li>
                     <li class="entry__meta-date">
-                      Jan 21, 2018
+                      {{part1[0].date | date: 'mediumDate'}}
                     </li>              
                   </ul>
+                  <div class="">
+                    <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(part1[0].article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{part1[0].path}}">&nbsp;<b>Read</b></a>
+                  </div>
                 </div>
               </article>
             </div> <!-- end post -->
@@ -439,52 +484,58 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_3.jpg)">
-                  <a href="single-post.html" class="thumb-url"></a>
-                  <img src="/assets/img/content/hero/hero_post_2.jpg" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">Business</a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[1].main_image_link}})">
+                  <a href="" class="thumb-url"></a>
+                  <img src="" alt="" class="entry__img d-none">
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[1].category}}</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                    <a href="{{part1[1].path}}">{{part1[1].title}}</a>
                   </h2>
                   <ul class="entry__meta">
                     <li class="entry__meta-author">
                       <span>by</span>
-                      <a href="#">junniepat</a>
+                      <a href="">{{part1[1].reporter_name}}</a>
                     </li>
                     <li class="entry__meta-date">
-                      Jan 21, 2018
+                      {{part1[1].date | date: 'mediumDate'}}
                     </li>              
                   </ul>
+                  <div class="">
+                    <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(part1[1].article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{part1[1].path}}">&nbsp;<b>Read</b></a>
+                  </div>
                 </div>
               </article>
             </div> <!-- end post -->
 
-            <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/thumb/thumb_post_2.jpg)">
-                  <a href="single-post.html" class="thumb-url"></a>
-                  <img src="/assets/img/content/hero/hero_post_3.jpg" alt="" class="entry__img d-none">
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">Lifestyle</a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[2].main_image_link}})">
+                  <a href="" class="thumb-url"></a>
+                  <img src="" alt="" class="entry__img d-none">
+                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[2].category}}</a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="single-post.html">These Are the 20 Best Places to Work in 2018</a>
+                    <a href="{{part1[2].path}}">{{part1[2].title}}</a>
                   </h2>
                   <ul class="entry__meta">
                     <li class="entry__meta-author">
                       <span>by</span>
-                      <a href="#">junniepat</a>
+                      <a href="">{{part1[2].reporter_name}}</a>
                     </li>
                     <li class="entry__meta-date">
-                      Jan 21, 2018
+                      {{part1[2].date | date: 'mediumDate'}}
                     </li>              
                   </ul>
+                  <div class="">
+                    <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(part1[2].article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{part1[2].path}}">&nbsp;<b>Read</b></a>
+                  </div>
                 </div>
+               
               </article>
             </div> <!-- end post -->
 
@@ -496,26 +547,30 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--lg">
               <article class="entry card featured-posts-grid__entry">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="single-post.html">
-                    <img src="/assets/img/content/list/list_post_4.jpg" alt="" class="entry__img">
+                  <a href="">
+                    <img src="{{part1[3].main_image_link}}" alt="" class="entry__img">
                   </a>
-                  <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">Business</a>
+                  <a href="{{part1[3].path}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">{{part1[3].category}}</a>
                 </div>
 
                 <div class="entry__body card__body">   
                   <h2 class="entry__title">
-                    <a href="single-post.html">What Days and Hours are PH Online Shoppers Most Likely to Buy?</a>
+                    <a href="">{{part1[3].title}}</a>
                   </h2>
                   <ul class="entry__meta">
                     <li class="entry__meta-author">
                       <span>by</span>
-                      <a href="#">junniepat</a>
+                      <a href="">{{part1[3].reporter_name}}</a>
                     </li>
                     <li class="entry__meta-date">
-                      Jan 21, 2018
+                      {{part1[3].date | date: 'mediumDate'}}
                     </li>              
                   </ul>
+                   <div>
+                      <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(part1[3].article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{part1[3].path}}" class="text-danger">&nbsp;<b>Read</b></a>
+                  </div>
                 </div>
+                
               </article>
             </div> <!-- end large post -->
           </div>          
@@ -571,39 +626,39 @@
           <!-- Worldwide News -->
           <section class="section">
             <div class="title-wrap title-wrap--line">
-              <h3 class="section-title">Recent Posts</h3>
+              <h3 class="section-title">Latest News</h3>
               <a href="#" class="all-posts-url">View All</a>
             </div>
 
-            <article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_1.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_1.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">Business</a>
+            <article class="entry card post-list" ng-repeat="item in others">
+              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{item.main_image_link}})">
+                <a href="{{item.path}}" class="thumb-url"></a>
+                <img src="" alt="" class="entry__img d-none">
+                <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">{{item.category}}</a>
               </div>
 
               <div class="entry__body post-list__body card__body">
                 <div class="entry__header">
                   <h2 class="entry__title">
-                    <a href="single-post.html">These Are the 20 Best Places to Work in 2018</a>
+                    <a href="{{item.path}}">{{item.title}}</a>
                   </h2>
                   <ul class="entry__meta">
                     <li class="entry__meta-author">
                       <span>by</span>
-                      <a href="#">junniepat</a>
+                      <a href="#">{{item.reporter_name}}</a>
                     </li>
                     <li class="entry__meta-date">
-                      Jan 21, 2018
+                      {{item.date | date: 'mediumDate'}}
                     </li>
                   </ul>
                 </div>        
                 <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                    <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(item.article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{item.path}}" class="text-danger">&nbsp;<b>Read</b></a>
                 </div>
               </div>
             </article>
 
-            <article class="entry card post-list">
+            <!--<article class="entry card post-list">
               <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_2.jpg)">
                 <a href="single-post.html" class="thumb-url"></a>
                 <img src="/assets/img/content/list/list_post_2.jpg" alt="" class="entry__img d-none">
@@ -741,22 +796,22 @@
                   <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
                 </div>
               </div>
-            </article>
+            </article>-->
           </section> <!-- end worldwide news -->
 
           <!-- Pagination -->
-          <nav class="pagination">
+          <!--<nav class="pagination">
             <span class="pagination__page pagination__page--current">1</span>
             <a href="#" class="pagination__page">2</a>
             <a href="#" class="pagination__page">3</a>
             <a href="#" class="pagination__page">4</a>
             <a href="#" class="pagination__page pagination__icon pagination__page--next"><i class="ui-arrow-right"></i></a>
-          </nav>
+          </nav>-->
 
         </div> <!-- end posts -->
 
         <!-- Sidebar 1 -->
-        <aside class="col-lg-4 sidebar sidebar--1 sidebar--right">
+        <aside class="col-lg-4 sidebar sidebar--1 sidebar--right" ng-controller="feedsCtlr">
 
           <!-- Widget Ad 300 -->
           <!--<aside class="widget widget_media_image">

@@ -1,7 +1,7 @@
 'use strict';
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var dbURL = "mongodb://127.0.0.1:27017/wobinewsdb" //"mongodb://127.0.0.1:27017/medicalmull"; 45.55.204.222
+var dbURL = "mongodb://127.0.0.1:27017/wobinewsdb" 
 
 mongoose.connect(dbURL);
 mongoose.connection.on("error",function(err){
@@ -32,13 +32,17 @@ module.exports = function() {
 		title: String,
 		id: String,
 		comments: Array,
-		reporter: String,
+		reporter_name: String,
+		reporter_id: String,
+		reporter_pic_url: String,
 		date: Date,
 		views: Number,
-		//sub_links: Array,
+		article: String,
+		related_articles: Array,
+		path: String,
 		//files: Array,
-		main_image: String,
-		status: Boolean,
+		main_image_link: String,
+		verified: Boolean,
 		deleted: Boolean,
 		link: String
 	},{

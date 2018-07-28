@@ -1,6 +1,6 @@
 (function() {
 
-	angular.module('myApp',[])
+	angular.module('myApp',["ngResource"])
 	.factory('DataSource', ['$http',function($http){
 		var resource;
 		var url2 =  window.location.href + "feeds";
@@ -94,6 +94,129 @@
 
 		return feeds;
 	}])
+	.filter('cut',[function(){
+		return function (value, wordwise, max, tail) {
+      if (!value) return '';
+
+      max = parseInt(max, 10);
+      if (!max) return value;
+      if (value.length <= max) return value;
+
+      value = value.substr(0, max);
+      if (wordwise) {
+          var lastspace = value.lastIndexOf(' ');
+          if (lastspace !== -1) {
+            //Also remove . and , so its gives a cleaner result.
+            if (value.charAt(lastspace-1) === '.' || value.charAt(lastspace-1) === ',') {
+              lastspace = lastspace - 1;
+            }
+            value = value.substr(0, lastspace);
+          }
+      }
+
+      return value + (tail || ' …');
+    };
+	}])
+	.service('singleNewsService',["$resource",function($resource){
+		return $resource("/content/single",null,{comment:{method:"PUT"}})
+	}])
+	.service('categoryNewsService',["$resource",function($resource){
+		return $resource("/content/category")
+	}])
+	.service('homeNewsService',["$resource",function($resource){
+		return $resource("/content/all")
+	}])
+	.controller("singleNewsCtlr",["$scope","$sce","singleNewsService","categoryNewsService",function($scope,$sce,singleNewsService,categoryNewsService){	     
+    //This is the callback function
+    $scope.user = {};
+    var news = singleNewsService;
+    var path = window.location.pathname;
+    var spt = path.split('/');
+    var id = spt[spt.length - 2];
+    var title = spt[spt.length - 1]
+    news.get({id: id,title:title},function(data){
+    	console.log(data);
+    	$scope.news = data;
+    });
+
+    $scope.trustAsHtml = function(string) {
+		  return $sce.trustAsHtml(string);
+		};
+
+		var cat = categoryNewsService
+		cat.get({category:"Politics"},function(data){
+			$scope.catList = data.category;
+		})
+
+		$scope.postComment = function(){
+			var sendObj = {
+				id: $scope.news._id,
+				name: $scope.user.name,
+				message: $scope.user.message,
+				date: + new Date()
+			}
+
+			news.comment(sendObj,function(res){				
+				$scope.news.comments.push(res)				
+			})
+		}
+	
+	}])
+	.controller("categoryCtlr",["$scope","$sce","categoryNewsService",function($scope,$sce,categoryNewsService){
+		var cat = categoryNewsService;
+		var path = window.location.pathname;
+		var spt = path.split('/');
+		if(spt.length >= 1) {
+			var item = spt[spt.length-1];
+			var categoryName = item.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()}); //splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+
+			cat.get({category: categoryName},function(data){
+				$scope.catList = data.category;
+				$scope.stories = data.other;				
+				$scope.pageType = categoryName;
+			});
+
+			$scope.trustAsHtml = function(string) {
+			  return $sce.trustAsHtml(string);
+			};
+		}
+
+	}])
+	.controller("homeCtlr",["$scope","$sce","$filter","homeNewsService",function($scope,$sce,$filter,homeNewsService){	
+		homeNewsService.query(function(newsList){	
+
+			var first4 = newsList.slice(0,4) || [{}];
+			var second4 = newsList.slice(4,8) || [{}];
+			var others = newsList.slice(4);
+
+			$scope.all = newsList || [];			
+			$scope.part1 = insertionSort (first4) || [];
+			//$scope.part2 = insertionSort (second4) || [];
+			$scope.others = others || [];
+			console.log($scope.part1)
+		})
+
+		$scope.trustAsHtml = function(string) {
+		  return $sce.trustAsHtml(string);
+		};
+
+		function insertionSort (items) {
+		  for (var i = 0; i < items.length; i++) {
+		    var value = items[i];
+		    // store the current item value so it can be placed right
+		    for (var j = i - 1; j > -1 && items[j].views > items[i].views; j--) {
+		      // loop through the items in the sorted array (the items from the current to the beginning)
+		      // copy each item to the next one
+		      items[j + 1] = items[j];
+		    }
+		    // the last item we've reached should now hold the value of the currently sorted item
+		    items[j + 1] = value;
+		  }
+
+		  return items || [];
+		}
+
+	}])
 	.controller("feedsCtlr",["$scope","DataSource","feedsFactory",function($scope,DataSource,feedsFactory){	     
     //This is the callback function
     $scope.dataSet = {};
@@ -102,13 +225,10 @@
     	console.log(data)      
       $scope.dataSet[type] = data;
     }
-   
+
     $scope.saharaFeeds.forEach(function(item){
     	DataSource.get(item.url,item.type,setData);
-    })
-	
+    })	
 	}])
-
-
 
 })()

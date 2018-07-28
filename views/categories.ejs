@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
   <title>WOBI | Categories</title>
@@ -24,11 +24,14 @@
   <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
 
   <!-- Lazyload (must be placed in head in order to work) -->
-  <script src="js/lazysizes.min.js"></script>
+  <script src="/assets/js/lazysizes.min.js"></script>
+
+   <!-- angular js  -->
+  <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
 
 </head>
 
-<body class="bg-light style-default style-rounded">
+<body class="bg-light style-default style-rounded" ng-controller="categoryCtlr">
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -53,7 +56,7 @@
     <!-- Nav -->
     <nav class="sidenav__menu-container">
       <ul class="sidenav__menu" role="menubar">
-        <li>
+        <!--<li>
           <a href="#" class="sidenav__menu-url">Home</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
           <ul class="sidenav__menu-dropdown">
@@ -64,19 +67,19 @@
             <li><a href="index-videos.html" class="sidenav__menu-url">Home Videos</a></li>
             <li><a href="index-music.html" class="sidenav__menu-url">Home Music</a></li>
           </ul>
-        </li>
+        </li>-->
         <li>
-          <a href="#" class="sidenav__menu-url">Pages</a>
+          <a href="#" class="sidenav__menu-url">Get in touch</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
           <ul class="sidenav__menu-dropdown">
             <li><a href="about.html" class="sidenav__menu-url">About</a></li>
             <li><a href="contact.html" class="sidenav__menu-url">Contact</a></li>
-            <li><a href="search-results.html" class="sidenav__menu-url">Search Results</a></li>
+            <!--<li><a href="search-results.html" class="sidenav__menu-url">Search Results</a></li>
             <li><a href="categories.html" class="sidenav__menu-url">Categories</a></li>
-            <li><a href="404.html" class="sidenav__menu-url">404</a></li>
+           <li><a href="404.html" class="sidenav__menu-url">404</a></li>-->
           </ul>
         </li>
-        <li>
+       <!-- <li>
           <a href="#" class="sidenav__menu-url">Features</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
           <ul class="sidenav__menu-dropdown">
@@ -94,24 +97,37 @@
             </li>
             <li><a href="shortcodes.html" class="sidenav__menu-url">Shortcodes</a></li>
           </ul>
-        </li>        
+        </li>  -->      
 
         <!-- Categories -->
         <li>
-          <a href="#" class="sidenav__menu-url">World</a>
+          <a href="/" class="sidenav__menu-url">Home</a>
         </li>
         <li>
-          <a href="#" class="sidenav__menu-url">Business</a>
+          <a href="/category/politics" class="sidenav__menu-url">Politics</a>
+        </li>
+         <li>
+          <a href="/category/business" class="sidenav__menu-url">Business</a>
+        </li>
+         <li>
+          <a href="/category/sports" class="sidenav__menu-url">Sports</a>
+        </li>
+         <li>
+          <a href="/category/lifestyle" class="sidenav__menu-url">Lifestyle</a>
+        </li>
+         <li>
+          <a href="/category/entertainment" class="sidenav__menu-url">Entertainment</a>
         </li>
         <li>
-          <a href="#" class="sidenav__menu-url">Fashion</a>
+          <a href="/category/technology" class="sidenav__menu-url">Technology</a>
         </li>
-        <li>
-          <a href="#" class="sidenav__menu-url">Lifestyle</a>
+         <li>
+          <a href="/category/world" class="sidenav__menu-url">World</a>
         </li>
-        <li>
-          <a href="#" class="sidenav__menu-url">Advertise</a>
-        </li>
+        <!--<li>
+          <a href="/career" class="sidenav__menu-url">Lifestyle</a>
+        </li>-->
+       
       </ul>
     </nav>
 
@@ -211,7 +227,7 @@
                   </ul>-->
                 </li>
 
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Politics'}">
                   <a href="/category/politics">Politics</a>
                   <!--<ul class="nav__dropdown-menu nav__megamenu">
                     <li>
@@ -292,7 +308,7 @@
                   </ul>--> <!-- end megamenu -->
                 </li>
 
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Business'}">
                   <a href="/category/business">Business</a>
                   <!--<ul class="nav__dropdown-menu">
                     <li><a href="about.html">About</a></li>
@@ -303,7 +319,7 @@
                   </ul>-->
                 </li>                
 
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Sports'}">
                   <a href="/category/sports">Sports</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -315,7 +331,7 @@
                     </li>
                   </ul>-->
                 </li>
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Lifestyle'}">
                   <a href="/category/lifestyle">Lifestyle</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -327,7 +343,7 @@
                     </li>
                   </ul>-->
                 </li>
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Entertainment'}">
                   <a href="/category/entertainment">Entertainment</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -340,7 +356,7 @@
                   </ul>-->
                 </li>
 
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Technology'}">
                   <a href="/category/technology">Technology</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -352,7 +368,7 @@
                     </li>
                   </ul>-->
                 </li>
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'World'}">
                   <a href="/category/world">World</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -364,7 +380,7 @@
                     </li>
                   </ul>-->
                 </li>
-                <li class="nav__dropdow">
+                <li class="nav__dropdow" ng-class="{'active': pageType == 'Career'}">
                   <a href="/category/career">Career</a>
                   <!--<ul class="nav__dropdown-menu">
                   
@@ -411,14 +427,14 @@
     <div class="container">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a href="index-2.html" class="breadcrumbs__url">Home</a>
+          <a href="" class="breadcrumbs__url"><h3>{{catList[0].category}}</h3></a>
         </li>
-        <li class="breadcrumbs__item">
+        <!--<li class="breadcrumbs__item">
           <a href="index-2.html" class="breadcrumbs__url">News</a>
         </li>
         <li class="breadcrumbs__item breadcrumbs__item--current">
           World
-        </li>
+        </li>-->
       </ul>
     </div>
     
@@ -430,151 +446,49 @@
 
         <!-- Posts -->
         <div class="col-lg-8 blog__content mb-72">
-          <h1 class="page-title">World</h1>
+          <h1 class="page-title"></h1>
 
           <div class="row card-row">
-            <div class="col-md-6">
-              <article class="entry card">
-                <div class="entry__img-holder card__img-holder">
-                  <a href="single-post.html">
-                    <div class="thumb-container thumb-70">
-                      <img data-src="/assets/img/content/grid/grid_post_1.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
-                    </div>
-                  </a>
-                  <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">world</a>
+            <div class="col-md-12" ng-repeat="news in catList | orderBy: '-date'">
+               <article class="entry card post-list" >
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{news.main_image_link}})">
+                  <a href="single-post.html" class="thumb-url"></a>
+                  <img src="/assets/img/content/list/list_post_6.jpg" alt="" class="entry__img d-none">
+                  <!--<a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--cyan">{{news.category}}</a>-->
                 </div>
 
-                <div class="entry__body card__body">
+                <div class="entry__body post-list__body card__body">
                   <div class="entry__header">
-                    
                     <h2 class="entry__title">
-                      <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
+                      <a href="{{news.path}}">{{news.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by</span>
-                        <a href="#">junniepat</a>
+                        <a href="#">{{news.reporter_name}}</a>
                       </li>
                       <li class="entry__meta-date">
-                        Jan 21, 2018
+                        {{news.date | date : "mediumDate"}}
                       </li>
                     </ul>
-                  </div>
-                  <div class="entry__excerpt">
-                    <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6">
-              <article class="entry card">
-                <div class="entry__img-holder card__img-holder">
-                  <a href="single-post.html">
-                    <div class="thumb-container thumb-70">
-                      <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
-                    </div>
-                  </a>
-                  <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
-                </div>
-
-                <div class="entry__body card__body">
-                  <div class="entry__header">
-                    
-                    <h2 class="entry__title">
-                      <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
-                    </h2>
-                    <ul class="entry__meta">
-                      <li class="entry__meta-author">
-                        <span>by</span>
-                        <a href="#">junniepat</a>
-                      </li>
-                      <li class="entry__meta-date">
-                        Jan 21, 2018
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="entry__excerpt">
-                    <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6">
-              <article class="entry card">
-                <div class="entry__img-holder card__img-holder">
-                  <a href="single-post.html">
-                    <div class="thumb-container thumb-70">
-                      <img data-src="/assets/img/content/grid/grid_post_3.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
-                    </div>
-                  </a>
-                  <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">mining</a>
-                </div>
-
-                <div class="entry__body card__body">
-                  <div class="entry__header">
-                    
-                    <h2 class="entry__title">
-                      <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
-                    </h2>
-                    <ul class="entry__meta">
-                      <li class="entry__meta-author">
-                        <span>by</span>
-                        <a href="#">junniepat</a>
-                      </li>
-                      <li class="entry__meta-date">
-                        Jan 21, 2018
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="entry__excerpt">
-                    <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6">
-              <article class="entry card">
-                <div class="entry__img-holder card__img-holder">
-                  <a href="single-post.html">
-                    <div class="thumb-container thumb-70">
-                      <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
-                    </div>
-                  </a>
-                  <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
-                </div>
-
-                <div class="entry__body card__body">
-                  <div class="entry__header">
-                    
-                    <h2 class="entry__title">
-                      <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
-                    </h2>
-                    <ul class="entry__meta">
-                      <li class="entry__meta-author">
-                        <span>by</span>
-                        <a href="#">junniepat</a>
-                      </li>
-                      <li class="entry__meta-date">
-                        Jan 21, 2018
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="entry__excerpt">
-                    <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                  </div>        
+                  <div class="entry__excerpt ellipsis">
+                    <p data-ng-bind-html="trustAsHtml(news.article | cut: true: 250: '<b>  ...</b>')"></p>
                   </div>
                 </div>
               </article>
             </div>
           </div>
+        
 
           <!-- Pagination -->
-          <nav class="pagination">
+          <!--<nav class="pagination">
             <span class="pagination__page pagination__page--current">1</span>
             <a href="#" class="pagination__page">2</a>
             <a href="#" class="pagination__page">3</a>
             <a href="#" class="pagination__page">4</a>
             <a href="#" class="pagination__page pagination__icon pagination__page--next"><i class="ui-arrow-right"></i></a>
-          </nav>
+          </nav>-->
         </div> <!-- end posts -->
 
         <!-- Sidebar -->
@@ -582,34 +496,34 @@
 
           <!-- Widget Popular Posts -->
           <aside class="widget widget-popular-posts">
-            <h4 class="widget-title">Popular Posts</h4>
+            <h4 class="widget-title">Top stories</h4>
             <ul class="post-list-small">
-              <li class="post-list-small__item">
+              <li class="post-list-small__item" ng-repeat="i in stories" ng-if="i.category !== pageType">
                 <article class="post-list-small__entry clearfix">
                   <div class="post-list-small__img-holder">
                     <div class="thumb-container thumb-100">
-                      <a href="single-post.html">
-                        <img data-src="/assets/img/content/post_small/post_small_1.jpg" src="/assets/img/empty.png" alt="" class=" lazyload">
+                      <a href="">
+                        <img data-src="{{i.main_image_link}}"  alt="" class=" lazyload">
                       </a>
                     </div>
                   </div>
                   <div class="post-list-small__body">
                     <h3 class="post-list-small__entry-title">
-                      <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
+                      <a href="{{i.path}}">{{i.title}}</a>
                     </h3>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by</span>
-                        <a href="#">junniepat</a>
+                        <a href="">{{i.reporter_name}}</a>
                       </li>
                       <li class="entry__meta-date">
-                        Jan 21, 2018
+                        {{i.date | date: 'mediumDate'}}
                       </li>
                     </ul>
                   </div>                  
                 </article>
               </li>
-              <li class="post-list-small__item">
+              <!--<li class="post-list-small__item">
                 <article class="post-list-small__entry clearfix">
                   <div class="post-list-small__img-holder">
                     <div class="thumb-container thumb-100">
@@ -683,7 +597,7 @@
                     </ul>
                   </div>                  
                 </article>
-              </li>
+              </li>-->
             </ul>           
           </aside> <!-- end widget popular posts -->
 
@@ -876,6 +790,10 @@
   </main> <!-- end main-wrapper -->
 
   
+  <script src="/assets/js/angular-1.7.2/angular-resource.min.js"></script>
+
+  <script src="/assets/js/client.js"></script>
+  
   <!-- jQuery Scripts -->
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>
@@ -883,6 +801,7 @@
   <script src="/assets/js/owl-carousel.min.js"></script>
   <script src="/assets/js/flickity.pkgd.min.js"></script>
   <script src="/assets/js/twitterFetcher_min.js"></script>
+  <script src="/assets/js/jquery.sticky-kit.min.js"></script>
   <script src="/assets/js/jquery.newsTicker.min.js"></script>  
   <script src="/assets/js/modernizr.min.js"></script>
   <script src="/assets/js/scripts.js"></script>

@@ -9,10 +9,21 @@ module.exports = function(app) {
 	.get(news.read)
 
 	app.route("/category/:type")
-	.get(news.read);
+	.get(news.read)
 
-	app.route("/post/:id/:title")
-	.get(news.readSingle)
+	app.route("/content/all")
+	.get(news.readAll)
+
+	app.route("/content/category")
+	.get(news.readCategoryPosts)
+
+	app.route("/news/:id/:title")
+	.get(news.renderSingle)
+
+
+	app.route("/content/single")
+	.get(news.readSinglePost)
+	.put(news.comments)
 
 	app.route("/feeds")
 	.get(news.feeds)
@@ -28,5 +39,9 @@ module.exports = function(app) {
 	.post(admin.newPost)
 	.put(admin.updatePost)
 	.delete(admin.deletePost)
+
+	app.route("/auth/super")
+	.get(admin.getPostList)
+	.patch(admin.editPost)
 
 };

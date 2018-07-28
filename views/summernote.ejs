@@ -431,6 +431,9 @@
                             <div style="padding-top: 10px">
                                 <input type="text" class="form-control" placeholder="Title" id="title">
                             </div>
+                             <div style="padding-top: 10px">
+                                <input type="text" class="form-control" placeholder="banner image link" id="image-link">
+                            </div>
                             <div class="summernote">
                                 
                             </div>
@@ -566,6 +569,7 @@
         $("#postArt").click(function(){  
             var title = $('#title').val();
             var category = $('#category option:selected').val();
+            var image = $("#image-link").val();
             var article = editor.code();
             
             if( title  && category && article) {
@@ -573,10 +577,18 @@
                 data.title = title;
                 data.category = category;
                 data.article = article;
+                data.main_image_link = image;
                 data.date = new Date();
 
-                $.post("/auth/post",data,function(data,status){
-                    console.log(status)
+                $.post("/auth/post",data,function(res,status){
+                    console.log(status);
+                    if(res.status){
+                       
+                    } else {
+
+                    }
+
+                    alert(res.message);
                 })
             } else {
                 alert("Title, Category or article field was not filled")
