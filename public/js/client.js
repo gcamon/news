@@ -478,7 +478,7 @@
 	.controller("feedsCtlr",["$scope","DataSource","feedsFactory",function($scope,DataSource,feedsFactory){	     
     $scope.dataSet = {};
     $scope.saharaFeeds = feedsFactory.sahara;
-    setData = function(type,data) {
+    var setData = function(type,data) {
     	console.log(data)      
       $scope.dataSet[type] = data;
     }
