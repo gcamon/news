@@ -44,13 +44,30 @@ module.exports = function() {
 		main_image_link: String,
 		verified: Boolean,
 		deleted: Boolean,
-		link: String
+		link: String,
+		status: String,
+		pubDate: Date
 	},{
 		collections: "newsinfos"
 	});
 
+	var fileSchema = Schema({
+		type: String,
+		date: Number,
+		name: String,
+		size: Number,
+		mimetype: String,
+		path: String,
+		dest: String,
+		filename: String,
+		external_link: String
+	},{
+		collections: "fileinfos"
+	})
+
 	var models = {};
 	models.news = mongoose.model('newsinfos', newsSchema);
-	models.admin = mongoose.model('adminusers', adminSchema)
+	models.admin = mongoose.model('adminusers', adminSchema);
+	models.files = mongoose.model('fileinfos', fileSchema);
 	return models;
 }

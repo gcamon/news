@@ -57,10 +57,10 @@ exports.renderSingle = function(req,res){
 
 exports.readAll = function(req,res){
 	var model = req.model;
-	model.news.find({verified:false,deleted: false})
-	.sort("-date")
+	model.news.find({verified:true,deleted: false})
+	.limit(50)
+	.sort("-pubDate")
 	.exec(function(err,data){
-		console.log(data)
 		if(err) throw err;
 		res.json(data);
 	})
@@ -69,16 +69,21 @@ exports.readAll = function(req,res){
 
 
 exports.readSinglePost = function(req,res){
+	console.log(req.query)
 	var model = req.model;
-	model.news.findOne({id: req.query.id,verified: false,deleted: false}).exec(function(err,data){
+	model.news.findOne({id: req.query.id,verified: true,deleted: false}).exec(function(err,data){
 		if(err) throw err;
-		data.views += 1;
-		data.save(function(err,info){});
-		model.news.find({category: data.category},{_id:0,title:1,link:1,main_image_link:1},function(err,list){
-			if(err) throw err;
-			data.related_articles = list
-			res.json(data);
-		}).limit(8)
+		if(data){
+			data.views += 1;
+			data.save(function(err,info){});
+			model.news.find({category: data.category},{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
+				if(err) throw err;
+				data.related_articles = list
+				res.json(data);
+			}).limit(8)
+		} else {
+			res.send({})
+		}
 		
 	})
 }
@@ -110,13 +115,14 @@ exports.comments = function(req,res){
 exports.readCategoryPosts = function(req,res){
 	var model = req.model;
 	var newsObj = {};
-	model.news.find({category: req.query.category,deleted: false, verified: false},{_id:0})
-	.sort('-date')
+	model.news.find({category: req.query.category,deleted: false, verified: true},{_id:0})
+	.limit(50)
+	.sort('-pubDate')
 	.exec(function(err,data){
 		if(err) throw err;
 		newsObj.category = data
-		model.news.find({deleted:false,verified:false})
-		.sort('-date')
+		model.news.find({deleted:false,verified:true})
+		.sort('-pubDate')
 		.exec(function(err,other){
 			if(err) throw err;
 			newsObj.other = other;
@@ -124,6 +130,18 @@ exports.readCategoryPosts = function(req,res){
 		})		
 	})
 }
+
+exports.readFooterNews = function(req,res){
+	var model = req.model
+	model.news.find({deleted:false,verified:true})
+	.limit(4)
+	.sort('-pubDate')
+	.exec(function(err,data){
+		if(err) throw err;
+		res.json(data);
+	})
+}
+
 
 
 exports.feeds = function(req,resp){

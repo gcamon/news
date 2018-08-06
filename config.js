@@ -49,7 +49,7 @@ var configuration = function (app,model) {
 	app.use(flash());		
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json());
-	app.use(multer({dest: './uploads'}).any());
+	app.use(multer({dest: './app/server/controllers/media'}).any());
 	
 	app.set('view engine', 'ejs');
 	app.set('views', __dirname + '/views');

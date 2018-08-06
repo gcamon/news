@@ -1,6 +1,39 @@
 (function() {
 
-	angular.module('myApp',["ngResource"])
+	angular.module('myApp',["ngResource","ngRoute",'angular-clipboard'])
+	.config(['$routeProvider',function($routeProvider){
+ 		$routeProvider
+ 		.when("/post/:id",{
+ 			templateUrl: "/assets/pages/preview-post.html",
+ 			controller: "previewPostCtrl"
+ 		})
+ 	}])
+ 	.directive("fileModel",["$parse","$rootScope",function($parse,$rootScope){
+	  return {
+	    restrict: "A",
+	    link: function(scope,element,attrs){
+	      var model = $parse(attrs.fileModel);
+	      var modelSetter = model.assign;
+	      var isMultiple = attrs.multiple;
+
+	      element.bind('change', function () {
+	          var values = [];
+	            
+	          angular.forEach(element[0].files, function (item) {              
+	            values.push(item);
+	          });
+	          scope.$apply(function () {
+	            if (isMultiple) {
+	             
+	              modelSetter(scope.$parent, values);
+	              $rootScope.sendFile()
+	            }
+	            
+	          });
+	      });
+	    }
+	  }
+	}])
 	.factory('DataSource', ['$http',function($http){
 		var resource;
 		var url2 =  window.location.href + "feeds";
@@ -41,6 +74,19 @@
 	          text += possible.charAt(Math.floor(Math.random() * possible.length));
 	      return text;
 	  }
+	}])
+	.factory("localManager",["$window",function($window){
+	  return {
+	    setValue: function(key, value) {
+	      $window.localStorage.setItem(key, JSON.stringify(value));
+	    },
+	    getValue: function(key) {       
+	      return JSON.parse($window.localStorage.getItem(key)); 
+	    },
+	    removeItem: function(key) {
+	      $window.localStorage.removeItem(key);
+	    }
+	  };
 	}])
 	.factory('feedsFactory',[function(){
 		var feeds = {}
@@ -125,6 +171,9 @@
 	}])
 	.service('homeNewsService',["$resource",function($resource){
 		return $resource("/content/all")
+	}])
+	.service("footerNewsService",["$resource",function($resource){
+		return $resource("/content/footer-news")
 	}])
 	.controller("singleNewsCtlr",["$scope","$sce","singleNewsService","categoryNewsService",function($scope,$sce,singleNewsService,categoryNewsService){	     
     //This is the callback function
@@ -217,8 +266,216 @@
 		}
 
 	}])
+	.service("reviewPostService",["$resource",function($resource){
+		return $resource("/content/unverified",null,{updatePost:{method:"PUT"}})
+	}])
+	.controller("reviewPostCtrl",["$scope","$rootScope","$location","reviewPostService","localManager",
+		function($scope,$rootScope,$location,reviewPostService,localManager){
+			var post = reviewPostService;
+			post.query({type:"unverified"},function(result){
+				console.log(result)
+				$rootScope.posts = result;
+			})
+
+			$scope.viewPost = function(id){
+				$rootScope.postId = id;
+				var path = "/post/" + id;
+				var elemPos = $rootScope.posts.map(function(x){return x.id}).indexOf($rootScope.postId);
+				if($rootScope.posts[elemPos]){
+					$rootScope.preview = $rootScope.posts[elemPos];
+					localManager.setValue("newsItem",$rootScope.posts[elemPos]);
+				} else {
+					$rootScope.preview = {};
+				}
+				$location.path(path);
+				//alert("a post will be in view...")
+			}
+	}])
+	.controller("previewPostCtrl",["$scope","$sce","$rootScope","reviewPostService","localManager",
+		function($scope,$sce,$rootScope,reviewPostService,localManager){
+			var post = reviewPostService;		
+			
+			$scope.preview = $rootScope.preview || localManager.getValue("newsItem");
+
+
+			$scope.getBody = function(body){
+				return $sce.trustAsHtml(body);
+			}
+
+			$scope.publish = function(id){
+				var decide = confirm("Do you want to publish this article for public view?");
+				if(decide) {
+					var reqObj = {};
+					reqObj.status = "complete";
+					reqObj.pubDate = new Date();
+					reqObj.id = id;
+					post.updatePost(reqObj,function(res){
+						alert(res.message);
+						if(res.status){
+							var el = $rootScope.posts.map(function(x){return x.id}).indexOf(id);
+							if(el !== -1){
+								$rootScope.posts.splice(el,1);
+								localManager.setValue("newsItem",$rootScope.posts)
+							}
+
+							$scope.preview = null;
+						}
+					})
+				} 
+			}
+
+			$scope.delete = function(id){
+				var decide = confirm("Do you want to delete this article?");
+				if(decide){
+					var reqObj = {}
+					reqObj.id = id;
+					post.delete(reqObj,function(res){
+						alert(res.message);
+						if(res.status){
+							var el = $rootScope.posts.map(function(x){return x.id}).indexOf(id);
+							if(el !== -1){
+								$rootScope.posts.splice(el,1);
+								localManager.setValue("newsItem",$rootScope.posts);
+							}
+
+							$scope.preview = null;
+						}
+					})
+				}
+			}
+
+			$scope.edit = function(post){
+				localManager.setValue("post",post);
+				window.location.href = "/auth/summernote/edit";
+			}
+			
+	}])
+	.service("mediaService",["$resource",function($resource){
+		return $resource("/content/all-media");
+	}])
+	.controller("multiMediaCtrl",["$scope","$location","$rootScope","mediaService",function($scope,$location,$rootScope,mediaService){
+		mediaService.query({type:"images"},function(data){
+			$scope.images = data || [];
+		})
+
+		$scope.supported = false;
+
+	  $scope.copy = "";
+
+	  $scope.success = function (item) {
+	    item.copy =  "Image link copied!";
+	    $timeout(function(){
+	      item.copy = "";
+	    },2000)
+	  };
+
+
+		$rootScope.sendFile = function(){
+			console.log($scope.files)
+			var fd = new FormData();
+	  
+		    /*for(var key in data){
+		      if(key !== "symptoms" && data.hasOwnProperty(key))
+		        fd.append(key,data[key]);
+		    };*/
+
+		    /*for(var i = 0; i < data.symptoms.length; i++){
+		      if(data.symptoms[i].name)
+		        fd.append("symptoms", data.symptoms[i].name);
+		    }*/
+
+		    
+		    /*if($scope.blobs && $scope.files) {
+		     var files = $scope.files.concat($scope.blobs);
+		    } else if($scope.blobs) {
+		     var files = $scope.blobs;
+		    } else if($scope.files) {
+		     var files = $scope.files;
+		    }*/
+
+		  var files = $scope.files;
+
+	    if(files){
+	      if(files.length < 10){
+	        for(var key in files){
+	        	console.log(files[key].name)
+	          if(files[key].size <= 8388608 && files.hasOwnProperty(key)) {    
+	            fd.append(files[key].name,files[key]);          
+	          } else {
+	            alert("Error: Complain NOT sent! Reason: One of the file size is greater than 8mb");
+	            return;
+	          }
+	        };
+	        sizeOk();
+	      } else {
+	        alert("Error: Complain NOT sent! Reason: You can't upload more than 10 files at once.");
+	      }
+
+	    }
+
+	    function sizeOk(){    
+	      var xhr = new XMLHttpRequest()
+	      xhr.upload.addEventListener("progress", uploadProgress, false);
+	      xhr.addEventListener("load", uploadComplete, false);
+	      xhr.addEventListener("error", uploadFailed, false);
+	      xhr.addEventListener("abort", uploadCanceled, false);
+	     
+	      xhr.open("POST", "/auth/media-files");
+	      xhr.send(fd);
+	      $scope.progressVisible = false;
+	      //player.srcObject.getVideoTracks().forEach(function(track) { track.stop()});
+	    }
+		  
+
+
+		  function uploadProgress(evt) {
+	      $scope.progressVisible = true;
+	      $scope.$apply(function(){
+	          if (evt.lengthComputable) {
+	             console.log(evt.loaded + " : " + evt.total)
+	              $scope.progress = Math.round(evt.loaded * 100 / evt.total)
+	              if($scope.progress === 100) {
+	                $scope.statusMsg = "Your complaint has been queued in PWR successfully! Doctors will respond soon.";
+	              }
+	              
+	          } else {
+	              $scope.progress = 'unable to compute';
+	          }
+	      })
+		  }
+
+
+		  function uploadComplete(evt) {       
+		     $scope.$apply(function(){
+		      var newImgList = JSON.parse(evt.target.responseText);
+		      $scope.progress = null;
+		      $scope.uploadMsg = "Upload completed!";
+		      $scope.images = $scope.images.concat(newImgList);
+		      console.log(newImgList)
+		    })
+		       
+		  }
+
+		  function uploadFailed(evt) {
+		    alert("There was an error attempting to upload the file.");
+		  }
+
+		  function uploadCanceled(evt) {
+		    $scope.$apply(function(){
+		      $scope.progressVisible = false
+		    })
+		    alert("The upload has been canceled by the user or the browser dropped the connection.")
+		  }
+		}
+
+	}])
+	.controller("footerNewsCtrl",["$scope","footerNewsService",function($scope,footerNewsService){
+		footerNewsService.query({type:"few"},function(data){
+			console.log(data)
+			$scope.footNews = data;
+		})
+	}])
 	.controller("feedsCtlr",["$scope","DataSource","feedsFactory",function($scope,DataSource,feedsFactory){	     
-    //This is the callback function
     $scope.dataSet = {};
     $scope.saharaFeeds = feedsFactory.sahara;
     setData = function(type,data) {

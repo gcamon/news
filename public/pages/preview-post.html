@@ -1,0 +1,13 @@
+
+<div style="background-color: rgb(255, 255, 255);padding: 40px" ng-if="preview.title">
+	<div style="width: 100%">
+		<h4>{{preview.category}}</h4>
+		<h2>{{preview.title}}</h2>
+		<img src="{{preview.main_image_link}}" alt="post image" style="width: 100%">
+		<div style="height: 20px"></div>
+		<div ng-bind-html="getBody(preview.article)"></div>
+	</div>
+	<div style="padding-top: 15px">
+		<button class="btn btn-lg btn-danger" ng-click="publish(preview.id)">Publish</button> &nbsp; <button class="btn btn-lg btn-info" ng-click="edit(preview)">Edit</button>&nbsp; <button class="btn btn-lg btn-simple" ng-click="delete(preview.id)">Delete</button>
+	</div>
+</div>

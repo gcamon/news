@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/plugins/images/favicon.png">
-    <title>WobiNews</title>
+    <title>Wobinews | Admin</title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="/assets/css/animate.css" rel="stylesheet">
+    <!-- Posts CSS -->
+    <link href="/assets/plugins/bower_components/summernote/dist/summernote.css" rel="stylesheet" />
     <!-- Menu CSS -->
     <link href="/assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/html5-editor/bootstrap-wysihtml5.css" />
     <!-- animation CSS -->
     <link href="/assets/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,21 +28,18 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
- <!-- angular js  -->
-  <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
-   <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
+ <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
    <style type="text/css">
     .shw-rside {
         right: 0;
-        width: 35%;
+        width: 70%;
         display: block;
     }
    
   </style>
 </head>
 
-<body class="fix-header" ng-controller="reviewPostCtrl">
+<body class="fix-header">
 <!-- ============================================================== -->
 <!-- Preloader -->
 <!-- ============================================================== -->
@@ -61,7 +59,7 @@
         <div class="navbar-header">
             <div class="top-left-part">
                 <!-- Logo -->
-                 <h3 style="display: inline-block;margin-left: 30px">WOBINEWS ADMIN</h3>
+                <h3 style="display: inline-block;margin-left: 30px">WOBINEWS ADMIN</h3>
                 <a class="logo" href="/auth">
                     <!-- Logo icon image, you can use font-icon also -->
                     <b>
@@ -314,7 +312,7 @@
     <!-- ============================================================== -->
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav slimscrollsidebar">
-            <div class="sidebar-head">
+            <div class="sidebar-hea">
                 <h3>
                     <span class="fa-fw open-close">
                         <i class="ti-close ti-menu"></i>
@@ -327,7 +325,8 @@
                     <div>
                         <img src="/assets/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
                     </div>
-                    <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.firstname %> <%= user.lastname %>
+                    <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <%= user.firstname %> <%= user.lastname %>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu animated flipInY">
@@ -361,7 +360,7 @@
                     <a href="/auth" class="waves-effect active">
                         <i class="mdi mdi-av-timer fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> Dashboard
-                            <!--<span class="fa arrow"></span>-->
+                            <span class="fa arrow"></span>
                         </span>
                     </a>
                 </li>
@@ -393,12 +392,13 @@
                             </a>
                         </li>
 
-                        <li>
+                        <!--<li>
                             <a href="/auth/media-files">
                                 <i class=" fa-fw"></i>
                                 <span class="hide-menu">Multi-Media</span>
                             </a>
-                        </li>
+                        </li>-->
+
 
                     </ul>
                 </li>
@@ -416,40 +416,24 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Posts Review</h4> </div>
+                        <h4 class="page-title">Edit Post</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <button class="right-side-toggle waves-light btn-info btn pull-right m-l-20"><!--<i class="ti-settings text-white"></i>--> View Pending Posts</button>
-
-                       <!--<ol class="breadcrumb">
+                    <input type="text" name="" ng-model="file" placeholder="Filter by name of file" class="form-control" style="width: 50%;display: inline-block;">
+                        <button class="right-side-toggle btn-info btn pull-right m-l-20">Choose Images</button>
+                       
+                        <!--<ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="#">Forms</a></li>
-                            <li class="active">Posts</li>
+                            <li class="active">Post</li>
                         </ol>-->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- .row -->
-               
-
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 blog__content mb-72"  ng-view>
-                        </div>        
-                    </div>                   
-                </div>
-
-
-
-
-                <!--<div class="row">
+                <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">New Post</h3>
-                            
-
-                          
-                            <div class="form-group">
+                            <h3 class="box-title">Edit</h3>
                             <div style="padding-top: 10px">
                                 <select type="text" class="form-control"  id="category">
                                     <option disabled="disabled" value="" selected="selected">Select category</option>
@@ -465,32 +449,58 @@
                             <div style="padding-top: 10px">
                                 <input type="text" class="form-control" placeholder="Title" id="title">
                             </div>
-                            <div style="padding-top: 10px">
+                             <div style="padding-top: 10px">
                                 <input type="text" class="form-control" placeholder="banner image link" id="image-link">
                             </div>
-                            <div class="form-group">
-                                <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
+                            <div class="summernote">
+                                
                             </div>
-                          
                             <div>
-                                <button class="btn btn-danger" id="postArt">Post</button>
+                                <button class="btn btn-danger" id="postArt">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <!-- .row -->
+                <!--<div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Air mode Inline editior</h3> <small>Select some text to edit via summernote</small>
+                            <hr>
+                            <div class="inline-editor">
+                                <h3>Title Heading will be <b>apear here</b></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitconsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <ul class="list-icons">
+                                    <li><i class="fa fa-check text-success"></i> Lorem ipsum dolor sit amet</li>
+                                    <li><i class="fa fa-check text-success"></i> Consectetur adipiscing elit</li>
+                                    <li><i class="fa fa-check text-success"></i> Integer molestie lorem at massa </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>-->
                 <!-- /.row -->
-                <!-- Right sidebar -->
+                <!-- .row -->
+                <!--<div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Click to edit</h3> <small>You can edit content on the fly.</small>
+                            <hr>
+                            <div class="click2edit m-b-40">Click on Edite button and change the text then save it.</div> <a id="edit" class="btn btn-info btn-rounded" onclick="edit()" type="button">Edit</a> <a id="save" class="btn btn-success btn-rounded" onclick="save()" type="button">Save</a> </div>
+                    </div>
+                </div>-->
+                <!-- /.row -->
                 <!-- ============================================================== -->
                 <!-- .right-sidebar -->
-                <div class="right-sidebar">
+                <div class="right-sidebar" ng-controller="multiMediaCtrl">
                     <div class="slimscrollright">
-                        <div class="rpanel-title"> Pending Posts <span><i class="ti-close right-side-toggle"></i></span> </div>
-                        <div style="padding: 5px 10px; max-height: 550px;overflow-y: auto">
-                            <article ng-repeat="item in posts" style="border-bottom: 2px dashed #000;padding: 3px 0">
-                                <a href="" ng-click="viewPost(item.id)" style="color: #000" ><b>{{item.title}}</b> &nbsp;<small>{{item.date | date: "mediumDate"}}/{{item.date | date: "shortTime"}}</small></a>
-                            </article>
-                        </div>
-
+                         <div class="rpanel-title"> Images 
+                        <input type="text" name="" ng-model="file" placeholder="Filter by name of file" class="form-control" style="width: 50%;display: inline-block;">
+                        <span><i class="ti-close right-side-toggle"></i></span> </div>
+                            <a href="" ng-repeat="item in images | filter : file | orderBy: '-date'" clipboard supported="supported" text="item.path" on-copied="success(item)" on-error="fail(err)"  style="display: inline-block;max-width: 150px;max-height: 150px;margin: 5px" title="{{ item.copy || ('Copy ( ' + item.name + ' ) link')}}">
+                                <img src="{{item.path}}" alt="image" style="width: 100%;height: 100%">
+                            </a>
                         <!--<div class="r-panel-body">
                             <ul id="themecolors" class="m-t-20">
                                 <li><b>With Light sidebar</b></li>
@@ -547,17 +557,16 @@
                 <!-- ============================================================== -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; </footer>
+            <footer class="footer text-center"> 2018 &copy;</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
-
-    <!-- angular code -->
+    <!-- /#wrapper -->
+      <!-- angular code -->
     <script src="/assets/js/angular-1.7.2/angular-resource.min.js"></script>
     <script src="/assets/js/angular-1.7.2/angular-route.min.js"></script>
     <script src="/assets/js/angular-clipboard.js"></script>
     <script src="/assets/js/client.js"></script>
-    <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -570,44 +579,82 @@
     <script src="/assets/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="/assets/js/custom.min.js"></script>
-    <!-- wysuhtml5 Plugin JavaScript -->
-    <script src="/assets/plugins/bower_components/html5-editor/wysihtml5-0.3.0.js"></script>
-    <script src="/assets/plugins/bower_components/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script src="/assets/plugins/bower_components/summernote/dist/summernote.min.js"></script>
     <script>
-    $(document).ready(function() {
-        var editor = $('.textarea_editor').wysihtml5();
-        
-        $("#postArt").click(function(){  
+    jQuery(document).ready(function() {
+        /*var editor = $('.summernote').summernote({
+            height: 350, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: false // set focus to editable area after initializing summernote
+        });*/
+        console.log(JSON.parse(window.localStorage.getItem("post")));
+
+        var content = JSON.parse(window.localStorage.getItem("post"));
+
+        var title = $('#title');
+        var category = $('#category');
+        var link = $("#image-link");
+
+        title.val(title.val() + content.title);
+        category.val(content.category);
+        link.val(link.val() + content.main_image_link);
+        var editor = $('.summernote').summernote({
+            height: 350, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: false // set focus to editable area after initializing summernote
+        });
+
+        var art = "<p>" + content.article + "</p>";
+
+        $('.summernote').summernote('editor.pasteHTML', art);
+
+        $('.inline-editor').summernote({
+            airMode: true
+        });        
+
+        $("#postArt").click(function(){           
             var title = $('#title').val();
             var category = $('#category option:selected').val();
             var image = $("#image-link").val();
-            var article = editor.val();
+            var article = editor.code();
+            console.log(article)
             
-            if( title  && category && article) {
-                var data = {}
-                data.title = title;
-                data.category = category;
-                data.article = article;
-                data.main_image_link = image;
-                data.date = new Date();
+            if( title  && category && article) {               
+                content.title = title;
+                content.category = category;
+                content.article = article;
+                content.main_image_link = image;
+                content.date = new Date();
 
-                $.post("/auth/post",data,function(data,status){
-                    console.log(status)
-                     console.log(status);
-                    if(res.status){
-                       
-                    } else {
 
-                    }
-
+                $.ajax({
+                   url: "/auth/post",
+                   type: 'PUT',
+                   data: content,
+                   success: function(res) {
+                    console.log(status);
                     alert(res.message);
-                })
+                   }
+                });
+
+               /* $.put("/auth/post",content,function(res,status){
+                    console.log(status);
+                    alert(res.message);
+                }) */
             } else {
-                alert("Title, Category or article field was not filled")
+                alert("Error: Title, Category or article field was not filled")
             }
         })
-        //alert(editor.val())
+
+        //$.post(URL,data,callback);
     });
+    window.edit = function() {
+        $(".click2edit").summernote()
+    }, window.save = function() {
+        $(".click2edit").destroy()
+    }
     </script>
     <!--Style Switcher -->
     <script src="/assets/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>

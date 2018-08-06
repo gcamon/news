@@ -132,19 +132,19 @@
     </nav>
 
     <div class="socials sidenav__socials"> 
-      <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
+      <a class="social social-facebook" href="https://www.facebook.com/wobinews/" target="_blank" aria-label="facebook">
         <i class="ui-facebook"></i>
       </a>
-      <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
+      <a class="social social-twitter" href="https://twitter.com/wobinews" target="_blank" aria-label="twitter">
         <i class="ui-twitter"></i>
       </a>
-      <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
+     <!-- <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
         <i class="ui-google"></i>
       </a>
       <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
         <i class="ui-youtube"></i>
-      </a>
-      <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
+      </a>-->
+      <a class="social social-instagram" href="https://www.instagram.com/wobinews/" target="_blank" aria-label="instagram">
         <i class="ui-instagram"></i>
       </a>
     </div>
@@ -161,30 +161,35 @@
           <!-- Top menu -->
           <div class="col-lg-6">
             <ul class="top-menu">
-              <li><a href="#">About</a></li>
+            <a href="/" class="logo">
+            <h2 style="text-shadow: 1px 1px 2px grey;padding-top: 5px;color: orange"><b>wobinews.com</b></h2>
+              <!--<img class="logo__img" style="height: 30px;" src="/assets/img/logo_default.png" srcset="/assets/img/logo_default.png 1x, /assets/img/logo_default@2x.png 2x" alt="logo">-->
+            </a>
+
+              <!--<li><a href="#">About</a></li>
               <li><a href="#">Advertise</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Contact</a></li>-->
             </ul>
           </div>
           
           <!-- Socials -->
           <div class="col-lg-6">
             <div class="socials nav__socials socials--nobase socials--white justify-content-end"> 
-              <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
-                <i class="ui-facebook"></i>
-              </a>
-              <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
-                <i class="ui-twitter"></i>
-              </a>
-              <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
-                <i class="ui-google"></i>
-              </a>
-              <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
-                <i class="ui-youtube"></i>
-              </a>
-              <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
-                <i class="ui-instagram"></i>
-              </a>
+              <a class="social social-facebook" href="https://www.facebook.com/wobinews/" target="_blank" aria-label="facebook">
+              <i class="ui-facebook"></i>
+            </a>
+            <a class="social social-twitter" href="https://twitter.com/wobinews" target="_blank" aria-label="twitter">
+              <i class="ui-twitter"></i>
+            </a>
+           <!-- <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
+              <i class="ui-google"></i>
+            </a>
+            <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
+              <i class="ui-youtube"></i>
+            </a>-->
+            <a class="social social-instagram" href="https://www.instagram.com/wobinews/" target="_blank" aria-label="instagram">
+              <i class="ui-instagram"></i>
+            </a>
             </div>
           </div>
 
@@ -208,10 +213,10 @@
             </button> 
 
             <!-- Logo -->
-            <a href="index-2.html" class="logo">
+            <!--<a href="/" class="logo">
             <h2 style="text-shadow: 1px 1px 2px grey;padding-top: 5px;color: orange"><b>wobinews.com</b></h2>
-              <!--<img class="logo__img" style="height: 30px;" src="/assets/img/logo_default.png" srcset="/assets/img/logo_default.png 1x, /assets/img/logo_default@2x.png 2x" alt="logo">-->
-            </a>
+             
+            </a>-->
 
             <!-- Nav-wrap -->
             <nav class="flex-child nav__wrap d-none d-lg-block">              
@@ -429,7 +434,7 @@
     <div class="container">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a href="index-2.html" class="breadcrumbs__url">Home</a>
+          <a href="/" class="breadcrumbs__url">Home</a>
         </li>
         <li class="breadcrumbs__item">
           <a href="" class="breadcrumbs__url">News</a>
@@ -465,7 +470,7 @@
                       <a href="#">{{news.reporter_name}}</a>
                     </li>-->
                     <li class="entry__meta-date">
-                      {{news.date | date : 'mediumDate'}}
+                      {{news.pubDate | date : 'fullDate'}}
                     </li>
                   </ul>
 
@@ -647,61 +652,94 @@
                 <!-- Slider -->
 
                 <div id="owl-posts-3-items" class="owl-carousel owl-theme owl-carousel--arrows-outside">
-                  <article class="entry thumb thumb--size-1" ng-repeat="j in news.related_articles">
-                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{j.main_image_link}});">
+                  <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[0].main_image_link}});">
                       <div class="bottom-gradient"></div>
                       <div class="thumb-text-holder">   
                         <h2 class="thumb-entry-title">
-                          <a ng-href="j.link">{{j.title}}</a>
+                          <a href="{{news.related_articles[0].path}}">{{news.related_articles[0].title}}</a>
                         </h2>
                       </div>
-                      <a href="j.path" class="thumb-url"></a>
+                      <a href="{{news.related_articles[0].path}}" class="thumb-url"></a>
                     </div>
                   </article>
-                 <!--<article class="entry thumb thumb-size-1">
-                    <div class="entry__img-holder thumb__img-holder" style="background-image: url('/assets/img/content/carousel/carousel_post_2.jpg');">
+                <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[1].main_image_link}});">
                       <div class="bottom-gradient"></div>
                       <div class="thumb-text-holder">   
                         <h2 class="thumb-entry-title">
-                          <a href="single-post.html">Gov’t Toughens Rules to Ensure 3rd Telco Player Doesn’t Slack Off</a>
+                          <a href="{{news.related_articles[1].path}}">{{news.related_articles[1].title}}</a>
                         </h2>
                       </div>
-                      <a href="single-post.html" class="thumb-url"></a>
+                      <a href="{{news.related_articles[1].path}}" class="thumb-url"></a>
                     </div>
                   </article>
-                  <article class="entry thumb thumb-size-1">
-                    <div class="entry__img-holder thumb__img-holder" style="background-image: url('/assets/img/content/carousel/carousel_post_3.jpg');">
+                  <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[2].main_image_link}});">
                       <div class="bottom-gradient"></div>
                       <div class="thumb-text-holder">   
                         <h2 class="thumb-entry-title">
-                          <a href="single-post.html">(Infographic) Is Work-Life Balance Even Possible?</a>
+                          <a href="{{news.related_articles[2].path}}">{{news.related_articles[2].title}}</a>
                         </h2>
                       </div>
-                      <a href="single-post.html" class="thumb-url"></a>
+                      <a href="{{news.related_articles[2].path}}" class="thumb-url"></a>
                     </div>
                   </article>
-                  <article class="entry thumb thumb-size-1">
-                    <div class="entry__img-holder thumb__img-holder" style="background-image: url('/assets/img/content/carousel/carousel_post_4.jpg');">
+                  <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[3].main_image_link}});">
                       <div class="bottom-gradient"></div>
                       <div class="thumb-text-holder">   
                         <h2 class="thumb-entry-title">
-                          <a href="single-post.html">Is Uber Considering To Sell its Southeast Asia Business to Grab?</a>
+                          <a href="{{news.related_articles[3].path}}">{{news.related_articles[3].title}}</a>
                         </h2>
                       </div>
-                      <a href="single-post.html" class="thumb-url"></a>
+                      <a href="{{news.related_articles[3].path}}" class="thumb-url"></a>
                     </div>
                   </article>
-                  <article class="entry thumb thumb-size-1">
-                    <div class="entry__img-holder thumb__img-holder" style="background-image: url('/assets/img/content/carousel/carousel_post_2.jpg');">              
+                  <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[4].main_image_link}})">
                       <div class="bottom-gradient"></div>
                       <div class="thumb-text-holder">   
                         <h2 class="thumb-entry-title">
-                          <a href="single-post.html">Gov’t Toughens Rules to Ensure 3rd Telco Player Doesn’t Slack Off</a>
+                          <a href="{{news.related_articles[4].path}}">{{news.related_articles[4].title}}</a>
                         </h2>
                       </div>
-                      <a href="single-post.html" class="thumb-url"></a>
+                      <a href="{{news.related_articles[4].path}}" class="thumb-url"></a>
                     </div>
-                  </article>-->
+                  </article>
+                   <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[5].main_image_link}})">
+                      <div class="bottom-gradient"></div>
+                      <div class="thumb-text-holder">   
+                        <h2 class="thumb-entry-title">
+                          <a href="{{news.related_articles[5].path}}">{{news.related_articles[5].title}}</a>
+                        </h2>
+                      </div>
+                      <a href="{{news.related_articles[5].path}}" class="thumb-url"></a>
+                    </div>
+                  </article>
+                   <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[6].main_image_link}})">
+                      <div class="bottom-gradient"></div>
+                      <div class="thumb-text-holder">   
+                        <h2 class="thumb-entry-title">
+                          <a href="{{news.related_articles[6].path}}">{{news.related_articles[6].title}}</a>
+                        </h2>
+                      </div>
+                      <a href="{{news.related_articles[6].path}}" class="thumb-url"></a>
+                    </div>
+                  </article>
+                   <article class="entry thumb thumb--size-1">
+                    <div class="entry__img-holder thumb__img-holder" style="background-image: url({{news.related_articles[7].main_image_link}})">
+                      <div class="bottom-gradient"></div>
+                      <div class="thumb-text-holder">   
+                        <h2 class="thumb-entry-title">
+                          <a href="{{news.related_articles[7].path}}">{{news.related_articles[7].title}}</a>
+                        </h2>
+                      </div>
+                      <a href="{{news.related_articles[7].path}}" class="thumb-url"></a>
+                    </div>
+                  </article>
                 </div> <!-- end slider -->
 
               </section> <!-- end related posts -->            
@@ -835,12 +873,12 @@
                       <a href="{{cat.path}}">{{cat.title}}</a>
                     </h3>
                     <ul class="entry__meta">
-                      <li class="entry__meta-author">
+                      <!--<li class="entry__meta-author">
                         <span>by</span>
                         <a href="">{{cat.reporter_name}}</a>
-                      </li>
+                      </li>-->
                       <li class="entry__meta-date">
-                        {{cat.date | date: "mediumDate"}}
+                        {{cat.pubDate | date: "fullDate"}}
                       </li>
                     </ul>
                   </div>                  
@@ -949,32 +987,34 @@
             <div class="socials socials--wide socials--large">
               <div class="row row-16">
                 <div class="col">
-                  <a class="social social-facebook" href="#" title="facebook" target="_blank" aria-label="facebook">
+                  <a class="social social-facebook" href="https://www.facebook.com/wobinews/" title="facebook" target="_blank" aria-label="facebook">
                     <i class="ui-facebook"></i>
                     <span class="social__text">Facebook</span>
                   </a><!--
-                  --><a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
+                  --><a class="social social-twitter" href="https://twitter.com/wobinews" title="twitter" target="_blank" aria-label="twitter">
                     <i class="ui-twitter"></i>
                     <span class="social__text">Twitter</span>
-                  </a><!--
-                  --><a class="social social-youtube" href="#" title="youtube" target="_blank" aria-label="youtube">
-                    <i class="ui-youtube"></i>
-                    <span class="social__text">Youtube</span>
                   </a>
+                  
+                 
                 </div>
                 <div class="col">
-                  <a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
-                    <i class="ui-google"></i>
-                    <span class="social__text">Google+</span>
-                  </a><!--
-                  --><a class="social social-instagram" href="#" title="instagram" target="_blank" aria-label="instagram">
+                 <a class="social social-instagram" href="https://www.instagram.com/wobinews/" title="instagram" target="_blank" aria-label="instagram">
                     <i class="ui-instagram"></i>
                     <span class="social__text">Instagram</span>
-                  </a><!--
-                  --><a class="social social-rss" href="#" title="rss" target="_blank" aria-label="rss">
+                  </a>
+                 <!-- <a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
+                    <i class="ui-google"></i>
+                    <span class="social__text">Google+</span>
+                  </a>-->
+                     <!--<a class="social social-youtube" href="#" title="youtube" target="_blank" aria-label="youtube">
+                    <i class="ui-youtube"></i>
+                    <span class="social__text">Youtube</span>
+                  </a>-->
+                  <!--<a class="social social-rss" href="#" title="rss" target="_blank" aria-label="rss">
                     <i class="ui-rss"></i>
                     <span class="social__text">Rss</span>
-                  </a>
+                  </a>-->
                 </div>                
               </div>            
             </div>
@@ -986,125 +1026,9 @@
     </div> <!-- end main container -->
 
     <!-- Footer -->
-    <footer class="footer footer--dark">
-      <div class="container">
-        <div class="footer__widgets">
-          <div class="row">
+   <% include footer %>
 
-            <div class="col-lg-3 col-md-6">
-              <aside class="widget widget-logo">
-                <a href="index-2.html">
-                  <img src="/assets/img/logo_default_white.png" srcset="/assets/img/logo_default_white.png 1x, /assets/img/logo_default_white@2x.png 2x" class="logo__img" alt="">
-                </a>
-                <p class="copyright">
-                  © 2018 WOBI | Made by <a href="https://junniepat.com/">junniepat</a>
-                </p>
-                <div class="socials socials--large socials--rounded mb-24">
-                  <a href="#" class="social social-facebook" aria-label="facebook"><i class="ui-facebook"></i></a>
-                  <a href="#" class="social social-twitter" aria-label="twitter"><i class="ui-twitter"></i></a>
-                  <a href="#" class="social social-google-plus" aria-label="google+"><i class="ui-google"></i></a>
-                  <a href="#" class="social social-youtube" aria-label="youtube"><i class="ui-youtube"></i></a>
-                  <a href="#" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
-                </div>
-              </aside>
-            </div>
-
-            <div class="col-lg-2 col-md-6">
-              <aside class="widget widget_nav_menu">
-                <h4 class="widget-title">Useful Links</h4>
-                <ul>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="contact.html">News</a></li>
-                  <li><a href="categories.html">Advertise</a></li>
-                  <li><a href="shortcodes.html">Support</a></li>
-                  <li><a href="shortcodes.html">Features</a></li>
-                  <li><a href="shortcodes.html">Contact</a></li>
-                </ul>
-              </aside>
-            </div>  
-
-            <div class="col-lg-4 col-md-6">
-              <aside class="widget widget-popular-posts">
-                <h4 class="widget-title">Popular Posts</h4>
-                <ul class="post-list-small">
-                  <li class="post-list-small__item">
-                    <article class="post-list-small__entry clearfix">
-                      <div class="post-list-small__img-holder">
-                        <div class="thumb-container thumb-100">
-                          <a href="single-post.html">
-                            <img data-src="/assets/img/content/post_small/post_small_1.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
-                          </a>
-                        </div>
-                      </div>
-                      <div class="post-list-small__body">
-                        <h3 class="post-list-small__entry-title">
-                          <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
-                        </h3>
-                        <ul class="entry__meta">
-                          <li class="entry__meta-author">
-                            <span>by</span>
-                            <a href="#">junniepat</a>
-                          </li>
-                          <li class="entry__meta-date">
-                            Jan 21, 2018
-                          </li>
-                        </ul>
-                      </div>                  
-                    </article>
-                  </li>
-                  <li class="post-list-small__item">
-                    <article class="post-list-small__entry clearfix">
-                      <div class="post-list-small__img-holder">
-                        <div class="thumb-container thumb-100">
-                          <a href="single-post.html">
-                            <img data-src="/assets/img/content/post_small/post_small_2.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
-                          </a>
-                        </div>
-                      </div>
-                      <div class="post-list-small__body">
-                        <h3 class="post-list-small__entry-title">
-                          <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
-                        </h3>
-                        <ul class="entry__meta">
-                          <li class="entry__meta-author">
-                            <span>by</span>
-                            <a href="#">junniepat</a>
-                          </li>
-                          <li class="entry__meta-date">
-                            Jan 21, 2018
-                          </li>
-                        </ul>
-                      </div>                  
-                    </article>
-                  </li>
-                </ul>
-              </aside>              
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-              <aside class="widget widget_mc4wp_form_widget">
-                <h4 class="widget-title">Newsletter</h4>
-                <p class="newsletter__text">
-                  <i class="ui-email newsletter__icon"></i>
-                  Subscribe for our daily news
-                </p>
-                <form class="mc4wp-form" method="post">
-                  <div class="mc4wp-form-fields">
-                    <div class="form-group">
-                      <input type="email" name="EMAIL" placeholder="Your email" required="">
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-lg btn-color" value="Sign Up">
-                    </div>
-                  </div>
-                </form>                
-              </aside>
-            </div>
-
-          </div>
-        </div>    
-      </div> <!-- end container -->
-    </footer> <!-- end footer -->
+   <!-- end Footer -->
 
     <div id="back-to-top">
       <a href="#top" aria-label="Go to top"><i class="ui-arrow-up"></i></a>
@@ -1114,7 +1038,8 @@
  
    <!-- angular code -->
   <script src="/assets/js/angular-1.7.2/angular-resource.min.js"></script>
-
+  <script src="/assets/js/angular-1.7.2/angular-route.min.js"></script>
+  <script src="/assets/js/angular-clipboard.js"></script>
   <script src="/assets/js/client.js"></script>
   
   <!-- jQuery Scripts -->
