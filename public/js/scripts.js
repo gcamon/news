@@ -207,7 +207,7 @@
 
   /* Twitter Feed
   -------------------------------------------------------*/
-  if($('#tweets').length) {
+  /*if($('#tweets').length) {
     function initTwitter() {
       var config1 = {
         "id": '594366594521804800',
@@ -222,7 +222,7 @@
       twitterFetcher.fetch(config1);
     }
     initTwitter();
-  }
+  }*/
 
 
   /* YouTube Video Playlist
