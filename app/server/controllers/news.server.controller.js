@@ -76,9 +76,9 @@ exports.readSinglePost = function(req,res){
 		if(data){
 			data.views += 1;
 			data.save(function(err,info){});
-			model.news.find({category: data.category},{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
+			model.news.find({category: data.category,deleted:false,verified:true},{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
 				if(err) throw err;
-				data.related_articles = list
+				data.related_articles = list;
 				res.json(data);
 			}).limit(8)
 		} else {
