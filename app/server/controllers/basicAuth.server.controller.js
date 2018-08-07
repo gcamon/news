@@ -4,6 +4,7 @@ var config = require('../config');
 var passport = config.passport;
 var LocalStrategy = require("passport-local").Strategy;
 var salt = require('../salt');
+var path = require('path');
 //var route = config.router;
 
 
@@ -110,6 +111,10 @@ route.get("/auth",function(req,res){
 		res.redirect("/admin/login");
 	}
 });
+
+route.get("/google857e2c1023ca1d8f.html",function(req,res){
+	res.render("google857e2c1023ca1d8f")
+})
 
 
 /*route.post("/auth",function(req,res){
