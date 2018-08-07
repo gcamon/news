@@ -112,8 +112,8 @@ route.get("/auth",function(req,res){
 	}
 });
 
-route.get("/google857e2c1023ca1d8f.html",function(req,res){
-	res.render("google857e2c1023ca1d8f")
+route.get("/google52a0ee3e8ea99e5b.html",function(req,res){
+	res.render("googleeee5653c1a02d874")
 })
 
 
