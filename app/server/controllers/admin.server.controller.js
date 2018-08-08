@@ -139,7 +139,7 @@ exports.newPost = function(req,res){
 		req.body.path = "/news/" + newsId + "/" + inviteLink;
 		req.body.link = (req.host == 'localhost') ? (req.host + ":3002" + "/news/" + newsId + "/" + inviteLink) : (req.host + "/news/" + newsId + "/" + inviteLink);
 
-		console.log(req.body);
+
 
 		var post = new model.news(req.body);
 		post.save(function(err,info){
@@ -161,7 +161,7 @@ exports.newPost = function(req,res){
 exports.readUnverified = function(req,res){
 	if(req.user){
 		var model = req.model;
-		model.news.find({deleted: false}) // return to normal verified: false
+		model.news.find({deleted: false,verified: false}) // return to normal verified: false
 		.sort('-date')
 		.exec(function(err,data){
 			if(err) throw err;
@@ -189,7 +189,7 @@ exports.readVerified = function(req,res){
 exports.updatetoverify = function(req,res){
 	if(req.user){
 		var model = req.model;
-		model.news.findOne({deleted: false, id: req.body.id}) //return to normal verified: false,
+		model.news.findOne({deleted: false, verified: false, id: req.body.id}) //return to normal verified: false,
 		.exec(function(err,data){
 			if(err) throw err;
 			if(data){
