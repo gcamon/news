@@ -485,7 +485,10 @@
                 <div class="right-sidebar">
                     <div class="slimscrollright">
                         <div class="rpanel-title"> Pending Posts <span><i class="ti-close right-side-toggle"></i></span> </div>
-                        <div style="padding: 5px 10px; max-height: 550px;overflow-y: auto">
+                        <div style="padding: 5px 10px; max-height: 550px;overflow-y: auto" class="right-side-toggle">
+                            <div style="padding: 40px  20px;text-align: center;" ng-if="loading">
+                                <b>Content loading...</b>
+                            </div>
                             <article ng-repeat="item in posts" style="border-bottom: 2px dashed #000;padding: 3px 0">
                                 <a href="" ng-click="viewPost(item.id)" style="color: #000" ><b>{{item.title}}</b> &nbsp;<small>{{item.date | date: "mediumDate"}}/{{item.date | date: "shortTime"}}</small></a>
                             </article>

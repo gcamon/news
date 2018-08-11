@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="utf-8">
@@ -30,9 +30,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+     <!-- angular js  -->
+      <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
 </head>
 
-<body class="fix-header">
+<body class="fix-header" ng-controller="adminManageCtrl">
     <!-- ============================================================== -->
     <!-- Preloader -->
     <!-- ============================================================== -->
@@ -174,12 +176,20 @@
                   
                     <!-- /.Megamenu -->
                 </ul>
-                <!--<ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+
+                    <!-- to be opened later for searching for oudated or not found post -->
+
+                    <!--<li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a> </form>
-                    </li>
-                    <<li class="dropdown">
+                            <input type="text" placeholder="Search for post headline" class="form-control"> <a href="#"><i class="fa fa-search"></i></a> </form>
+                    </li>-->
+
+
+
+
+
+                    <!--<li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="/assets/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Junniepat</b><span class="caret"></span> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li>
@@ -200,9 +210,9 @@
                             <li><a href="/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                         
-                    </li>
+                    </li>-->
                    
-                </ul>-->
+                </ul>
             </div>
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
@@ -283,7 +293,10 @@
                 <!-- Other sales widgets -->
                 <!-- ============================================================== -->
                 <!-- .row -->
-                <div class="row">
+
+                <!-- to be opened later -->
+
+                <!--<div class="row">
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="white-box">
                             <h3 class="box-title">Daily Sales</h3>
@@ -324,7 +337,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
+
+
+
                 <!-- /.row -->
                 <!-- ============================================================== -->
                 <!-- Extra-component -->
@@ -531,47 +547,62 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel">
-                            <div class="panel-heading">MANAGE USERS</div>
+                            <div class="panel-heading">PUBLISHED POSTS
+                                <input type="text" name="" class="form-control" ng-model="val" placeholder="Filter by headline, category, created by or pub date" style="float: right;width: 40%">
+                            </div>
                             <div class="table-responsive">
-                                <table class="table table-hover manage-u-table">
+                                 
+                                <div ng-if="loading" style="width: 100%;text-align: center;padding: 20px"> <b>Content loading...</b></div>
+                                
+                                <table class="table table-hover manage-u-table" ng-if="!loading">
                                     <thead>
                                         <tr>
-                                            <th class="text-center" style="width: 70px">#</th>
-                                            <th>NAME</th>
-                                            <th>OCCUPATION</th>
-                                            <th>EMAIL</th>
-                                            <th>ADDED</th>
-                                            <th style="width: 250px">CATEGORY</th>
-                                            <th style="width: 300px">MANAGE</th>
+                                            <th style="width: 25px"></th>
+                                            <th style="width: 400px">HEADLINE</th>                                            
+                                            <th>CATEGORY</th>
+                                            <th style="">PUBLISHED</th>
+                                            <th style="">CREATED BY</th>
+                                            <th style="">MANAGE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td><span class="font-medium">Daniel Kristeen</span>
-                                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                            <td>Visual Designer
-                                                <br/><span class="text-muted">Past : teacher</span></td>
-                                            <td>daniel@website.com
-                                                <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                            <td>15 Mar 1988
-                                                <br/><span class="text-muted">10: 55 AM</span></td>
+                                        <tr ng-repeat="post in list | filter: val | orderBy: '-pubDate'">
+                                            <td></td>
                                             <td>
+                                                <span class="font-medium">{{post.title}}</span>
+                                            </td>
+                                          
+                                            <td>
+                                                {{post.category}}
+                                                <!--<br/><span class="text-muted">999 - 444 - 555</span>-->                            
+                                            </td>
+                                            <td>
+                                                {{post.pubDate | date : 'mediumDate'}}
+                                                <br/><span class="text-muted">{{post.pubDate | date : 'mediumTime'}}</span>
+                                            </td>
+                                             <td>
+                                                <a href="" title="click to view profile of this reporter">{{post.reporter_name}}</a>
+                                                <!--<br/><span class="text-muted">999 - 444 - 555</span>-->                            
+                                            </td>
+                                            <!--<td>
                                                 <select class="form-control">
                                                     <option>Modulator</option>
                                                     <option>Admin</option>
                                                     <option>User</option>
                                                     <option>Subscriber</option>
                                                 </select>
-                                            </td>
+                                            </td>-->
                                             <td>
-                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button>
-                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                                <!--<button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
                                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
+                                                -->
+                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" title="edit this post" ng-click="edit(post)"><i class="ti-pencil-alt"></i></button>
+                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" title="delete this post" ng-click="delPost(post._id)"><i class="icon-trash"></i></button>
+                                                
                                             </td>
                                         </tr>
-                                        <tr>
+                                       
+                                        <!--<tr>
                                             <td class="text-center">2</td>
                                             <td><span class="font-medium">Daniel Kristeen</span>
                                                 <br/><span class="text-muted">Texas, Unitedd states</span></td>
@@ -720,7 +751,7 @@
                                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
                                             </td>
-                                        </tr>
+                                        </tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -800,6 +831,12 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+
+     <!-- angular code -->
+    <script src="/assets/js/angular-1.7.2/angular-resource.min.js"></script>
+    <script src="/assets/js/angular-1.7.2/angular-route.min.js"></script>
+    <script src="/assets/js/angular-clipboard.js"></script>
+    <script src="/assets/js/client.js"></script>
     <!-- jQuery -->
     <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->

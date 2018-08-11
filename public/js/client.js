@@ -119,23 +119,6 @@
 			 url : "http://saharareporters.com/feeds/technology/feed",
 			 type: "technology"
 			}
-			/*
-			{
-			 url : "http://saharareporters.com/feeds/reports/feed",
-			 type: "reports"
-			},		
-			{
-			 url : "http://saharareporters.com/feeds/opinion/feed",
-			 type: "opinion"
-			}*/
-			/*"http://saharareporters.com/feeds/news/feed",
-			"http://saharareporters.com/feeds/opinion/feed",
-			"http://saharareporters.com/feeds/politics/feed",
-			"http://saharareporters.com/feeds/business/feed",
-			"http://saharareporters.com/feeds/sports/feed",
-			"http://saharareporters.com/feeds/entertainment/feed",
-			"http://saharareporters.com/feeds/lifestyle/feed",
-			"http://saharareporters.com/feeds/technology/feed"*/
 		]
 
 		return feeds;
@@ -272,8 +255,9 @@
 	.controller("reviewPostCtrl",["$scope","$rootScope","$location","reviewPostService","localManager",
 		function($scope,$rootScope,$location,reviewPostService,localManager){
 			var post = reviewPostService;
+			$scope.loading = true;
 			post.query({type:"unverified"},function(result){
-				console.log(result)
+				$scope.loading = false;
 				$rootScope.posts = result;
 			})
 
@@ -288,7 +272,6 @@
 					$rootScope.preview = {};
 				}
 				$location.path(path);
-				//alert("a post will be in view...")
 			}
 	}])
 	.controller("previewPostCtrl",["$scope","$sce","$rootScope","reviewPostService","localManager",
@@ -302,15 +285,17 @@
 				return $sce.trustAsHtml(body);
 			}
 
-			$scope.publish = function(id){
+			$scope.publish = function(id,item){
 				var decide = confirm("Do you want to publish this article for public view?");
 				if(decide) {
 					var reqObj = {};
 					reqObj.status = "complete";
 					reqObj.pubDate = new Date();
 					reqObj.id = id;
+					item.loading = true;
 					post.updatePost(reqObj,function(res){
 						alert(res.message);
+						item.loading = false;
 						if(res.status){
 							var el = $rootScope.posts.map(function(x){return x.id}).indexOf(id);
 							if(el !== -1){
@@ -324,13 +309,15 @@
 				} 
 			}
 
-			$scope.delete = function(id){
+			$scope.delete = function(id,item){
 				var decide = confirm("Do you want to delete this article?");
 				if(decide){
 					var reqObj = {}
 					reqObj.id = id;
+					item.loading2 = true;
 					post.delete(reqObj,function(res){
 						alert(res.message);
+						item.loading2 = false;
 						if(res.status){
 							var el = $rootScope.posts.map(function(x){return x.id}).indexOf(id);
 							if(el !== -1){
@@ -349,6 +336,39 @@
 				window.location.href = "/auth/summernote/edit";
 			}
 			
+	}])
+	.service("adminManageService",["$resource",function($resource){
+		return $resource("/content/verified")
+	}])
+	.controller("adminManageCtrl",["$scope","adminManageService","localManager",function($scope,adminManageService,localManager){
+		var news = adminManageService;
+
+		$scope.loading = true
+		news.query(function(data){
+			$scope.loading = false;
+			$scope.list = data;
+		});
+
+		$scope.delPost = function(postId) {
+			var check = confirm("Post will be deleted completely and no one will ever view the post again. Are you sure you want to delete this post?")
+			if(check) {
+				news.delete({id: postId},function(response){
+					if(response.status){
+						var elemPos = $scope.list.map(function(x){return x._id}).indexOf(postId);
+						if($scope.list[elemPos]){
+							$scope.list.splice(elemPos,1);
+						}
+					}
+					alert(response.message)
+				});
+			} 
+		}
+
+		$scope.edit = function(post){
+			localManager.setValue("post",post);
+			window.location.href = "/auth/summernote/edit";
+		}
+
 	}])
 	.service("mediaService",["$resource",function($resource){
 		return $resource("/content/all-media");

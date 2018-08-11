@@ -112,18 +112,6 @@ route.get("/auth",function(req,res){
 	}
 });
 
-route.get("/google52a0ee3e8ea99e5b.html",function(req,res){
-	res.render("googleeee5653c1a02d874")
-})
-
-
-/*route.post("/auth",function(req,res){
-	if(req.user){
-		res.render("admin")
-	} else {
-		res.redirect('/admin/login')
-	}
-});*/
 
 route.post('/auth', passport.authenticate('user-login', {
   successRedirect : '/auth', // redirect to the secure profile section

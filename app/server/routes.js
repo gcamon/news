@@ -35,6 +35,7 @@ module.exports = function(app) {
 
 	app.route("/content/verified")
 	.get(admin.readVerified)
+	.delete(admin.deletePost)
 
 	app.route("/content/all-media")
 	.get(admin.allMediaContent)
@@ -65,7 +66,7 @@ module.exports = function(app) {
 	.get(admin.getPost)
 	.post(admin.newPost)
 	.put(admin.updatePost)
-	.delete(admin.deletePost)
+	
 
 	app.route("/auth/super")
 	.get(admin.getPostList)

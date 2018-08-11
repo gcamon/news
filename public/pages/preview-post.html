@@ -9,6 +9,8 @@
 		<div ng-bind-html="getBody(preview.article)"></div>
 	</div>
 	<div style="padding-top: 15px">
-		<button class="btn btn-lg btn-danger" ng-click="publish(preview.id)">Publish</button> &nbsp; <button class="btn btn-lg btn-info" ng-click="edit(preview)">Edit</button>&nbsp; <button class="btn btn-lg btn-simple" ng-click="delete(preview.id)">Delete</button>
+		<button class="btn btn-lg btn-danger" ng-click="publish(preview.id,preview)" ng-if="!preview.loading">Publish</button><i ng-if="preview.loading" class="text-muted btn btn-simple"><b>Publishing...</b></i> &nbsp;
+		 <button class="btn btn-lg btn-info" ng-click="edit(preview)">Edit</button> &nbsp; 
+		 <button class="btn btn-lg btn-simple" ng-click="delete(preview.id,preview)" ng-if="!preview.loading2">Delete</button><i ng-if="preview.loading2" class="text-muted btn btn-simple"><b>Deleting...</b></i>
 	</div>
 </div>

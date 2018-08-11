@@ -176,7 +176,8 @@ exports.readVerified = function(req,res){
 	if(req.user){
 		var model = req.model;
 		model.news.find({deleted: false, verified: true})
-		.sort('-date')
+		.limit(100)
+		.sort('-pubDate')
 		.exec(function(err,data){
 			if(err) throw err;
 			res.json(data)
@@ -188,8 +189,9 @@ exports.readVerified = function(req,res){
 
 exports.updatetoverify = function(req,res){
 	if(req.user){
+		console.log(req.body)
 		var model = req.model;
-		model.news.findOne({deleted: false, verified: false, id: req.body.id}) //return to normal verified: false,
+		model.news.findOne({deleted: false, verified: false, id: req.body.id}) 
 		.exec(function(err,data){
 			if(err) throw err;
 			if(data){
@@ -198,11 +200,11 @@ exports.updatetoverify = function(req,res){
 				data.pubDate = req.body.pubDate;
 				data.save(function(err,info){
 					if(err) throw err;
-					console.log("news published")
+					console.log("news published!")
 					res.json({message: "News published successfully!",status:true})
 				})
 			} else {
-				res.json({message: "Error occured! News not published. Please make sure this news ID does exist as unverified news content",status:false})
+				res.json({message: "Error occured! News not published. Please make sure this news does exist as unverified news",status:false})
 			}
 		})
 	} else {
@@ -260,7 +262,27 @@ exports.updatePost = function(req,res){
 }
 
 exports.deletePost = function(req,res){
-	res.json({})
+	if(req.user){
+		var model = req.model;		
+		model.news.findById(req.query.id)
+		.exec(function(err,data){
+			if(err) throw err;
+			if(data) {
+				data.deleted = true;
+				data.save(function(err,info){
+					if(err) throw err;
+					console.log("post deleted from general view")
+				})
+				res.json({status: true, message: "Post deleted successfully!"})
+			} else {
+				res.json({status:false,message: "Oops,post not found and nothing was deleted!"})
+			}
+		})
+		
+	} else {
+		res.end("Unauthorized access!")
+	}
+	
 }
 
 
