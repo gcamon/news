@@ -554,11 +554,11 @@
                                  
                                 <div ng-if="loading" style="width: 100%;text-align: center;padding: 20px"> <b>Content loading...</b></div>
                                 
-                                <table class="table table-hover manage-u-table" ng-if="!loading">
+                                <table class="table table-hover manage-u-tabl" ng-if="!loading" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th style="width: 25px"></th>
-                                            <th style="width: 400px">HEADLINE</th>                                            
+                                            <th style="width: 300px">HEADLINE</th>                                            
                                             <th>CATEGORY</th>
                                             <th style="">PUBLISHED</th>
                                             <th style="">CREATED BY</th>
@@ -568,7 +568,7 @@
                                     <tbody>
                                         <tr ng-repeat="post in list | filter: val | orderBy: '-pubDate'">
                                             <td></td>
-                                            <td>
+                                            <td style="width: 300px">
                                                 <span class="font-medium">{{post.title}}</span>
                                             </td>
                                           
