@@ -456,6 +456,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-danger" id="postArt">Post</button>
+                                <span class="btn btn-danger" id="status"><b>Posting...</b></span>
                             </div>
                         </div>
                     </div>
@@ -601,7 +602,7 @@
             airMode: true
         });
 
-        
+        $("#status").hide(1000);  
 
         $("#postArt").click(function(){  
             var title = $('#title').val();
@@ -616,9 +617,13 @@
                 data.article = article;
                 data.main_image_link = image;
                 data.date = new Date();
+                
+                $("#postArt").hide(1000);                
+                $("#status").show(1000); 
 
-                $.post("/auth/post",data,function(res,status){
-                    console.log(status);
+                $.post("/auth/post",data,function(res,status){ 
+                    $("#status").hide(1000);  
+                    $("#postArt").show(1000);                                               
                     alert(res.message);
                 })
             } else {

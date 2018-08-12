@@ -392,12 +392,12 @@
                             </a>
                         </li>
 
-                        <!--<li>
+                        <li>
                             <a href="/auth/media-files">
                                 <i class=" fa-fw"></i>
                                 <span class="hide-menu">Multi-Media</span>
                             </a>
-                        </li>-->
+                        </li>
 
 
                     </ul>
@@ -457,6 +457,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-danger" id="postArt">Save</button>
+                                <span class="btn btn-danger" id="status"><b>Saving...</b></span>
                             </div>
                         </div>
                     </div>
@@ -620,7 +621,9 @@
 
         $('.inline-editor').summernote({
             airMode: true
-        });        
+        }); 
+
+        $("#status").hide(1000);        
 
         $("#postArt").click(function(){           
             var title = $('#title').val();
@@ -636,13 +639,15 @@
                 content.main_image_link = image;
                 content.date = new Date();
 
-
+                $("#postArt").hide(1000);                
+                $("#status").show(1000); 
                 $.ajax({
                    url: "/auth/post",
                    type: 'PUT',
                    data: content,
-                   success: function(res) {
-                    console.log(status);
+                   success: function(res) {                                   
+                    $("#status").hide(1000); 
+                    $("#postArt").show(1000); 
                     alert(res.message);
                    }
                 });
