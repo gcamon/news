@@ -47,7 +47,8 @@ module.exports = function() {
 		link: String,
 		status: String,
 		pubDate: Date,
-		share: String
+		share: String,
+		share_image_link: String
 	},{
 		collections: "newsinfos"
 	});
