@@ -51,7 +51,7 @@ exports.read = function(req,res){
 exports.renderSingle = function(req,res){
 	var model = req.model;
 	model.news.findOne({id: req.params.id},function(err,data){
-		res.render("single-post",{news: data});
+		res.render("share-single-post",{news: data});
 	})
 	
 }
@@ -59,7 +59,7 @@ exports.renderSingle = function(req,res){
 exports.renderSharePage = function(req,res){
 	var model = req.model;
 	model.news.findOne({id: req.params.id},function(err,data){
-		res.render("single-post",{news: data});
+		res.render("share-single-post",{news: data});
 	})
 	
 }
