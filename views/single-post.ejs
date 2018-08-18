@@ -464,9 +464,9 @@
             <article class="entry mb-0">
               
               <div class="single-post__entry-header entry__header">
-                <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--green">{{news.category}}</a>
+                <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--green"><%= news.category %></a>
                 <h1 class="single-post__entry-title">
-                  {{news.title}}
+                  <%= news.title %>
                 </h1>
 
                 <div class="entry__meta-holder">
@@ -483,11 +483,11 @@
                   <ul class="entry__meta">
                     <li class="entry__meta-views">
                       <i class="ui-eye"></i>
-                      <span>{{news.views}}</span>
+                      <span><%= news.views %></span>
                     </li>
                     <li class="entry__meta-comments">
                       <a href="">
-                        <i class="ui-chat-empty"></i>{{news.comments.length}}
+                        <i class="ui-chat-empty"></i><% news.comments.length %>
                       </a>
                     </li>
                   </ul>
