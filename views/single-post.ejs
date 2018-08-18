@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" ng-controller="singleNewsCtlr">
 
 <head>
   <title>WOBI | news</title>
@@ -8,6 +8,12 @@
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="">
+
+  <meta property="og:url"           content="{{news.path}}" />
+  <meta property="og:type"          content="Politics" />
+  <meta property="og:title"         content="dhds" />
+  <meta property="og:description"   content="Latest news" />
+  <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
 
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700%7CSource+Sans+Pro:400,600,700' rel='stylesheet'>
@@ -31,7 +37,7 @@
 
 </head>
 
-<body class="bg-light single-post style-default style-rounded" ng-controller="singleNewsCtlr">
+<body class="bg-light single-post style-default style-rounded" >
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -495,24 +501,26 @@
               <div class="entry__article-wra">
 
                 <!-- Share -->
-                <!--<div class="entry__share">
+                <div class="entry__share">
                   <div class="sticky-col">
                     <div class="socials socials--rounded socials--large">
-                      <a class="social social-facebook" href="#" title="facebook" target="_blank" aria-label="facebook">
+                      <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
-                      </a>
+                      </a>-->
+                     <a id="fb-share" style='text-decoration:none;' type="icon_link" onClick="window.open('http://www.facebook.com/sharer.php?s=100&p[title]=YOUR_TITLE&p[summary]=YOUR_DESCRIPTION&p[url]=YOUR_URL&p[images][0]=YOUR_IMAGE','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)">Share</a>
+
                       <a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
                       </a>
-                      <a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
+                      <!--<a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
                         <i class="ui-google"></i>
                       </a>
                       <a class="social social-pinterest" href="#" title="pinterest" target="_blank" aria-label="pinterest">
                         <i class="ui-pinterest"></i>
-                      </a>
+                      </a>-->
                     </div>
                   </div>                  
-                </div>--> <!-- share -->
+                </div> <!-- share -->
                
                 <div>
                   <div data-ng-bind-html="trustAsHtml(news.article)"></div>
@@ -1025,6 +1033,9 @@
       </div> <!-- end content -->
     </div> <!-- end main container -->
 
+    <!-- facebook share -->
+    <div id="fb-root"></div>
+
     <!-- Footer -->
    <% include footer %>
 
@@ -1041,6 +1052,14 @@
   <script src="/assets/js/angular-1.7.2/angular-route.min.js"></script>
   <script src="/assets/js/angular-clipboard.js"></script>
   <script src="/assets/js/client.js"></script>
+
+  <script>
+   function fbShare(url, title, descr, image, winWidth, winHeight) {
+        var winTop = (screen.height / 2) - (winHeight / 2);
+        var winLeft = (screen.width / 2) - (winWidth / 2);
+        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width='+winWidth+',height='+winHeight);
+    }
+  </script>
   
   <!-- jQuery Scripts -->
   <script src="/assets/js/jquery.min.js"></script>
