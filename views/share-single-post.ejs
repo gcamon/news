@@ -16,9 +16,13 @@
   <!-- Preloader -->
  
 
-  <main class="main oh" id="main">
-
-   <h2>I have a dream ooooooooooo</h2>
+  <main>
+   <h6 style="color: orange"><%= news.category %></h6>
+    <img src="<%= news.main_image_link %>" style="max-width: 72px; max-height: 72px;float: left;">
+    <a href="<%= news.path %>" style="padding-left: 10px" target="_blank">
+      <b><%= news.title %></b><br>
+      <span style="padding-left: 10px">https://wobinews.com</span>
+    </a>
 
   </main> <!-- end main-wrapper -->
  
