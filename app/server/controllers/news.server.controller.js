@@ -50,7 +50,11 @@ exports.read = function(req,res){
 
 
 exports.renderSingle = function(req,res){
-	res.render("single-post",{item:{name: "obi"}});
+	var model = req.model;
+	model.news.findOne({id: req.params.id},function(err,data){
+		res.render("single-post",{news: data});
+	})
+	
 }
 
 /*** for Ajax Pulling ***/
