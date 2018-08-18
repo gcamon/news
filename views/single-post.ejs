@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="">
 
- <meta property="og:url"           content="<%= news.share %>" />
+ <!--<meta property="og:url"           content="<%= news.share %>" />
   <meta property="og:type"          content="<%= news.category %>" />
   <meta property="og:title"         content="<%= news.title %>" />
   <meta property="og:description"   content="" />
-  <meta property="og:image"         content="https://wobinews.com/content/media/e45e8d1c991db03535fafc6c810c9774" />
+  <meta property="og:image"         content="https://wobinews.com/content/media/e45e8d1c991db03535fafc6c810c9774" />-->
 
 
   <!-- Google Fonts -->
@@ -505,13 +505,23 @@
                 <div class="entry__share">
                   <div class="sticky-col">
                     <div class="socials socials--rounded socials--large">
+                    <ul ng-social-buttons
+                         data-url="'{{news.link}}'"
+                         data-title="'{{news.title}}'"
+                         data-description="'test2'"
+                         data-image="'{{news.share_image_link}}'">
+                        <li>Share:</li>
+                        <li class="ng-social-facebook">Facebook</li>
+                        <li class="ng-social-google-plus">Google+</li>
+                        <li class="ng-social-twitter" data-title="'Woah check this site!'">Twitter</li>
+                    </ul>
                       <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
-                      </a>-->
+                      </a>-
                       <div class="fb-share-button" data-href="{{news.share}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                       <a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
-                      </a>
+                      </a>-->
                       <!--<a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
                         <i class="ui-google"></i>
                       </a>
@@ -1051,6 +1061,7 @@
   <script src="/assets/js/angular-1.7.2/angular-resource.min.js"></script>
   <script src="/assets/js/angular-1.7.2/angular-route.min.js"></script>
   <script src="/assets/js/angular-clipboard.js"></script>
+  <script src="/assets/js/angular-social/angular-social.js"></script>
   <script src="/assets/js/client.js"></script>
 
   <script>

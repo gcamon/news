@@ -1,6 +1,6 @@
 (function() {
 
-	angular.module('myApp',["ngResource","ngRoute",'angular-clipboard'])
+	angular.module('myApp',["ngResource","ngRoute",'angular-clipboard','ngSocial'])
 	.config(['$routeProvider',function($routeProvider){
  		$routeProvider
  		.when("/post/:id",{
