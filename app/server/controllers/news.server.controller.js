@@ -50,7 +50,7 @@ exports.read = function(req,res){
 
 
 exports.renderSingle = function(req,res){
-	res.render("single-post");
+	res.render("single-post",{item:{name: "obi"}});
 }
 
 /*** for Ajax Pulling ***/
