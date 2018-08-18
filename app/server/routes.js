@@ -20,8 +20,8 @@ module.exports = function(app) {
 	app.route("/news/:id/:title")
 	.get(news.renderSingle)
 
-	//app.route("/share/:id/:title")
-	//.get(news.renderSharePage)
+	app.route("/share/:id/:title")
+	.get(news.renderSharePage)
 
 	app.route("/content/single")
 	.get(news.readSinglePost)

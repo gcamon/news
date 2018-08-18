@@ -136,6 +136,7 @@ exports.newPost = function(req,res){
 		req.body.views = 0;
 		req.body.verified = false;
 		req.body.deleted = false;
+		req.body.share = "/share/" + newsId + "/" + inviteLink;
 		req.body.path = "/news/" + newsId + "/" + inviteLink;
 		req.body.link = (req.host == 'localhost') ? (req.host + ":3002" + "/news/" + newsId + "/" + inviteLink) : (req.host + "/news/" + newsId + "/" + inviteLink);
 
@@ -145,7 +146,7 @@ exports.newPost = function(req,res){
 		post.save(function(err,info){
 			if(err) {
 				throw err;
-				res.send({status: false,message: "Something went wrong!"})
+				res.send({status: false,message: "Something went wrong!"});
 			} else {
 				res.json({status: true, message: "Success! Post saved for verification"});
 			}

@@ -46,7 +46,8 @@ module.exports = function() {
 		deleted: Boolean,
 		link: String,
 		status: String,
-		pubDate: Date
+		pubDate: Date,
+		share: String
 	},{
 		collections: "newsinfos"
 	});
