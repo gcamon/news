@@ -136,7 +136,7 @@ exports.newPost = function(req,res){
 		req.body.views = 0;
 		req.body.verified = false;
 		req.body.deleted = false;
-		req.body.share_image_link = req.host + "/" + req.body.main_image_link;
+		req.body.share_image_link = "https://" + req.host  + req.body.main_image_link;
 		req.body.share = "/share/" + newsId + "/" + inviteLink;
 		req.body.path = "/news/" + newsId + "/" + inviteLink;
 		req.body.link = (req.host == 'localhost') ? (req.host + ":3002" + "/news/" + newsId + "/" + inviteLink) : (req.host + "/news/" + newsId + "/" + inviteLink);
