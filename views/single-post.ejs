@@ -507,8 +507,7 @@
                       <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
                       </a>-->
-                     <a id="fb-share" style='text-decoration:none;' type="icon_link" onClick="window.open('http://www.facebook.com/sharer.php?s=100&p[title]=YOUR_TITLE&p[summary]=YOUR_DESCRIPTION&p[url]=YOUR_URL&p[images][0]=YOUR_IMAGE','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)">Share</a>
-
+                      <div class="fb-share-button" data-href="{{}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                       <a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
                       </a>
@@ -1054,11 +1053,13 @@
   <script src="/assets/js/client.js"></script>
 
   <script>
-   function fbShare(url, title, descr, image, winWidth, winHeight) {
-        var winTop = (screen.height / 2) - (winHeight / 2);
-        var winLeft = (screen.width / 2) - (winWidth / 2);
-        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width='+winWidth+',height='+winHeight);
-    }
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
   
   <!-- jQuery Scripts -->
