@@ -50,6 +50,17 @@ exports.read = function(req,res){
 
 exports.renderSingle = function(req,res){
 	var model = req.model;
+
+	model.news.find({deleted: false, verified: true, status: "complete"})
+	.exec(function(err, data){
+		for(var i = 0; i < data.length; i++){
+			data[i].link = "https://" + data[i].link;
+			data[i].save(function(err,info){
+				console.log("update saved!")
+			})
+		}
+	})
+
 	model.news.findOne({id: req.params.id},function(err,data){
 		res.render("single-post",{news: data});
 	})
@@ -57,7 +68,7 @@ exports.renderSingle = function(req,res){
 }
 
 exports.renderSharePage = function(req,res){
-	var s = req.url
+	var s = req.url;
 	var toArr = s.split("/")
 	var to = "/news/" + toArr[1] + toArr[2];
 	res.redirect(to)
