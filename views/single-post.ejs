@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp" >
 
 <head>
-  <title>WOBINEWS| <%= news.title %></title>
+  <title>WOBINEWS | <%= news.title %></title>
 
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -32,6 +32,7 @@
 
   <!-- Lazyload (must be placed in head in order to work) -->
   <script src="/assets/js/lazysizes.min.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
    <!-- angular js  -->
   <script src="/assets/js/angular-1.7.2/angular.min.js"></script>
@@ -507,7 +508,13 @@
                       <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
                       </a>-->
-                      <div class="fb-share-button" data-href="{{news.link}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                      <div class="fb-share-button" data-href="{{news.link}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+
+                      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+
+                      </div>
+
+                      
                       <!--<a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
                       </a>-->
