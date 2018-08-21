@@ -9,11 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="">
 
-  <meta property="og:url"           content="<%= news.share %>" />
+  <meta property="og:url"           content="<%= news.link %>" />
   <meta property="og:type"          content="<%= news.category %>" />
   <meta property="og:title"         content="<%= news.title %>" />
   <meta property="og:description"   content="" />
-  <meta property="og:image"         content="https://wobinews.com/content/media/e45e8d1c991db03535fafc6c810c9774" />
+  <meta property="og:image"         content="news.share_image_link" />
 
 
   <!-- Google Fonts -->
@@ -158,7 +158,7 @@
   </header> <!-- end sidenav -->
 
 
-  <main class="main oh" id="main" ng-cloak>
+  <main class="main oh" id="main">
 
     <!-- Top Bar -->
     <div class="top-bar d-none d-lg-block">
@@ -452,7 +452,7 @@
       </ul>
     </div>
 
-    <div class="main-container container" id="main-container">
+    <div class="main-container container" id="main-container" ng-cloak>
 
       <!-- Content -->
       <div class="row">
@@ -508,7 +508,7 @@
                       <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
                       </a>-->
-                      <div class="fb-share-button" data-href="{{news.share}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                      <div class="fb-share-button" data-href="{{news.link}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                       <!--<a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
                       </a>-->

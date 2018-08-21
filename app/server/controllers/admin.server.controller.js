@@ -124,7 +124,6 @@ exports.getPost = function(req,res){
 }
 
 exports.newPost = function(req,res){	
-	console.log(req.user)
 	if(req.user) {
 		var model = req.model;	
 		var newsId = genHash();
