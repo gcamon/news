@@ -50,17 +50,6 @@ exports.read = function(req,res){
 
 exports.renderSingle = function(req,res){
 	var model = req.model;
-
-	model.news.find({deleted: false, verified: true, status: "complete"})
-	.exec(function(err, data){
-		for(var i = 0; i < data.length; i++){
-			data[i].link = "https://wobinews.com" + data[i].path;
-			data[i].save(function(err,info){
-				console.log("update saved!")
-			})
-		}
-	})
-
 	model.news.findOne({id: req.params.id},function(err,data){
 		res.render("single-post",{news: data});
 	})
