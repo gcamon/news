@@ -9,10 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="">
 
-  <meta property="og:url"           content="<%= news.link %>" />
+  <meta property="og:url"           content="<%= news.share %>" />
   <meta property="og:type"          content="<%= news.category %>" />
   <meta property="og:title"         content="<%= news.title %>" />
-  <meta property="og:description"   content="" />
+  <meta property="og:description"   content="Latest news online" />
   <meta property="og:image"         content="news.share_image_link" />
 
 
@@ -463,9 +463,6 @@
 
             <!-- standard post -->
             <article class="entry mb-0">
-              <div ng-if="" style="height: 300px">
-                <%= news.article %>
-              </div>
               <div class="single-post__entry-header entry__header">
                 <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--green">{{news.category}}</a>
                 <h1 class="single-post__entry-title">
@@ -510,7 +507,7 @@
                       <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
                         <i class="ui-facebook"></i>
                       </a>-->
-                      <div class="fb-share-button" data-href="{{news.link}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                      <div class="fb-share-button" data-href="{{news.share}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                       <!--<a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
                       </a>-->

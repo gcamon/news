@@ -57,7 +57,11 @@ exports.renderSingle = function(req,res){
 }
 
 exports.renderSharePage = function(req,res){
-	var model = req.model;
+	var s = req.url
+	var toArr = s.split("/")
+	var to = "/news/" + toArr[1] + toArr[2];
+	res.redirect(to)
+	/*var model = req.model;
 	model.news.findOne({id: req.params.id},function(err,data){
 		var idShare = req.url.split('/')
 		if(idShare[1] === 'share') {
@@ -66,7 +70,7 @@ exports.renderSharePage = function(req,res){
 			res.render("share-single-post",{news: data});
 		}
 		
-	})
+	})*/
 	
 }
 
