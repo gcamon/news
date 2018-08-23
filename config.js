@@ -49,7 +49,25 @@ var configuration = function (app,model) {
 	app.use(flash());		
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json());
-	app.use(multer({dest: './app/server/controllers/media'}).any());
+	/*app.use(multer({
+		dest: './app/server/controllers/media'}
+	).any());*/
+
+	var multer = require('multer');
+	
+
+	var storage = multer.diskStorage({
+	  destination: function (req, file, cb) {
+	    cb(null, './app/server/controllers/media')
+	  },
+	  filename: function (req, file, cb) {
+	    cb(null, Date.now() + Math.floor(Math.random() * 999).toString() + path.extname(file.originalname)) //Appending .jpg
+	  }
+	})
+
+	var upload = multer({ storage: storage });
+
+	app.use(upload.any())
 	
 	app.set('view engine', 'ejs');
 	app.set('views', __dirname + '/views');

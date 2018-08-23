@@ -52,9 +52,9 @@ exports.allMediaContent = function(req,res){
 
 exports.readMediaFile = function(req,res){	
 	var file = __dirname + "/media/" + req.params.file;
-	res.contentType("image/jpg");
-	res.sendFile(path.join(file))
-    //res.download(file); 
+	//res.contentType("image/jpg");
+	//res.sendFile(path.join(file))
+    res.download(file); 
 }
 
 
