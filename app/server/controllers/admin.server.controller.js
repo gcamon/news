@@ -43,7 +43,7 @@ exports.allMediaContent = function(req,res){
 		model.files.find({},function(err,files){
 			if(err) throw err;
 			res.json(files);
-		}).limit(200);
+		}).limit(500);
 	} else {
 		res.end("unauthorized access!");
 	}
