@@ -1,5 +1,8 @@
 
 var uuid = require("uuid");
+var path = require("path");
+
+
 //var model = require("../model")();
 
 exports.summernote = function(req,res){
@@ -47,13 +50,11 @@ exports.allMediaContent = function(req,res){
 }
 
 
-exports.readMediaFile = function(req,res){
-	if(req.user){
-		var file = __dirname + "/media/" + req.params.file;
-    res.download(file); 
-	} else {
-		res.end("unauthorized access!");
-	}
+exports.readMediaFile = function(req,res){	
+	var file = __dirname + "/media/" + req.params.file;
+	res.contentType("image/jpg");
+	res.sendFile(path.join(file))
+    //res.download(file); 
 }
 
 

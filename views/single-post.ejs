@@ -514,6 +514,10 @@
                          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
                       </div>
 
+                      <div style="padding: 5px 0 0 10px">
+                        <a href="{{whatsappShareLink}}" target="_blank" data-action="share/whatsapp/share" style="cursor: pointer;font-weight: 500;color: #fff;background-color: #85CE36;width: 14px;height: 14px;border-radius: 10%!important;padding: 3px 8px;font-size: 12px"><i class="ui-whatsapp" style=""></i> &nbsp;whatsapp</a>
+                      </div>
+
                       
                       <!--<a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
                         <i class="ui-twitter"></i>
@@ -598,6 +602,38 @@
 
                 </div>-->
               </div> <!-- end entry article wrap -->
+
+
+               <!-- Share -->
+                <div class="entry__share">
+                  <div class="sticky-col">
+                    <div class="socials socials--rounded socials--large">
+                      <!--<a class="social social-facebook" href="{{news.path}}"  data-layout="button_count" title="facebook share" aria-label="facebook">
+                        <i class="ui-facebook"></i>
+                      </a>-->
+                      <div class="fb-share-button" data-href="{{news.link}}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                      </div>
+                      <div style="padding: 8px 0 0 10px">
+                         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+                      </div>
+
+                      <div style="padding: 5px 0 0 10px">
+                        <a href="{{whatsappShareLink}}" target="_blank" data-action="share/whatsapp/share" style="cursor: pointer;font-weight: 500;color: #fff;background-color: #85CE36;width: 14px;height: 14px;border-radius: 10%!important;padding: 3px 8px;font-size: 12px"><i class="ui-whatsapp" style=""></i> &nbsp;whatsapp</a>
+                      </div>
+
+                      
+                      <!--<a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
+                        <i class="ui-twitter"></i>
+                      </a>-->
+                      <!--<a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
+                        <i class="ui-google"></i>
+                      </a>
+                      <a class="social social-pinterest" href="#" title="pinterest" target="_blank" aria-label="pinterest">
+                        <i class="ui-pinterest"></i>
+                      </a>-->
+                    </div>
+                  </div>                  
+                </div> <!-- share -->
               
 
               <!-- Newsletter Wide -->
@@ -878,7 +914,7 @@
                   <div class="post-list-small__img-holder">
                     <div class="thumb-container thumb-100">
                       <a href="{{cat.link}}">
-                        <img src="{{cat.main_image_link}}"  alt="" class="post-list-small__img--rounded lazyload"><!--src="/assets/img/empty.png"-->
+                        <img src="{{cat.main_image_link}}" style="max-width: 100%;height: auto" alt="" class="post-list-small__img--rounded lazyload"><!--src="/assets/img/empty.png"-->
                       </a>
                     </div>
                   </div>

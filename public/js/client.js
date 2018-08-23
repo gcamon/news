@@ -169,6 +169,7 @@
     news.get({id: id,title:title},function(data){
     	console.log(data);
     	$scope.news = data;
+    	$scope.whatsappShareLink = "https://web.whatsapp.com/send?text=" + data.link;
     });
 
     $scope.trustAsHtml = function(string) {
