@@ -593,15 +593,12 @@
     <script>
     jQuery(document).ready(function() {
         var editor = $('.summernote').summernote({
-            height: 350, // set editor height
+            height: 230, // set editor height
             minHeight: null, // set minimum height of editor
             maxHeight: null, // set maximum height of editor
-            focus: false // set focus to editable area after initializing summernote
+            focus: true // set focus to editable area after initializing summernote
         });
-        $('.inline-editor').summernote({
-            airMode: true
-        });
-
+        
         $("#status").hide(1000);  
 
         $("#postArt").click(function(){  

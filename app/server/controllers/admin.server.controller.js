@@ -43,7 +43,7 @@ exports.allMediaContent = function(req,res){
 		model.files.find({},function(err,files){
 			if(err) throw err;
 			res.json(files);
-		}).limit(200);										 // change to 500
+		}).limit(500);										 // change to 500
 	} else {
 		res.end("unauthorized access!");
 	}
@@ -53,12 +53,12 @@ exports.allMediaContent = function(req,res){
 exports.readMediaFile = function(req,res){	
 	var file = __dirname + "/media/" + req.params.file;
 	//res.contentType("image/jpg");
-	//res.sendFile(path.join(file))							// remember to remove req.user so that all people can view image
-	if(req.user) {
+	res.sendFile(path.join(file))							// remember to remove req.user so that all people can view image
+	/*if(req.user) {
     	res.download(file); 
 	} else {
 		res.end("unauthorized access")
-	}
+	}*/
 }
 
 

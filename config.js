@@ -53,7 +53,7 @@ var configuration = function (app,model) {
 		dest: './app/server/controllers/media'}
 	).any());*/
 
-	var multer = require('multer');
+	//var multer = require('multer');
 	
 
 	var storage = multer.diskStorage({
