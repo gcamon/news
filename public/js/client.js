@@ -343,7 +343,8 @@
 	}])
 	.controller("adminManageCtrl",["$scope","adminManageService","localManager",function($scope,adminManageService,localManager){
 		var news = adminManageService;
-
+		localManager.removeItem("newsItem");
+		localManager.removeItem("post");
 		$scope.loading = true
 		news.query(function(data){
 			$scope.loading = false;
