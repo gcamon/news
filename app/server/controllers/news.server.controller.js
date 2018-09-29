@@ -50,8 +50,16 @@ exports.read = function(req,res){
 
 exports.renderSingle = function(req,res){
 	var model = req.model;
-	model.news.findOne({id: req.params.id},function(err,data){
-		res.render("single-post",{news: data});
+	model.news.findOne({id: req.params.id},function(err,data){		
+
+		model.news.find({category: data.category,deleted:false,verified:true},
+			{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
+			if(err) throw err;
+			//data.related_articles = list;
+			//res.json(data);
+			res.render("single-post",{news: data,related_articles: list});
+		}).limit(8)
+		
 	})
 	
 }
@@ -97,7 +105,8 @@ exports.readSinglePost = function(req,res){
 		if(data){
 			data.views += 1;
 			data.save(function(err,info){});
-			model.news.find({category: data.category,deleted:false,verified:true},{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
+			model.news.find({category: data.category,deleted:false,verified:true},
+				{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
 				if(err) throw err;
 				data.related_articles = list;
 				res.json(data);
@@ -137,13 +146,14 @@ exports.readCategoryPosts = function(req,res){
 	var model = req.model;
 	var newsObj = {};
 	model.news.find({category: req.query.category,deleted: false, verified: true},{_id:0})
-	.limit(50)
+	.limit(10)
 	.sort('-pubDate')
 	.exec(function(err,data){
 		if(err) throw err;
 		newsObj.category = data
 		model.news.find({deleted:false,verified:true})
 		.sort('-pubDate')
+		.limit(10)
 		.exec(function(err,other){
 			if(err) throw err;
 			newsObj.other = other;

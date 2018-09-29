@@ -165,32 +165,31 @@
     var path = window.location.pathname;
     var spt = path.split('/');
     var id = spt[spt.length - 2];
-    var title = spt[spt.length - 1]
+    var title = spt[spt.length - 1];
     news.get({id: id,title:title},function(data){
     	console.log(data);
     	$scope.news = data;
     	$scope.whatsappShareLink = "https://web.whatsapp.com/send?text=" + data.link;
+    	var cat = categoryNewsService;
+			cat.get({category:$scope.news.category},function(data){
+				$scope.catList = data.category;
+			});
     });
 
     $scope.trustAsHtml = function(string) {
 		  return $sce.trustAsHtml(string);
 		};
 
-		var cat = categoryNewsService
-		cat.get({category:"Politics"},function(data){
-			$scope.catList = data.category;
-		})
-
-		$scope.postComment = function(){
+		$scope.postComment = function(_id){
 			var sendObj = {
-				id: $scope.news._id,
+				id: _id,
 				name: $scope.user.name,
 				message: $scope.user.message,
 				date: + new Date()
 			}
 
 			news.comment(sendObj,function(res){				
-				$scope.news.comments.push(res)				
+				$scope.news.comments.push(res);			
 			})
 		}
 	

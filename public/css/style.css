@@ -2364,9 +2364,9 @@ img.mfp-img {
 		border-bottom: 0; }
 
 .post-list-small__img-holder {
-	width: 88px;
+	width: 72px;
 	float: left;
-	border-radius: 50%;
+	border-radius: 2%;
 	overflow: hidden;
 	margin-right: 16px; }
 	@media only screen and (max-width: 575px) {
