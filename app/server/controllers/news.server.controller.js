@@ -81,7 +81,7 @@ function getCategoryData(req,res) {
 			
 			model.news.find({category:{$not: reg},deleted:false,verified:true})
 			.sort('-pubDate')
-			.limit(20)
+			.limit(25)
 			.exec(function(err,other){
 				if(err) throw err;
 				//newsObj.other = other;
