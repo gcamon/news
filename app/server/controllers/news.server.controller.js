@@ -62,8 +62,9 @@ function getCategoryData(req,res) {
 	var model = req.model;
 	//var newsObj = {};
 	var str = new RegExp(req.params.type.replace(/\s+/g,"\\s+"), "gi");  
+
 	model.news.find({category: { $regex: str, $options: 'i' } ,deleted: false, verified: true},{_id:0})
-	.limit(10)
+	.limit(12)
 	.sort('-pubDate')
 	.exec(function(err,data){
 		if(err) throw err;
@@ -74,10 +75,13 @@ function getCategoryData(req,res) {
 			var ans = firstLetter + sec;
 			
 			var reg = new RegExp(ans.replace(/\s+/g,"\\s+"), "gi");
+			for(var j = 0; j < data.length; j++){
+				data[j].article = strpHtml(data[j].article);
+			}
 			
 			model.news.find({category:{$not: reg},deleted:false,verified:true})
 			.sort('-pubDate')
-			.limit(12)
+			.limit(20)
 			.exec(function(err,other){
 				if(err) throw err;
 				//newsObj.other = other;
@@ -89,6 +93,13 @@ function getCategoryData(req,res) {
 			res.render("404");
 		}
 	})
+}
+
+function strpHtml(str) {
+	var regex = /(<([^>]+)>)/ig;
+	var body = str;
+	var result = body.replace(regex, "");
+	return result;
 }
 
 exports.renderSingle = function(req,res){

@@ -490,10 +490,10 @@
                       </li>
                     </ul>
                   </div>        
-                  <div class="entry__excerpt" style="">
-                    <p style="word-wrap: break-word;color: grey"> <%- news[i].article.substring(0, 120) + "..." %> 
+                  <p class="entry__excerpt" style="">
+                    <a href="<%= news[i].path %>" style="word-wrap: break-word;color: grey"> <%= news[i].article.substring(0, 280) + "..." %> 
+                  </a>
                   </p>
-                  </div>
                 </div>
               </article>
 
