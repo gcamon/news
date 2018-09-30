@@ -41,7 +41,7 @@
 
 </head>
 
-<body class="bg-light style-default style-rounded" ng-controller="categoryCtlr">
+<body class="bg-light style-default style-rounded" > <!-- ng-controller="categoryCtlr" -->
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -443,7 +443,7 @@
     <div class="container">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a href="" class="breadcrumbs__url"><h3>{{catList[0].category}}</h3></a>
+          <a href="" class="breadcrumbs__url"><h3><%= type %></h3></a>
         </li>
         <!--<li class="breadcrumbs__item">
           <a href="index-2.html" class="breadcrumbs__url">News</a>
@@ -465,10 +465,12 @@
           <h1 class="page-title"></h1>
 
           <div class="row card-row">
-            <div class="col-md-12" ng-repeat="news in catList | orderBy: '-pubDate'">
+           <% for(var i = 0; i < news.length; i++) { %>
+            <div class="col-md-12"> <!-- ng-repeat="news in catList | orderBy: '-pubDate'" -->
+             
                <article class="entry card post-list" >
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{news.main_image_link}})">
-                  <a href="{{news.path}}" class="thumb-url"></a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url('<%= news[i].main_image_link %>')">
+                  <a href="<%= news[i].path %>" class="thumb-url"></a>
                   <img src="/assets/img/content/list/list_post_6.jpg" alt="" class="entry__img d-none">
                   <!--<a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--cyan">{{news.category}}</a>-->
                 </div>
@@ -476,7 +478,7 @@
                 <div class="entry__body post-list__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{news.path}}">{{news.title}}</a>
+                      <a href="<%= news[i].path %>"><%= news[i].title %></a>
                     </h2>
                     <ul class="entry__meta">
                       <!--<li class="entry__meta-author">
@@ -484,16 +486,18 @@
                         <a href="#">{{news.reporter_name}}</a>
                       </li>-->
                       <li class="entry__meta-date">
-                        {{news.pubDate | date : "fullDate"}}
+                        <%= moment(news[i].pubDate).format('LL') %> 
                       </li>
                     </ul>
                   </div>        
-                 <!-- <div class="entry__excerpt ellipsis">
-                    <p data-ng-bind-html="trustAsHtml(news.article | cut: true: 250: '<b>  ...</b>')"></p>
-                  </div>
-                </div>-->
+                  <a href="<%= news[i].path %>" class="entry__excerpt" style="display: block;">
+                    <p style="word-wrap: break-word;"><%- news[i].article.substring(0, 280) + "..." %></p>
+                  </a> <!-- data-ng-bind-html="trustAsHtml(news.article | cut: true: 280: '<b>  ...</b>')"-->
+                </div>
               </article>
+
             </div>
+            <% } %>
           </div>
         
 
@@ -514,18 +518,19 @@
           <aside class="widget widget-popular-posts">
             <h4 class="widget-title">Top stories</h4>
             <ul class="post-list-small">
-              <li class="post-list-small__item" ng-repeat="i in stories" ng-if="i.category !== pageType">
+            <% for(var i = 0; i < other.length; i++) { %>
+              <li class="post-list-small__item" ><!-- ng-repeat="i in stories" ng-if="i.category !== pageType" -->
                 <article class="post-list-small__entry clearfix">
                   <div class="post-list-small__img-holder">
                     <div class="thumb-container thumb-100">
-                      <a href="{{i.path}}">
-                        <img data-src="{{i.main_image_link}}"  alt="" class=" lazyload">
+                      <a href="<%= other[i].path %>">
+                        <img data-src="<%= other[i].main_image_link %>"  alt="" class=" lazyload">
                       </a>
                     </div>
                   </div>
                   <div class="post-list-small__body">
                     <h3 class="post-list-small__entry-title">
-                      <a href="{{i.path}}">{{i.title}}</a>
+                      <a href="<%= other[i].path %>"><%= other[i].title %></a>
                     </h3>
                     <ul class="entry__meta">
                       <!--<li class="entry__meta-author">
@@ -533,12 +538,13 @@
                         <a href="">{{i.reporter_name}}</a>
                       </li>-->
                       <li class="entry__meta-date">
-                        {{i.pubDate | date: 'fullDate'}}
+                        <%= moment(other[i].pubDate).format('LL') %> 
                       </li>
                     </ul>
                   </div>                  
                 </article>
               </li>
+              <% } %>
               <!--<li class="post-list-small__item">
                 <article class="post-list-small__entry clearfix">
                   <div class="post-list-small__img-holder">

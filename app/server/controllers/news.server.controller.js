@@ -2,13 +2,15 @@
 
 var http = require('http');
 
+var moment = require("moment");
+
 var uuid = require("uuid");
 var url;
 
 
 exports.read = function(req,res){
 
-	switch (req.params.type) {
+	/*switch (req.params.type) {
 		case "politics":
 			res.render('categories');
 		break;
@@ -44,8 +46,48 @@ exports.read = function(req,res){
 		default:
 		  res.render('index');
 		break
+	}*/
+
+	if(!req.params.type) {
+		//getHomeData(req);
+		res.render("index")
+	} else {
+		getCategoryData(req,res);
 	}
 	
+}
+
+function getCategoryData(req,res) {
+	var model = req.model;
+	//var newsObj = {};
+	var str = new RegExp(req.params.type.replace(/\s+/g,"\\s+"), "gi");  
+	model.news.find({category: { $regex: str, $options: 'i' } ,deleted: false, verified: true},{_id:0})
+	.limit(10)
+	.sort('-pubDate')
+	.exec(function(err,data){
+		if(err) throw err;
+		if(data) {
+			//newsObj.category = data; db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
+			var firstLetter = req.params.type.substring(0,1).toUpperCase();
+			var sec = req.params.type.substring(1)
+			var ans = firstLetter + sec;
+			
+			var reg = new RegExp(ans.replace(/\s+/g,"\\s+"), "gi");
+			
+			model.news.find({category:{$not: reg},deleted:false,verified:true})
+			.sort('-pubDate')
+			.limit(12)
+			.exec(function(err,other){
+				if(err) throw err;
+				//newsObj.other = other;
+				//res.json(newsObj);
+				console.log(other);
+				res.render('categories',{news: data, other: other,type: req.params.type,moment: moment});
+			})	
+		}	else {
+			res.render("404");
+		}
+	})
 }
 
 exports.renderSingle = function(req,res){
@@ -57,9 +99,9 @@ exports.renderSingle = function(req,res){
 			if(err) throw err;
 			//data.related_articles = list;
 			//res.json(data);
-			res.render("single-post",{news: data,related_articles: list});
+			res.render("single-post",{news: data,related_articles: list,moment: moment});
 		}).limit(8)
-		
+
 	})
 	
 }
@@ -87,7 +129,7 @@ exports.renderSharePage = function(req,res){
 exports.readAll = function(req,res){
 	var model = req.model;
 	model.news.find({verified:true,deleted: false})
-	.limit(50)
+	.limit(15)
 	.sort("-pubDate")
 	.exec(function(err,data){
 		if(err) throw err;
