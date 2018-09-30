@@ -58,6 +58,7 @@ exports.read = function(req,res){
 }
 
 function getCategoryData(req,res) {
+
 	var model = req.model;
 	//var newsObj = {};
 	var str = new RegExp(req.params.type.replace(/\s+/g,"\\s+"), "gi");  
@@ -66,7 +67,7 @@ function getCategoryData(req,res) {
 	.sort('-pubDate')
 	.exec(function(err,data){
 		if(err) throw err;
-		if(data) {
+		if(data.length > 0) {
 			//newsObj.category = data; db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 			var firstLetter = req.params.type.substring(0,1).toUpperCase();
 			var sec = req.params.type.substring(1)
@@ -92,15 +93,20 @@ function getCategoryData(req,res) {
 
 exports.renderSingle = function(req,res){
 	var model = req.model;
-	model.news.findOne({id: req.params.id},function(err,data){		
+	var toArr = req.url.split("/");
 
-		model.news.find({category: data.category,deleted:false,verified:true},
-			{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
-			if(err) throw err;
-			//data.related_articles = list;
-			//res.json(data);
-			res.render("single-post",{news: data,related_articles: list,moment: moment});
-		}).limit(8)
+	model.news.findOne({id: toArr[2]},function(err,data){	
+		if(data) {
+			model.news.find({category: data.category,deleted:false,verified:true},
+				{_id:0,title:1,link:1,main_image_link:1,path:1},function(err,list){
+				if(err) throw err;
+				//data.related_articles = list;
+				//res.json(data);
+				res.render("single-post",{news: data,related_articles: list,moment: moment});
+			}).limit(8)
+		} else {
+			res.render("404");
+		}
 
 	})
 	
