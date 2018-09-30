@@ -82,7 +82,7 @@ function getCategoryData(req,res) {
 				//newsObj.other = other;
 				//res.json(newsObj);
 				console.log(other);
-				res.render('categories',{news: data, other: other,type: req.params.type,moment: moment});
+				res.render('categories',{news: data, other: other,type: ans,moment: moment});
 			})	
 		}	else {
 			res.render("404");

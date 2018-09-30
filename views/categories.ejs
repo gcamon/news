@@ -490,9 +490,9 @@
                       </li>
                     </ul>
                   </div>        
-                  <a href="<%= news[i].path %>" class="entry__excerpt" style="display: block;">
-                    <p style="word-wrap: break-word;"><%- news[i].article.substring(0, 280) + "..." %></p>
-                  </a> 
+                  <p class="entry__excerpt" style="display: block;">
+                    <a href="<%= news[i].path %>" style="word-wrap: break-word;color: grey"> <%- news[i].article.substring(0, 280) %> </a>
+                  </p>
                 </div>
               </article>
 
