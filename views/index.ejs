@@ -44,7 +44,7 @@
 
 </head>
 
-<body class="bg-light style-default style-rounded" ng-controller="homeCtlr">
+<body class="bg-light style-default style-rounded" > <!-- ng-controller="homeCtlr" -->
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -447,9 +447,11 @@
         Newspipe</span>
         <div class="newsticker">
           <ul class="newsticker__list">
-            <li class="newsticker__item" ng-repeat="i in all"><a href="{{i.path}}" class="newsticker__item-url" ><b>{{i.title}}</b></a></li>
+            <% for(var j = 0; j < news.length; j++) { %>
+            <li class="newsticker__item" ><a href="<%= news[j].path %>" class="newsticker__item-url" ><b><%= news[j].title %></b></a></li> 
+            <% } %>
             <!--<li class="newsticker__item"><a href="single-post-1.html" class="newsticker__item-url">Satelite cost tens of millions or even hundreds of millions of dollars to build</a></li>
-            <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">8 Hidden Costs of Starting and Running a Business</a></li> -->        
+            <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">8 Hidden Costs of Starting and Running a Business</a></li>    ng-repeat="i in all"-->        
           </ul>
         </div>
         <div class="newsticker-buttons">
@@ -469,15 +471,15 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[0].main_image_link}})">
-                  <a href="{{part1[0].path}}" class="thumb-url"></a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url('<%= news[0].main_image_link %>')">
+                  <a href="<%= news[0].path %>" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
-                  <a href="{{part1[0].path}}" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[0].category}}</a>
+                  <a href="<%= news[0].path %>" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= news[0].category %></a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="{{part1[0].path}}">{{part1[0].title}}</a>
+                    <a href="<%= news[0].path %>"><%= news[0].title %></a>
                   </h2>
                   <ul class="entry__meta">
                     <!--<li class="entry__meta-author">
@@ -485,7 +487,7 @@
                       <a href="#">{{part1[0].reporter_name}}</a>
                     </li>-->
                     <li class="entry__meta-date">
-                      {{part1[0].pubDate | date: 'fullDate'}}
+                      <%=  moment(news[0].pubDate).format('LL') %>
                     </li>              
                   </ul>
                   <!--<div class="">
@@ -498,15 +500,15 @@
             <!-- Small post -->
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[1].main_image_link}})">
-                  <a href="{{part1[1].path}}" class="thumb-url"></a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url('<%= news[1].main_image_link %>')">
+                  <a href="<%= news[1].path %>" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
-                  <a href="{{part1[1].path}}" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[1].category}}</a>
+                  <a href="<%= news[1].path %>" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= news[1].category %></a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="{{part1[1].path}}">{{part1[1].title}}</a>
+                    <a href="<%= news[1].path %>"><%= news[1].title %></a>
                   </h2>
                   <ul class="entry__meta">
                     <!--<li class="entry__meta-author">
@@ -514,7 +516,7 @@
                       <a href="">{{part1[1].reporter_name}}</a>
                     </li>-->
                     <li class="entry__meta-date">
-                      {{part1[1].pubDate | date: 'fullDate'}}
+                      <%=  moment(news[1].pubDate).format('LL') %>
                     </li>              
                   </ul>
                   <!--<div class="">
@@ -526,15 +528,15 @@
 
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
               <article class="entry card post-list featured-posts-grid__entry">
-                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{part1[2].main_image_link}})">
-                  <a href="{{part1[2].path}}" class="thumb-url"></a>
+                <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url('<%= news[2].main_image_link %>')">
+                  <a href="<%= news[2].path %>" class="thumb-url"></a>
                   <img src="" alt="" class="entry__img d-none">
-                  <a href="{{part1[2].path}}" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{part1[2].category}}</a>
+                  <a href="<%= news[2].path %>" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= news[2].category %></a>
                 </div>
 
                 <div class="entry__body post-list__body card__body">  
                   <h2 class="entry__title">
-                    <a href="{{part1[2].path}}">{{part1[2].title}}</a>
+                    <a href="<%= news[2].path %>"><%= news[2].title %></a>
                   </h2>
                   <ul class="entry__meta">
                     <!--<li class="entry__meta-author">
@@ -542,7 +544,7 @@
                       <a href="">{{part1[2].reporter_name}}</a>
                     </li>-->
                     <li class="entry__meta-date">
-                      {{part1[2].pubDate | date: 'fullDate'}}
+                      <%=  moment(news[2].pubDate).format('LL') %>
                     </li>              
                   </ul>
                   <!--<div class="">
@@ -561,15 +563,15 @@
             <div class="featured-posts-grid__item featured-posts-grid__item--lg">
               <article class="entry card featured-posts-grid__entry">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{part1[3].path}}">
-                    <img src="{{part1[3].main_image_link}}" alt="" class="entry__img">
+                  <a href="<%= news[3].path %>">
+                    <img src="<%= news[3].main_image_link %>" alt="" class="entry__img">
                   </a>
-                  <a href="{{part1[3].path}}" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">{{part1[3].category}}</a>
+                  <a href="<%= news[3].path %>" style="color:#fff" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green"><%= news[3].category %></a>
                 </div>
 
                 <div class="entry__body card__body">   
                   <h2 class="entry__title">
-                    <a href="{{part1[3].path}}">{{part1[3].title}}</a>
+                    <a href="<%= news[3].path %>"><%= news[3].title %></a>
                   </h2>
                   <ul class="entry__meta">
                     <!--<li class="entry__meta-author">
@@ -577,7 +579,7 @@
                       <a href="">{{part1[3].reporter_name}}</a>
                     </li>-->
                     <li class="entry__meta-date">
-                      {{part1[3].pubDate | date: 'fullDate'}}
+                      <%=  moment(news[3].pubDate).format('LL') %>
                     </li>              
                   </ul>
                    <!--<div>
@@ -596,6 +598,909 @@
     <div class="main-container container pt-24" id="main-container">         
 
       <!-- Content design block 2  goes here-->
+      <div class="row">
+
+        <!-- Posts -->
+        <div class="col-lg-8 blog__content">
+          
+          <!-- Latest News -->
+          <section class="section tab-post mb-16">
+            <div class="title-wrap title-wrap--line">
+              <h3 class="section-title">Latest News</h3>
+
+              <div class="tabs tab-post__tabs"> 
+                <ul class="tabs__list">
+                  <li class="tabs__item tabs__item--active">
+                    <a href="#tab-all" class="tabs__trigger" style="padding: 10px;background-color: #fff;">1</a>
+                  </li>
+                  <li class="tabs__item">
+                    <a href="#tab-world" class="tabs__trigger" style="padding: 10px;background-color: #fff;">2</a>
+                  </li>
+                  <li class="tabs__item">
+                    <a href="#tab-lifestyle" class="tabs__trigger" style="padding: 10px;background-color: #fff;">3</a>
+                  </li>
+                  <li class="tabs__item">
+                    <a href="#tab-business" class="tabs__trigger" style="padding: 10px;background-color: #fff;">4</a>
+                  </li>
+                  <li class="tabs__item">
+                    <a href="#tab-fashion" class="tabs__trigger" style="padding: 10px;background-color: #fff;">5</a>
+                  </li>
+                </ul> <!-- end tabs -->
+              </div>
+            </div>
+
+            <!-- tab content -->
+            <div class="tabs__content tabs__content-trigger tab-post__tabs-content">
+              
+              <div class="tabs__content-pane tabs__content-pane--active" id="tab-all">
+                <div class="row card-row">
+                <% for(var j = 4; j < 8; j++) { %>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="<%= (news[j]) ? news[j].path : '' %>">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="<%= (news[j]) ? news[j].main_image_link : '' %>" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= (news[j]) ? news[j].category : '' %></a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="<%= (news[j]) ? news[j].path : '' %>"><%= (news[j]) ? news[j].title : '' %></a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <!--<li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>-->
+                            <li class="entry__meta-date">
+                               <%= (news[j]) ? moment(news[j].pubDate).format('LL') : '' %>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                <% } %>
+                  <!--<div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_3.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">mining</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>-->
+                </div>
+              </div> <!-- end pane 1 -->
+
+              <div class="tabs__content-pane" id="tab-world">
+                <div class="row card-row">
+                 <% for(var j = 8; j < 12; j++) { %>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="<%= (news[j]) ? news[j].path : '' %>">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="<%= (news[j]) ? news[j].main_image_link : '' %>" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= (news[j]) ? news[j].category : '' %></a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="<%= (news[j]) ? news[j].path : '' %>"><%= (news[j]) ? news[j].title : '' %></a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <!--<li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>-->
+                            <li class="entry__meta-date">
+                               <%= (news[j]) ? moment(news[j].pubDate).format('LL') : '' %>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>Latest news online</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                <% } %>
+                  <!--<div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_1.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">world</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>-->               
+                </div>
+              </div> <!-- end pane 2 -->
+
+              <div class="tabs__content-pane" id="tab-lifestyle">
+                <div class="row card-row">
+                 <% for(var j = 12; j < 16; j++) { %>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="<%= (news[j]) ? news[j].path : '' %>">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="<%= (news[j]) ? news[j].main_image_link : '' %>" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= (news[j]) ? news[j].category : '' %></a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="<%= (news[j]) ? news[j].path : '' %>"><%= (news[j]) ? news[j].title : '' %></a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <!--<li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>-->
+                            <li class="entry__meta-date">
+                               <%= (news[j]) ? moment(news[j].pubDate).format('LL') : '' %>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>Latest News Online</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                <% } %>
+                  <!--<div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_3.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">mining</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>-->
+                </div>
+              </div> <!-- end pane 3 -->
+
+              <div class="tabs__content-pane" id="tab-business">
+                <div class="row card-row">
+                  <% for(var j = 16; j < 20; j++) { %>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="<%= (news[j]) ? news[j].path : '' %>">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="<%= (news[j]) ? news[j].main_image_link : '' %>" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= (news[j]) ? news[j].category : '' %></a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="<%= (news[j]) ? news[j].path : '' %>"><%= (news[j]) ? news[j].title : '' %></a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <!--<li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>-->
+                            <li class="entry__meta-date">
+                               <%= (news[j]) ? moment(news[j].pubDate).format('LL') : '' %>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>Latest News Online</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                <% } %>
+                  <!--<div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_1.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">world</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div> -->               
+                </div>
+              </div> <!-- end pane 4 -->
+
+              <div class="tabs__content-pane" id="tab-fashion">
+                <div class="row card-row">
+                 <% for(var j = 20; j < 24; j++) { %>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="<%= (news[j]) ? news[j].path : '' %>">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="<%= (news[j]) ? news[j].main_image_link : '' %>" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet"><%= (news[j]) ? news[j].category : '' %></a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="<%= (news[j]) ? news[j].path : '' %>"><%= (news[j]) ? news[j].title : '' %></a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <!--<li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>-->
+                            <li class="entry__meta-date">
+                               <%= (news[j]) ? moment(news[j].pubDate).format('LL') : '' %>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>Latest News Online</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                <% } %>
+                  <!--<div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_2.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">fashion</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">3 Things You Can Do to Get Your Customers Talking About Your Business</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_3.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">mining</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="entry card">
+                      <div class="entry__img-holder card__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-70">
+                            <img data-src="/assets/img/content/grid/grid_post_4.jpg" src="/assets/img/empty.png" class="entry__img lazyload" alt="" />
+                          </div>
+                        </a>
+                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">lifestyle</a>
+                      </div>
+
+                      <div class="entry__body card__body">
+                        <div class="entry__header">
+                          
+                          <h2 class="entry__title">
+                            <a href="single-post.html">10 Horrible Habits You're Doing Right Now That Are Draining Your Energy</a>
+                          </h2>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                              <span>by</span>
+                              <a href="#">junniepat</a>
+                            </li>
+                            <li class="entry__meta-date">
+                              Jan 21, 2018
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                          <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>-->
+                </div>
+              </div> <!-- end pane 5 -->
+            </div> <!-- end tab content -->            
+          </section> <!-- end latest news -->
+
+        </div> <!-- end posts -->
+
+        <!-- Sidebar -->
+        <aside class="col-lg-4 sidebar sidebar--right">
+
+          <!-- Widget Popular Posts -->
+          <!--<aside class="widget widget-popular-posts">
+            <h4 class="widget-title">Popular Posts</h4>
+            <ul class="post-list-small">
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-100">
+                      <a href="single-post.html">
+                        <img data-src="/assets/img/content/post_small/post_small_1.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-author">
+                        <span>by</span>
+                        <a href="#">junniepat</a>
+                      </li>
+                      <li class="entry__meta-date">
+                        Jan 21, 2018
+                      </li>
+                    </ul>
+                  </div>                  
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-100">
+                      <a href="single-post.html">
+                        <img data-src="/assets/img/content/post_small/post_small_2.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-author">
+                        <span>by</span>
+                        <a href="#">junniepat</a>
+                      </li>
+                      <li class="entry__meta-date">
+                        Jan 21, 2018
+                      </li>
+                    </ul>
+                  </div>                  
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-100">
+                      <a href="single-post.html">
+                        <img data-src="/assets/img/content/post_small/post_small_3.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">June in Africa: Taxi wars, smarter cities and increased investments</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-author">
+                        <span>by</span>
+                        <a href="#">junniepat</a>
+                      </li>
+                      <li class="entry__meta-date">
+                        Jan 21, 2018
+                      </li>
+                    </ul>
+                  </div>                  
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-100">
+                      <a href="single-post.html">
+                        <img data-src="/assets/img/content/post_small/post_small_4.jpg" src="/assets/img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">PUBG Desert Map Finally Revealed, Here Are All The Details</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-author">
+                        <span>by</span>
+                        <a href="#">junniepat</a>
+                      </li>
+                      <li class="entry__meta-date">
+                        Jan 21, 2018
+                      </li>
+                    </ul>
+                  </div>                  
+                </article>
+              </li>
+            </ul>           
+          </aside> <!-- end widget popular posts -->
+
+          <!-- Widget Newsletter -->
+          <aside class="widget widget_mc4wp_form_widget">
+            <h4 class="widget-title">Newsletter</h4>
+            <p class="newsletter__text">
+              <i class="ui-email newsletter__icon"></i>
+              Subscribe for our daily news
+            </p>
+            <form class="mc4wp-form" method="post">
+              <div class="mc4wp-form-fields">
+                <div class="form-group">
+                  <input type="email" name="EMAIL" placeholder="Your email" required="">
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="btn btn-lg btn-color" value="Sign Up">
+                </div>
+              </div>
+            </form>
+          </aside> <!-- end widget newsletter -->
+
+          <!-- Widget Socials -->
+          <aside class="widget widget-socials">
+            <h4 class="widget-title">Let's hang out on social</h4>
+            <div class="socials socials--wide socials--large">
+              <div class="row row-16">
+                <div class="col">
+                  <a class="social social-facebook" href="https://www.facebook.com/wobinews1/" title="facebook" target="_blank" aria-label="facebook">
+                    <i class="ui-facebook"></i>
+                    <span class="social__text">Facebook</span>
+                  </a><!--
+                  --><a class="social social-twitter" href="https://twitter.com/wobinews" title="twitter" target="_blank" aria-label="twitter">
+                    <i class="ui-twitter"></i>
+                    <span class="social__text">Twitter</span>
+                  </a>
+                  <a class="social social-instagram" href="https://www.instagram.com/wobinews/" title="instagram" target="_blank" aria-label="instagram">
+                    <i class="ui-instagram"></i>
+                    <span class="social__text">Instagram</span>
+                  </a><!--
+                  <a class="social social-youtube" href="#" title="youtube" target="_blank" aria-label="youtube">
+                    <i class="ui-youtube"></i>
+                    <span class="social__text">Youtube</span>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
+                    <i class="ui-google"></i>
+                    <span class="social__text">Google+</span>
+                  </a><!--
+                  <!--
+                    <a class="social social-rss" href="#" title="rss" target="_blank" aria-label="rss">
+                    <i class="ui-rss"></i>
+                    <span class="social__text">Rss</span>
+                  </a>-->
+                </div>                
+              </div>            
+            </div>
+          </aside> <!-- end widget socials -->
+
+        </aside> <!-- end sidebar -->
+  
+      </div> 
       
       <!-- end of content design block 2 -->
 
@@ -620,6 +1525,304 @@
 
       <!-- Posts from categories content design block goes here-->
 
+       <section class="section mb-0">
+        <div class="row">
+
+          <!-- Technology -->
+          <div class="col-md-6">
+            <div class="title-wrap title-wrap--line">
+              <h3 class="section-title"><%= (news[26]) ? news[j].category : '' %></h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <article class="entry thumb thumb--size-2">
+                  <div class="entry__img-holder thumb__img-holder" style="background-image: url('<%= (news[26]) ? news[j].main_image_link : '' %>');">
+                    <div class="bottom-gradient"></div>
+                    <div class="thumb-text-holder thumb-text-holder--1">   
+                      <h2 class="thumb-entry-title">
+                        <a href="<%= (news[26]) ? news[j].path : '' %>"> <%= (news[26]) ? news[j].title : '' %> </a>
+                      </h2>
+                      <ul class="entry__meta">
+                        <!--<li class="entry__meta-author">
+                          <span>by</span>
+                          <a href="#">junniepat</a>
+                        </li>-->
+                        <li class="entry__meta-date">
+                           <%= (news[26]) ? moment(news[j].pubDate).format('LL') : '' %>
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="<%= (news[26]) ? news[j].path : '' %>" class="thumb-url"></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
+                <% for(var k = 27; k < 31; k++) { %>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="<%= (news[k]) ? news[k].path : '' %>"> <%= (news[k]) ? news[k].title : '' %></a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                <% } %>
+                  <!--<li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">Here Are Ways You Can Earn From the Sharing Economy</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">19 Crazy Facts You Probably Didn't Know About Google</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">What Household Chores Would Filipinos Love to Assign to Robots?</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>-->
+                </ul>
+              </div>
+            </div>            
+          </div> <!-- end technology -->
+
+          <!-- Travel -->
+          <div class="col-md-6">
+            <div class="title-wrap title-wrap--line">
+              <h3 class="section-title"><%= (news[32]) ? news[32].category : '' %></h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <article class="entry thumb thumb--size-2">
+                  <div class="entry__img-holder thumb__img-holder" style="background-image: url('<%= (news[32]) ? news[32].main_image_link : '' %>');">
+                    <div class="bottom-gradient"></div>
+                    <div class="thumb-text-holder thumb-text-holder--1">   
+                      <h2 class="thumb-entry-title">
+                        <a href="<%= (news[32]) ? news[32].path : '' %>"><%= (news[32]) ? news[32].title : '' %></a>
+                      </h2>
+                      <ul class="entry__meta">
+                        <!--<li class="entry__meta-author">
+                          <span>by</span>
+                          <a href="#">junniepat</a>
+                        </li>-->
+                        <li class="entry__meta-date">
+                           <%= (news[32]) ? moment(news[32].pubDate).format('LL') : '' %>
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="<%= (news[32]) ? news[32].path : '' %>" class="thumb-url"></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
+                  <% for(var k = 33; k < 37; k++) { %>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="<%= (news[k]) ? news[k].path : '' %>"> <%= (news[k]) ? news[k].title : '' %></a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                <% } %>
+                  <!--<li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">Here Are Ways You Can Earn From the Sharing Economy</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">19 Crazy Facts You Probably Didn't Know About Google</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">What Household Chores Would Filipinos Love to Assign to Robots?</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>-->
+                </ul>
+              </div>
+            </div>            
+          </div> <!-- end travel -->
+
+          <!-- Cryptocurrency -->
+          <div class="col-md-6">
+            <div class="title-wrap title-wrap--line">
+              <h3 class="section-title"><%= (news[38]) ? news[38].category : '' %></h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <article class="entry thumb thumb--size-2">
+                  <div class="entry__img-holder thumb__img-holder" style="background-image: url('<%= (news[38]) ? news[38].main_image_link : '' %>');">
+                    <div class="bottom-gradient"></div>
+                    <div class="thumb-text-holder thumb-text-holder--1">   
+                      <h2 class="thumb-entry-title">
+                        <a href="<%= (news[38]) ? news[38].path : '' %>"><%= (news[38]) ? news[38].title : '' %></a>
+                      </h2>
+                      <ul class="entry__meta">
+                        <!--<li class="entry__meta-author">
+                          <span>by</span>
+                          <a href="#">junniepat</a>
+                        </li>-->
+                        <li class="entry__meta-date">
+                         <%= (news[38]) ? moment(news[38].pubDate).format('LL') : '' %>
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="single-post.html" class="thumb-url"></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
+                <% for(var k = 39; k < 43; k++) { %>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="<%= (news[k]) ? news[k].path : '' %>"> <%= (news[k]) ? news[k].title : '' %></a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                <% } %>
+                  <!--<li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">Here Are Ways You Can Earn From the Sharing Economy</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">19 Crazy Facts You Probably Didn't Know About Google</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">What Household Chores Would Filipinos Love to Assign to Robots?</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>-->
+                </ul>
+              </div>
+            </div>            
+          </div> <!-- end cryptocurrency -->
+
+          <!-- Investment -->
+          <div class="col-md-6">
+            <div class="title-wrap title-wrap--line">
+              <h3 class="section-title"><%= (news[44]) ? news[44].category : '' %></h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <article class="entry thumb thumb--size-2">
+                  <div class="entry__img-holder thumb__img-holder" style="background-image: url('<%= (news[44]) ? news[44].category : '' %>');">
+                    <div class="bottom-gradient"></div>
+                    <div class="thumb-text-holder thumb-text-holder--1">   
+                      <h2 class="thumb-entry-title">
+                        <a href="<%= (news[44]) ? news[44].path : '' %>"><%= (news[44]) ? news[44].title : '' %></a>
+                      </h2>
+                      <ul class="entry__meta">
+                        <!--<li class="entry__meta-author">
+                          <span>by</span>
+                          <a href="#">junniepat</a>
+                        </li>-->
+                        <li class="entry__meta-date">
+                          <%= (news[44]) ? moment(news[44].pubDate).format('LL') : '' %>
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="single-post.html" class="thumb-url"></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
+                <% for(var k = 45; k < 49; k++) { %>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="<%= (news[k]) ? news[k].path : '' %>"> <%= (news[k]) ? news[k].title : '' %></a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                <% } %>
+                  <!--<li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">Here Are Ways You Can Earn From the Sharing Economy</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">19 Crazy Facts You Probably Didn't Know About Google</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>
+                  <li class="post-list-small__item">
+                    <article class="post-list-small__entry">
+                      <div class="post-list-small__body">
+                        <h3 class="post-list-small__entry-title">
+                          <a href="single-post.html">What Household Chores Would Filipinos Love to Assign to Robots?</a>
+                        </h3>
+                      </div>                  
+                    </article>
+                  </li>-->
+                </ul>
+              </div>
+            </div>            
+          </div> <!-- end investment -->
+
+        </div>                
+      </section> <!-- end posts from categories -->
+
 
       <!-- end of content design block 4 -->
      
@@ -638,10 +1841,10 @@
         <div class="col-lg-8 blog__content mb-72">
 
           <!-- Worldwide News -->
-          <section class="section">
+          <!--<section class="section">
             <div class="title-wrap title-wrap--line">
               <h3 class="section-title">Latest News</h3>
-              <!--<a href="#" class="all-posts-url">View All</a>-->
+              
             </div>
 
             <article class="entry card post-list" ng-repeat="item in others">
@@ -657,160 +1860,22 @@
                     <a href="{{item.path}}">{{item.title}}</a>
                   </h2>
                   <ul class="entry__meta">
-                    <!--<li class="entry__meta-author">
+                    <li class="entry__meta-author">
                       <span>by</span>
                       <a href="#">{{item.reporter_name}}</a>
-                    </li>-->
+                    </li>
                     <li class="entry__meta-date">
                       {{item.pubDate | date: 'fullDate'}}
                     </li>
                   </ul>
                 </div>        
-                <!--<div class="entry__excerpt">
+                <div class="entry__excerpt">
                     <span style="display: inline-block;" data-ng-bind-html="trustAsHtml(item.article | cut: true: 150: '<b>  ...</b>')"></span> <a href="{{item.path}}" class="text-danger">&nbsp;<b>Read</b></a>
-                </div>-->
-              </div>
-            </article>
-
-            <!--<article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_2.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_2.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">Fashion</a>
-              </div>
-
-              <div class="entry__body post-list__body card__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">This Co-Working Space is a One-Stop Shop</a>
-                  </h2>
-                  <ul class="entry__meta">
-                    <li class="entry__meta-author">
-                      <span>by</span>
-                      <a href="#">junniepat</a>
-                    </li>
-                    <li class="entry__meta-date">
-                      Jan 21, 2018
-                    </li>
-                  </ul>
-                </div>        
-                <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
                 </div>
               </div>
             </article>
 
-            <article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_3.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_3.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">Mining</a>
-              </div>
-
-              <div class="entry__body post-list__body card__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">This 6-Year-Old Kid Reportedly Earned US$11 Million on YouTube</a>
-                  </h2>
-                  <ul class="entry__meta">
-                    <li class="entry__meta-author">
-                      <span>by</span>
-                      <a href="#">junniepat</a>
-                    </li>
-                    <li class="entry__meta-date">
-                      Jan 21, 2018
-                    </li>
-                  </ul>
-                </div>        
-                <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_4.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_4.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">World</a>
-              </div>
-
-              <div class="entry__body post-list__body card__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Rating Agency Breaks with Financial Community </a>
-                  </h2>
-                  <ul class="entry__meta">
-                    <li class="entry__meta-author">
-                      <span>by</span>
-                      <a href="#">junniepat</a>
-                    </li>
-                    <li class="entry__meta-date">
-                      Jan 21, 2018
-                    </li>
-                  </ul>
-                </div>        
-                <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_5.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_5.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--red">Investment</a>
-              </div>
-
-              <div class="entry__body post-list__body card__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Decentralized Exchanges (DEX) – What Are They?</a>
-                  </h2>
-                  <ul class="entry__meta">
-                    <li class="entry__meta-author">
-                      <span>by</span>
-                      <a href="#">junniepat</a>
-                    </li>
-                    <li class="entry__meta-date">
-                      Jan 21, 2018
-                    </li>
-                  </ul>
-                </div>        
-                <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="entry card post-list">
-              <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url(/assets/img/content/list/list_post_6.jpg)">
-                <a href="single-post.html" class="thumb-url"></a>
-                <img src="/assets/img/content/list/list_post_6.jpg" alt="" class="entry__img d-none">
-                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--cyan">Technology</a>
-              </div>
-
-              <div class="entry__body post-list__body card__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Decentralized Exchanges (DEX) – What Are They?</a>
-                  </h2>
-                  <ul class="entry__meta">
-                    <li class="entry__meta-author">
-                      <span>by</span>
-                      <a href="#">junniepat</a>
-                    </li>
-                    <li class="entry__meta-date">
-                      Jan 21, 2018
-                    </li>
-                  </ul>
-                </div>        
-                <div class="entry__excerpt">
-                  <p>iPrice Group report offers insights on daily e-commerce activity in the ...</p>
-                </div>
-              </div>
-            </article>-->
+           
           </section> <!-- end worldwide news -->
 
           <!-- Pagination -->

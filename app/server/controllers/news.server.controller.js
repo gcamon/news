@@ -49,12 +49,24 @@ exports.read = function(req,res){
 	}*/
 
 	if(!req.params.type) {
-		//getHomeData(req);
-		res.render("index")
+		getHomeData(req,res);
+		//res.render("index")
 	} else {
 		getCategoryData(req,res);
 	}
 	
+}
+
+
+function getHomeData(req,res){
+	var model = req.model;
+	model.news.find({verified:true,deleted: false})
+	.limit(52)
+	.sort("-pubDate")
+	.exec(function(err,data){
+		if(err) throw err;
+		res.render("index",{news: data,moment: moment})
+	})
 }
 
 function getCategoryData(req,res) {
