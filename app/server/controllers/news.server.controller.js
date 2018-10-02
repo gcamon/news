@@ -58,61 +58,7 @@ exports.read = function(req,res){
 }
 
 
-function getHomeData(req,res){
-	var model = req.model;
-	model.news.find({verified:true,deleted: false})
-	.limit(52)
-	.sort("-pubDate")
-	.exec(function(err,data){
-		if(err) throw err;
-		res.render("index",{news: data,moment: moment})
-	})
-}
 
-function getCategoryData(req,res) {
-
-	var model = req.model;
-	//var newsObj = {};
-	var str = new RegExp(req.params.type.replace(/\s+/g,"\\s+"), "gi");  
-
-	model.news.find({category: { $regex: str, $options: 'i' } ,deleted: false, verified: true},{_id:0})
-	.limit(12)
-	.sort('-pubDate')
-	.exec(function(err,data){
-		if(err) throw err;
-		if(data.length > 0) {
-			//newsObj.category = data; db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
-			var firstLetter = req.params.type.substring(0,1).toUpperCase();
-			var sec = req.params.type.substring(1)
-			var ans = firstLetter + sec;
-			
-			var reg = new RegExp(ans.replace(/\s+/g,"\\s+"), "gi");
-			for(var j = 0; j < data.length; j++){
-				data[j].article = strpHtml(data[j].article);
-			}
-			
-			model.news.find({category:{$not: reg},deleted:false,verified:true})
-			.sort('-pubDate')
-			.limit(25)
-			.exec(function(err,other){
-				if(err) throw err;
-				//newsObj.other = other;
-				//res.json(newsObj);
-				console.log(other);
-				res.render('categories',{news: data, other: other,type: ans,moment: moment});
-			})	
-		}	else {
-			res.render("404");
-		}
-	})
-}
-
-function strpHtml(str) {
-	var regex = /(<([^>]+)>)/ig;
-	var body = str;
-	var result = body.replace(regex, "");
-	return result;
-}
 
 exports.renderSingle = function(req,res){
 	var model = req.model;
@@ -139,21 +85,16 @@ exports.renderSharePage = function(req,res){
 	var s = req.url;
 	var toArr = s.split("/")
 	var to = "/news/" + toArr[1] + toArr[2];
-	res.redirect(to)
-	/*var model = req.model;
-	model.news.findOne({id: req.params.id},function(err,data){
-		var idShare = req.url.split('/')
-		if(idShare[1] === 'share') {
-			res.render("single-post",{news: data});
-		} else {
-			res.render("share-single-post",{news: data});
-		}
-		
-	})*/
-	
+	res.redirect(to);	
 }
 
-/*** for Ajax Pulling ***/
+
+exports.readSearchResult = function(req,res){
+	console.log(req.query)
+	getSearchData(req,res);
+}
+
+/*** for Ajax Pulling  note that some of the route below was made for ajax pull and some are no longer being used at the front end***/
 
 exports.readAll = function(req,res){
 	var model = req.model;
@@ -284,4 +225,98 @@ exports.feeds = function(req,resp){
 	req.on('error', function(e) {
 	  console.log('ERROR: ' + e.message);
 	});
+}
+
+function getHomeData(req,res){
+	var model = req.model;
+	model.news.find({verified:true,deleted: false})
+	.limit(52)
+	.sort("-pubDate")
+	.exec(function(err,data){
+		if(err) throw err;
+		res.render("index",{news: data,moment: moment})
+	})
+}
+
+function getSearchData(req,res) {
+
+	var model = req.model;
+
+	var query = req.params.type || req.query.article; // note this fn is also used for search results.
+
+	var str = new RegExp(query.replace(/\s+/g,"\\s+"), "gi");  
+
+	model.news.find({title: { $regex: str, $options: 'i' } ,deleted: false, verified: true},{_id:0})
+	.limit(20)
+	.sort('-pubDate')
+	.exec(function(err,data){
+		if(err) throw err;
+		if(data.length > 0) {
+
+			var ans = data[0].category;
+			
+			var reg = new RegExp(ans.replace(/\s+/g,"\\s+"), "gi");
+			for(var j = 0; j < data.length; j++){
+				data[j].article = strpHtml(data[j].article);
+			}
+			
+			model.news.find({category:{$not: reg},deleted:false,verified:true})
+			.sort('-pubDate')
+			.limit(25)
+			.exec(function(err,other){
+				if(err) throw err;
+				res.render('categories',{news: data, other: other,type: 'Search Result(s) for: "' + query + '"',moment: moment});
+			})	
+		}	else {
+			res.render("404");
+		}
+	})
+}
+
+function getCategoryData(req,res) {
+
+	var model = req.model;
+
+	var query = req.params.type
+	//var newsObj = {};
+	var str = new RegExp(query.replace(/\s+/g,"\\s+"), "gi");  
+
+	model.news.find({category: { $regex: str, $options: 'i' } ,deleted: false, verified: true},{_id:0})
+	.limit(12)
+	.sort('-pubDate')
+	.exec(function(err,data){
+		if(err) throw err;
+		if(data.length > 0) {
+			//newsObj.category = data; db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
+			//var firstLetter = req.params.type.substring(0,1).toUpperCase();
+			//var sec = req.params.type.substring(1)
+			var ans = data[0].category;
+			
+			var reg = new RegExp(ans.replace(/\s+/g,"\\s+"), "gi");
+			for(var j = 0; j < data.length; j++){
+				data[j].article = strpHtml(data[j].article);
+			}
+			
+			model.news.find({category:{$not: reg},deleted:false,verified:true})
+			.sort('-pubDate')
+			.limit(25)
+			.exec(function(err,other){
+				if(err) throw err;
+				//newsObj.other = other;
+				//res.json(newsObj);
+				console.log(other);
+				res.render('categories',{news: data, other: other,type: ans,moment: moment});
+			})	
+		}	else {
+			res.render("404");
+		}
+	})
+}
+
+//removes html  tags from article
+function strpHtml(str) {
+	var regex = /(<([^>]+)>)/ig;
+	var body = str;
+	var result = body.replace(regex, "");
+	return result;
 }

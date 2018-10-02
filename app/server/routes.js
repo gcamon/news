@@ -30,6 +30,13 @@ module.exports = function(app) {
 	app.route("/content/footer-news")
 	.get(news.readFooterNews)
 
+	app.route("/news/search")
+	.get(news.readSearchResult)
+
+
+
+
+
 	app.route("/content/unverified")
 	.get(admin.readUnverified)
 	.put(admin.updatetoverify)
