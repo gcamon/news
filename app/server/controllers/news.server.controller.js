@@ -262,7 +262,7 @@ function getSearchData(req,res) {
 			
 			model.news.find({category:{$not: reg},deleted:false,verified:true})
 			.sort('-pubDate')
-			.limit(25)
+			.limit(15)
 			.exec(function(err,other){
 				if(err) throw err;
 				res.render('categories',{news: data, other: other,type: 'Search Result(s) for: "' + query + '"',moment: moment});
