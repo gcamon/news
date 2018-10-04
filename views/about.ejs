@@ -24,15 +24,15 @@
   <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
 
   <!-- Lazyload (must be placed in head in order to work) -->
-  <script src="js/lazysizes.min.js"></script>
+  <script src="/assets/js/lazysizes.min.js"></script>
   <!-- google addsense -->
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-5853724869941761",
       enable_page_level_ads: true
     });
-  </script>
+  </script>-->
 
 </head>
 
@@ -49,7 +49,7 @@
   <div class="content-overlay"></div>
 
   <!-- Sidenav -->    
-  <header class="sidenav" id="sidenav">
+   <header class="sidenav" id="sidenav">
 
     <!-- close -->
     <div class="sidenav__close">
@@ -61,66 +61,101 @@
     <!-- Nav -->
     <nav class="sidenav__menu-container">
       <ul class="sidenav__menu" role="menubar">
-        <li>
+        <!--<li>
           <a href="#" class="sidenav__menu-url">Home</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-         
-        </li>
+          <ul class="sidenav__menu-dropdown">
+            <li><a href="index-2.html" class="sidenav__menu-url">Home Default</a></li>
+            <li><a href="index-politics.html" class="sidenav__menu-url">Home Politics</a></li>
+            <li><a href="index-fashion.html" class="sidenav__menu-url">Home Fashion</a></li>
+            <li><a href="index-games.html" class="sidenav__menu-url">Home Games</a></li>
+            <li><a href="index-videos.html" class="sidenav__menu-url">Home Videos</a></li>
+            <li><a href="index-music.html" class="sidenav__menu-url">Home Music</a></li>
+          </ul>
+        </li>-->
         <li>
-          <a href="#" class="sidenav__menu-url">Pages</a>
+          <a href="#" class="sidenav__menu-url">Get in touch</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
           <ul class="sidenav__menu-dropdown">
-            <li><a href="about.html" class="sidenav__menu-url">About</a></li>
-            <li><a href="contact.html" class="sidenav__menu-url">Contact</a></li>
-            <li><a href="search-results.html" class="sidenav__menu-url">Search Results</a></li>
+            <li><a href="/about-us" class="sidenav__menu-url">About</a></li>
+            <li><a href="/contact-us" class="sidenav__menu-url">Contact</a></li>
+            <!--<li><a href="search-results.html" class="sidenav__menu-url">Search Results</a></li>
             <li><a href="categories.html" class="sidenav__menu-url">Categories</a></li>
-            <li><a href="404.html" class="sidenav__menu-url">404</a></li>
+           <li><a href="404.html" class="sidenav__menu-url">404</a></li>-->
           </ul>
         </li>
-             
+       <!-- <li>
+          <a href="#" class="sidenav__menu-url">Features</a>
+          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+          <ul class="sidenav__menu-dropdown">
+            <li>
+              <a href="#" class="sidenav__menu-url">Single Post</a>
+              <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+              <ul class="sidenav__menu-dropdown">
+                <li><a href="single-post.html" class="sidenav__menu-url">Style 1</a></li>
+                <li><a href="single-post-politics.html" class="sidenav__menu-url">Style 2</a></li>
+                <li><a href="single-post-fashion.html" class="sidenav__menu-url">Style 3</a></li>
+                <li><a href="single-post-games.html" class="sidenav__menu-url">Style 4</a></li>
+                <li><a href="single-post-videos.html" class="sidenav__menu-url">Style 5</a></li>
+                <li><a href="single-post-music.html" class="sidenav__menu-url">Style 6</a></li>
+              </ul>
+            </li>
+            <li><a href="shortcodes.html" class="sidenav__menu-url">Shortcodes</a></li>
+          </ul>
+        </li>  -->      
 
         <!-- Categories -->
         <li>
-          <a href="#" class="sidenav__menu-url">World</a>
+          <a href="/" class="sidenav__menu-url">Home</a>
         </li>
         <li>
-          <a href="#" class="sidenav__menu-url">Business</a>
+          <a href="/category/politics" class="sidenav__menu-url">Politics</a>
+        </li>
+         <li>
+          <a href="/category/business" class="sidenav__menu-url">Business</a>
+        </li>
+         <li>
+          <a href="/category/sports" class="sidenav__menu-url">Sports</a>
+        </li>
+         <li>
+          <a href="/category/lifestyle" class="sidenav__menu-url">Lifestyle</a>
+        </li>
+         <li>
+          <a href="/category/entertainment" class="sidenav__menu-url">Entertainment</a>
         </li>
         <li>
-          <a href="#" class="sidenav__menu-url">Fashion</a>
+          <a href="/category/technology" class="sidenav__menu-url">Technology</a>
         </li>
-        <li>
-          <a href="#" class="sidenav__menu-url">Lifestyle</a>
+         <li>
+          <a href="/category/world" class="sidenav__menu-url">World</a>
         </li>
-        <li>
-          <a href="#" class="sidenav__menu-url">Advertise</a>
-        </li>
+        <!--<li>
+          <a href="/career" class="sidenav__menu-url">Lifestyle</a>
+        </li>-->
+       
       </ul>
     </nav>
 
     <div class="socials sidenav__socials"> 
-      <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
+     <a class="social social-facebook" href="https://www.facebook.com/wobinews1/" target="_blank" aria-label="facebook">
         <i class="ui-facebook"></i>
       </a>
-      <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
+      <a class="social social-twitter" href="https://twitter.com/wobinews" target="_blank" aria-label="twitter">
         <i class="ui-twitter"></i>
       </a>
-      <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
+     <!-- <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
         <i class="ui-google"></i>
       </a>
       <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
         <i class="ui-youtube"></i>
-      </a>
-      <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
+      </a>-->
+      <a class="social social-instagram" href="https://www.instagram.com/wobinews/" target="_blank" aria-label="instagram">
         <i class="ui-instagram"></i>
       </a>
     </div>
   </header> <!-- end sidenav -->
 
-
   <main class="main oh" id="main">
-
-    <!-- Top Bar -->
     <div class="top-bar d-none d-lg-block">
       <div class="container">
         <div class="row">
@@ -128,37 +163,41 @@
           <!-- Top menu -->
           <div class="col-lg-6">
             <ul class="top-menu">
-              <li><a href="#">About</a></li>
+            <a href="/" class="logo">
+            <!--<h2 style="text-shadow: 1px 1px 2px grey;padding-top: 5px;color: orange"><b>wobinews.com</b></h2>-->
+              <img class="logo__img" style="width: 150px;height: auto;padding: 10px 0" src="/assets/img/wobinews1.png"  alt="logo">
+            </a>
+
+              <!--<li><a href="#">About</a></li>
               <li><a href="#">Advertise</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Contact</a></li>-->
             </ul>
           </div>
           
           <!-- Socials -->
           <div class="col-lg-6">
             <div class="socials nav__socials socials--nobase socials--white justify-content-end"> 
-              <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
-                <i class="ui-facebook"></i>
-              </a>
-              <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
-                <i class="ui-twitter"></i>
-              </a>
-              <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
-                <i class="ui-google"></i>
-              </a>
-              <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
-                <i class="ui-youtube"></i>
-              </a>
-              <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
-                <i class="ui-instagram"></i>
-              </a>
+              <a class="social social-facebook" href="https://www.facebook.com/wobinews1/" target="_blank" aria-label="facebook">
+              <i class="ui-facebook"></i>
+            </a>
+            <a class="social social-twitter" href="https://twitter.com/wobinews" target="_blank" aria-label="twitter">
+              <i class="ui-twitter"></i>
+            </a>
+           <!-- <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
+              <i class="ui-google"></i>
+            </a>
+            <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
+              <i class="ui-youtube"></i>
+            </a>-->
+            <a class="social social-instagram" href="https://www.instagram.com/wobinews/" target="_blank" aria-label="instagram">
+              <i class="ui-instagram"></i>
+            </a>
             </div>
           </div>
 
         </div>
       </div>
-    </div> <!-- end top bar -->
-        
+    </div> <!-- end top bar -->      
 
     <!-- Navigation -->
     <header class="nav">
@@ -175,23 +214,24 @@
             </button> 
 
             <!-- Logo -->
-            <a href="index-2.html" class="logo">
-<img class="logo__img" src="/assets/img/logo_default.png" style="height: 30px;" srcset="/assets/img/logo_default.png 1x, /assets/img/logo_default@2x.png 2x"
-  alt="logo">
-            </a>
+            <!--<a href="/" class="logo">
+            <h2 style="text-shadow: 1px 1px 2px grey;padding-top: 5px;color: orange"><b>wobinews.com</b></h2>
+            </a>-->
 
             <!-- Nav-wrap -->
             <nav class="flex-child nav__wrap d-none d-lg-block">              
               <ul class="nav__menu">
 
-                <li class="nav__dropdown active">
-                  <a href="index-2.html">Home</a>
-                 
+                <li class="nav__dropdow">
+                  <a href="/">Home</a>
                 </li>
 
-                <li class="nav__dropdown">
-                  <a href="#">Posts</a>
-                  <ul class="nav__dropdown-menu nav__megamenu">
+               
+
+
+                <li class="nav__dropdow">
+                  <a href="/category/politics">Politics</a>
+                  <!--<ul class="nav__dropdown-menu nav__megamenu">
                     <li>
                       <div class="nav__megamenu-wrap">
                         <div class="row">
@@ -267,39 +307,97 @@
                         </div>
                       </div>
                     </li>
-                  </ul> <!-- end megamenu -->
+                  </ul>--> <!-- end megamenu -->
                 </li>
 
-                <li class="nav__dropdown">
-                  <a href="#">Pages</a>
-                  <ul class="nav__dropdown-menu">
+                <li class="nav__dropdow">
+                  <a href="/category/business">Business</a>
+                  <!--<ul class="nav__dropdown-menu">
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="search-results.html">Search Results</a></li>
                     <li><a href="categories.html">Categories</a></li>
                     <li><a href="404.html">404</a></li>
-                  </ul>
+                  </ul>-->
                 </li>                
 
-                <li class="nav__dropdown">
-                  <a href="#">Features</a>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="shortcodes.html">Shortcodes</a></li>
+                <li class="nav__dropdow">
+                  <a href="/category/sports">Sports</a>
+                  <!--<ul class="nav__dropdown-menu">
+                  
                     <li class="nav__dropdown">
                       <a href="#">Single Post</a>
                       <ul class="nav__dropdown-menu">
                         <li><a href="single-post.html">Style 1</a></li>
-                        <li><a href="single-post-politics.html">Style 2</a></li>
-                        <li><a href="single-post-fashion.html">Style 3</a></li>
-                        <li><a href="single-post-games.html">Style 4</a></li>
-                        <li><a href="single-post-videos.html">Style 5</a></li>
-                        <li><a href="single-post-music.html">Style 6</a></li>
-                      </ul>
+                        </ul>
                     </li>
-                  </ul>
+                  </ul>-->
+                </li>
+                <li class="nav__dropdow">
+                  <a href="/category/lifestyle">Lifestyle</a>
+                  <!--<ul class="nav__dropdown-menu">
+                  
+                    <li class="nav__dropdown">
+                      <a href="#">Single Post</a>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post.html">Style 1</a></li>
+                        </ul>
+                    </li>
+                  </ul>-->
+                </li>
+                <li class="nav__dropdow">
+                  <a href="/category/entertainment">Entertainment</a>
+                  <!--<ul class="nav__dropdown-menu">
+                  
+                    <li class="nav__dropdown">
+                      <a href="#">Single Post</a>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post.html">Style 1</a></li>
+                        </ul>
+                    </li>
+                  </ul>-->
                 </li>
 
-                
+                <li class="nav__dropdow">
+                  <a href="/category/technology">Technology</a>
+                  <!--<ul class="nav__dropdown-menu">
+                  
+                    <li class="nav__dropdown">
+                      <a href="#">Single Post</a>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post.html">Style 1</a></li>
+                        </ul>
+                    </li>
+                  </ul>-->
+                </li>
+                <li class="nav__dropdow">
+                  <a href="/category/world">World</a>
+                  <!--<ul class="nav__dropdown-menu">
+                  
+                    <li class="nav__dropdown">
+                      <a href="#">Single Post</a>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post.html">Style 1</a></li>
+                        </ul>
+                    </li>
+                  </ul>-->
+                </li>
+                <!--<li class="nav__dropdow">
+                  <a href="/category/career">Career</a>
+                  <ul class="nav__dropdown-menu">
+                  
+                    <li class="nav__dropdown">
+                      <a href="#">Single Post</a>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post.html">Style 1</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+                </li>-->
+
+
+               
+
 
               </ul> <!-- end menu -->
             </nav> <!-- end nav-wrap -->
@@ -313,8 +411,8 @@
                   <i class="ui-search nav__search-trigger-icon"></i>
                 </a>
                 <div class="nav__search-box" id="nav__search-box">
-                  <form class="nav__search-form">
-                    <input type="text" placeholder="Search an article" class="nav__search-input">
+                  <form class="nav__search-form" action="/news/search" enctype="text/plain">
+                    <input type="text" placeholder="Search an article" name="article" class="nav__search-input">
                     <button type="submit" class="search-button btn btn-lg btn-color btn-button">
                       <i class="ui-search nav__search-icon"></i>
                     </button>
@@ -329,187 +427,19 @@
 
       </div>
     </header> <!-- end navigation -->
-
-    <!-- Breadcrumbs -->
-    <div class="container">
-      <ul class="breadcrumbs">
-        <li class="breadcrumbs__item">
-          <a href="index-2.html" class="breadcrumbs__url">Home</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="index-2.html" class="breadcrumbs__url">News</a>
-        </li>
-        <li class="breadcrumbs__item breadcrumbs__item--current">
-          World
-        </li>
-      </ul>
-    </div>
-
-    <div class="main-container container" id="main-container">            
-      <!-- post content -->
-      <div class="blog__content mb-72">
-        <h1 class="page-title">About</h1>
-        <img src="/assets/img/content/about/about_bg.jpg" class="page-featured-img">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div class="entry__article">
-              <p>iPrice Group report offers insights on daily e-commerce activity in the Philippines and Southeast. Statistically, you stand a better chance for success if you have some sort of strategic ask in almost everything that you do -- in-person, on the phone, over email, or on social media.</p>
-
-              <p>Think about it: If you make one additional ask per day and convert at around 10 percent. Then you have three people each month providing you with benefits that you'd have missed otherwise It's essential to make sure that your ask relates to some direct path to what you want, whether it is revenue, a business relationship or anything else of prime importance to you.</p>
-              
-              <blockquote><p>“Dreams and dedication are powerful combination.”</p></blockquote>
-
-              <p>This strategy uses the Ben Franklin Effect: When people do you a favor, they are more likely to do another. When you meet someone you yourself might be able to assist, ask for their help and, at the same time (e.g. in the same conversation) offer yours. And make a point to be of service even if others might not be able to help you immediately.</p>
-
-              <p>The same goes for phone calls, emails or social media interactions. Being afraid to ask for what you want is a detriment to your success and prosperity. If you lack this skill, then you need to work on it! Asking for help is a form of radical humility, something that with practice will have amazing benefits for all involved.Use this study to your advantage! Don't just ask people for help - ask specifically for what you.</p>
-
-              <p>In order to attract what you want, you actually have to consciously and strategically think about what you want and focus in on it. Then, you need to take some sort of action using the same four strategies you use to ask for help in order to make it happen. You can't get what you want sitting around on your couch. You need to put yourself out there and stimulate interest in person, via email, by phone and through social media.</p>
-
-            </div>
-          </div>
-        </div>
-      </div> <!-- end post content -->
-    </div> <!-- end main container -->
-
-    <!-- Footer -->
-    <footer class="footer footer--dark">
-      <div class="container">
-        <div class="footer__widgets">
-          <div class="row">
-
-            <div class="col-lg-3 col-md-6">
-              <aside class="widget widget-logo">
-                <a href="index-2.html">
-<img src="/assets/img/logo_default_white.png" style="height: 30px;" srcset="/assets/img/logo_default_white.png 1x, /assets/img/logo_default_white@2x.png 2x"
-  class="logo__img" alt="">
-                </a>
-                <p class="copyright">
-                  © 2018 WOBI 
-                </p>
-                <div class="socials socials--large socials--rounded mb-24">
-                  <a href="#" class="social social-facebook" aria-label="facebook"><i class="ui-facebook"></i></a>
-                  <a href="#" class="social social-twitter" aria-label="twitter"><i class="ui-twitter"></i></a>
-                  <a href="#" class="social social-google-plus" aria-label="google+"><i class="ui-google"></i></a>
-                  <a href="#" class="social social-youtube" aria-label="youtube"><i class="ui-youtube"></i></a>
-                  <a href="#" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
-                </div>
-              </aside>
-            </div>
-
-            <div class="col-lg-2 col-md-6">
-              <aside class="widget widget_nav_menu">
-                <h4 class="widget-title">Useful Links</h4>
-                <ul>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="contact.html">News</a></li>
-                  <li><a href="categories.html">Advertise</a></li>
-                  <li><a href="shortcodes.html">Support</a></li>
-                  <li><a href="shortcodes.html">Features</a></li>
-                  <li><a href="shortcodes.html">Contact</a></li>
-                </ul>
-              </aside>
-            </div>  
-
-            <div class="col-lg-4 col-md-6">
-              <aside class="widget widget-popular-posts">
-                <h4 class="widget-title">Popular Posts</h4>
-                <ul class="post-list-small">
-                  <li class="post-list-small__item">
-                    <article class="post-list-small__entry clearfix">
-                      <div class="post-list-small__img-holder">
-                        <div class="thumb-container thumb-100">
-                          <a href="single-post.html">
-                            <img data-src="/assets/img/content/post_small/post_small_1.jpg" src="/assets/img/content/post_small/post_small_1.jpg" alt="" class=" lazyloaded">
-                          </a>
-                        </div>
-                      </div>
-                      <div class="post-list-small__body">
-                        <h3 class="post-list-small__entry-title">
-                          <a href="single-post.html">Follow These Smartphone Habits of Successful Entrepreneurs</a>
-                        </h3>
-                        <ul class="entry__meta">
-                          <li class="entry__meta-author">
-                            <span>by</span>
-                            <a href="#">junniepat</a>
-                          </li>
-                          <li class="entry__meta-date">
-                            Jan 21, 2018
-                          </li>
-                        </ul>
-                      </div>                  
-                    </article>
-                  </li>
-                  <li class="post-list-small__item">
-                    <article class="post-list-small__entry clearfix">
-                      <div class="post-list-small__img-holder">
-                        <div class="thumb-container thumb-100">
-                          <a href="single-post.html">
-                            <img data-src="/assets/img/content/post_small/post_small_2.jpg" src="/assets/img/content/post_small/post_small_2.jpg" alt="" class=" lazyloaded">
-                          </a>
-                        </div>
-                      </div>
-                      <div class="post-list-small__body">
-                        <h3 class="post-list-small__entry-title">
-                          <a href="single-post.html">Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire</a>
-                        </h3>
-                        <ul class="entry__meta">
-                          <li class="entry__meta-author">
-                            <span>by</span>
-                            <a href="#">junniepat</a>
-                          </li>
-                          <li class="entry__meta-date">
-                            Jan 21, 2018
-                          </li>
-                        </ul>
-                      </div>                  
-                    </article>
-                  </li>
-                </ul>
-              </aside>              
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-              <aside class="widget widget_mc4wp_form_widget">
-                <h4 class="widget-title">Newsletter</h4>
-                <p class="newsletter__text">
-                  <i class="ui-email newsletter__icon"></i>
-                  Subscribe for our daily news
-                </p>
-                <form class="mc4wp-form" method="post">
-                  <div class="mc4wp-form-fields">
-                    <div class="form-group">
-                      <input type="email" name="EMAIL" placeholder="Your email" required="">
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-lg btn-color" value="Sign Up">
-                    </div>
-                  </div>
-                </form>                
-              </aside>
-            </div>
-
-          </div>
-        </div>    
-      </div> <!-- end container -->
-    </footer> <!-- end footer -->
-
-    <div id="back-to-top">
-      <a href="#top" aria-label="Go to top"><i class="ui-arrow-up"></i></a>
-    </div>
-
-  </main> <!-- end main-wrapper -->
+  </main>
 
   
   <!-- jQuery Scripts -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/easing.min.js"></script>
-  <script src="js/owl-carousel.min.js"></script>
-  <script src="js/flickity.pkgd.min.js"></script>
-  <script src="js/twitterFetcher_min.js"></script>
-  <script src="js/jquery.newsTicker.min.js"></script>  
-  <script src="js/modernizr.min.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/easing.min.js"></script>
+  <script src="/assets/js/owl-carousel.min.js"></script>
+  <script src="/assets/js/flickity.pkgd.min.js"></script>
+  <script src="/assets/js/twitterFetcher_min.js"></script>
+  <script src="/assets/js/jquery.newsTicker.min.js"></script>  
+  <script src="/assets/js/modernizr.min.js"></script>
+  <script src="/assets/js/scripts.js"></script>
 
 </body>
 

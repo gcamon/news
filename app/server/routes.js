@@ -81,4 +81,12 @@ module.exports = function(app) {
 	.get(admin.getPostList)
 	.patch(admin.editPost)
 
+
+	//normal link
+	app.route("/about-us")
+	.get(news.aboutUs)
+
+	app.route("/contact-us")
+	.get(news.contactUs)
+
 };

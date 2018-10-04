@@ -227,6 +227,15 @@ exports.feeds = function(req,resp){
 	});
 }
 
+
+exports.aboutUs = function(req,res){
+	res.render("about")
+}
+
+exports.contactUs = function(req,res){
+	res.render("contact")
+}
+
 function getHomeData(req,res){
 	var model = req.model;
 	model.news.find({verified:true,deleted: false})
