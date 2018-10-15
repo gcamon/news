@@ -41,7 +41,7 @@
 
 </head>
 
-<body class="bg-light style-default style-rounded" > <!-- ng-controller="categoryCtlr" -->
+<body class="bg-light style-default style-rounded" ng-controller="getTypeCtrl"> <!-- ng-controller="categoryCtlr" -->
 
   <!-- Preloader -->
   <div class="loader-mask">
@@ -443,7 +443,7 @@
     <div class="container">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a href="" class="breadcrumbs__url"><h3><%= type %></h3></a>
+          <a href="" class="breadcrumbs__url"><h3><%= type %> {{getType('<%= type %>')}}</h3></a>
         </li>
         <!--<li class="breadcrumbs__item">
           <a href="index-2.html" class="breadcrumbs__url">News</a>

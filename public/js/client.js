@@ -208,9 +208,18 @@
 				$scope.pageType = categoryName;
 			});
 
+
 			$scope.trustAsHtml = function(string) {
 			  return $sce.trustAsHtml(string);
 			};
+		}
+
+		
+
+	}])
+	.controller("getTypeCtrl",["$scope",function($scope){
+		$scope.getType = function(type){
+			$scope.pageType = type;
 		}
 
 	}])
